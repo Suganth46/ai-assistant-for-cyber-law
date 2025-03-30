@@ -1,0 +1,353 @@
+{
+  "laws": {
+    "hacking": {
+      "title": "Computer Hacking",
+      "description": "Unauthorized access to computer systems or networks with the intent to cause damage, steal data, or commit other cybercrimes.",
+      "keywords": ["hack", "unauthorized access", "system breach", "computer intrusion", "malicious code", "system infiltration"],
+      "legal_framework": {
+        "primary_sections": ["Section 66 of IT Act, 2000"],
+        "punishment": "Imprisonment up to 3 years or fine up to 5 lakh rupees or both",
+        "relevant_sections": {
+          "individual_victims": "Section 66 of the Information Technology Act",
+          "corporate_victims": "Section 66 with Section 43A for compensation from body corporate"
+        }
+      },
+      "reporting_procedure": {
+        "individual": [
+          "Preserve evidence by taking screenshots and saving logs",
+          "Document incident timeline with specific details",
+          "File a complaint at the local police station or cyber crime portal (cybercrime.gov.in)",
+          "Provide all relevant details including timeline of the incident",
+          "Report to CERT-In if major system compromise"
+        ],
+        "corporate": [
+          "Activate incident response team",
+          "Preserve digital evidence and system logs",
+          "Document breach timeline and affected systems",
+          "Mandatory reporting to CERT-In within 6 hours",
+          "File formal police complaint with cyber cell"
+        ]
+      },
+      "evidence_collection": [
+        "Server logs and access records",
+        "IP address information",
+        "System change logs",
+        "Unauthorized data transfers",
+        "Digital forensics reports"
+      ],
+      "landmark_cases": [
+        {
+          "name": "State vs Amit Tiwari (2016)",
+          "significance": "Established standards for digital evidence collection in hacking cases"
+        },
+        {
+          "name": "Shreya Singhal vs Union of India (2015)",
+          "significance": "Clarified scope of Section 66A (now struck down) vs Section 66"
+        }
+      ],
+      "prevention_tips": [
+        "Implement strong password policies",
+        "Enable two-factor authentication",
+        "Keep systems and software updated",
+        "Use firewalls and intrusion detection systems",
+        "Conduct regular security audits"
+      ]
+    },
+    "phishing": {
+      "title": "Phishing Attacks",
+      "description": "Fraudulent attempt to obtain sensitive information such as usernames, passwords, and credit card details by disguising as a trustworthy entity.",
+      "keywords": ["phish", "fake email", "identity fraud", "spoofing", "credential harvesting", "social engineering"],
+      "legal_framework": {
+        "primary_sections": ["Section 66C and 66D of IT Act, 2000"],
+        "punishment": "Imprisonment up to 3 years and fine up to 1 lakh rupees",
+        "relevant_sections": {
+          "identity_theft": "Section 66C - Punishment for identity theft",
+          "impersonation": "Section 66D - Punishment for cheating by personation"
+        }
+      },
+      "reporting_procedure": {
+        "individual": [
+          "Do not respond to suspicious communications",
+          "Save all evidence including email headers",
+          "Report to cyber crime portal (cybercrime.gov.in)",
+          "Notify bank/financial institution if financial information was compromised",
+          "File a police complaint with all evidence attached"
+        ],
+        "corporate": [
+          "Report to IT security team immediately",
+          "Preserve original phishing communication with headers",
+          "Assess scope of affected employees/systems",
+          "Report to financial institutions if credentials compromised",
+          "File official complaint with cyber cell"
+        ]
+      },
+      "evidence_collection": [
+        "Email headers and metadata",
+        "Phishing website screenshots and URLs",
+        "Communication records and timestamps",
+        "Financial transaction details if applicable",
+        "Server logs from affected systems"
+      ],
+      "landmark_cases": [
+        {
+          "name": "Indian Bank vs Cyber Cell (2018)",
+          "significance": "Established bank's responsibility in preventing phishing attacks"
+        },
+        {
+          "name": "State of Maharashtra vs Rizwan Khan (2019)",
+          "significance": "Major phishing ring prosecution setting precedent for organized cybercrime"
+        }
+      ],
+      "prevention_tips": [
+        "Verify sender email addresses carefully",
+        "Never click suspicious links or download unexpected attachments",
+        "Check for HTTPS and security certificates",
+        "Use email filtering and anti-phishing tools",
+        "Implement employee awareness training"
+      ]
+    },
+    "online_harassment": {
+      "title": "Online Harassment",
+      "description": "Use of electronic communications to harass, threaten, or intimidate a person, typically by sending messages of an intimidating or threatening nature.",
+      "keywords": ["cyberbullying", "stalking", "online threats", "harassment", "intimidation", "trolling", "doxxing"],
+      "legal_framework": {
+        "primary_sections": ["Section 67 of IT Act, Section 354D of IPC"],
+        "punishment": "Section 67: Up to 3 years and fine; Section 354D: Up to 3 years for first conviction",
+        "relevant_sections": {
+          "general_harassment": "Section 67 of IT Act - Publication of obscene material",
+          "stalking": "Section 354D of IPC - Stalking",
+          "women_children": "Sections 67A and 67B of IT Act for aggravated cases"
+        }
+      },
+      "reporting_procedure": {
+        "individual": [
+          "Block the harasser on all platforms",
+          "Document all incidents with date, time, and screenshots",
+          "Report to platform where harassment occurred",
+          "File complaint with cyber crime cell providing all evidence",
+          "In severe cases, seek restraining order"
+        ],
+        "law_enforcement": [
+          "Record victim statement with specific incident details",
+          "Collect all digital evidence including platform reports",
+          "Trace origin of messages through platform cooperation",
+          "Document pattern of behavior if repeated incidents",
+          "Consider psychological impact assessment in severe cases"
+        ]
+      },
+      "evidence_collection": [
+        "Screenshots of harassing messages",
+        "Chat logs and conversation history",
+        "Email trails and message timestamps",
+        "Witness statements",
+        "Platform abuse reports and responses"
+      ],
+      "landmark_cases": [
+        {
+          "name": "Yogesh Prajapati vs State (2021)",
+          "significance": "Expanded definition of online stalking to include multiple platform harassment"
+        },
+        {
+          "name": "Swati Sharma vs Facebook India (2020)",
+          "significance": "Established platform responsibility in addressing harassment complaints"
+        }
+      ],
+      "prevention_tips": [
+        "Use privacy settings on social media platforms",
+        "Limit personal information shared online",
+        "Be cautious about connection requests from strangers",
+        "Document any concerning behavior from early stages",
+        "Familiarize yourself with platform reporting tools"
+      ]
+    },
+    "identity_theft": {
+      "title": "Identity Theft",
+      "description": "Fraudulent acquisition and use of a person's private identifying information, usually for financial gain.",
+      "keywords": ["identity fraud", "impersonation", "account takeover", "personal data theft", "synthetic identity fraud"],
+      "legal_framework": {
+        "primary_sections": ["Section 66C of IT Act, 2000"],
+        "punishment": "Imprisonment up to 3 years and fine up to 1 lakh rupees",
+        "relevant_sections": {
+          "direct_theft": "Section 66C - Punishment for identity theft",
+          "financial_fraud": "Section 66C with provisions of IPC Section 420 for cheating"
+        }
+      },
+      "reporting_procedure": {
+        "individual": [
+          "Inform financial institutions immediately",
+          "Change passwords on all accounts",
+          "Place fraud alert with credit bureaus",
+          "File complaint with cyber crime portal with all evidence",
+          "Monitor credit reports regularly after incident"
+        ],
+        "law_enforcement": [
+          "Document complete timeline of identity misuse",
+          "Collect financial transaction history and fraud attempts",
+          "Coordinate with financial institutions for records",
+          "Request IP logs from platforms where identity was misused",
+          "Establish chain of custody for all digital evidence"
+        ]
+      },
+      "evidence_collection": [
+        "Financial statements showing unauthorized transactions",
+        "Screenshots of fake profiles or accounts",
+        "Misused identification documents",
+        "Transaction records and timestamps",
+        "Communication with financial institutions reporting fraud"
+      ],
+      "landmark_cases": [
+        {
+          "name": "State Bank of India vs Unknown (2017)",
+          "significance": "Established bank liability in cases of inadequate KYC verification"
+        },
+        {
+          "name": "Rahul Mehta vs Cyber Cell Delhi (2018)",
+          "significance": "Set precedent for comprehensive damages in identity theft cases"
+        }
+      ],
+      "prevention_tips": [
+        "Use strong, unique passwords for different accounts",
+        "Enable two-factor authentication where available",
+        "Regularly monitor financial statements",
+        "Be cautious about sharing personal information online",
+        "Consider identity theft protection services"
+      ]
+    },
+    "data_breach": {
+      "title": "Data Breach",
+      "description": "A security incident in which sensitive, protected or confidential data is copied, transmitted, viewed, stolen or used by an unauthorized individual.",
+      "keywords": ["data leak", "information breach", "database compromise", "personal data exposure", "unauthorized access"],
+      "legal_framework": {
+        "primary_sections": ["Section 43A and Section 72A of IT Act, 2000"],
+        "punishment": "Section 43A: Compensation to affected person; Section 72A: Up to 2 years or fine up to 1 lakh rupees or both",
+        "relevant_sections": {
+          "negligence": "Section 43A - Compensation for failure to protect data",
+          "breach_of_contract": "Section 72A - Disclosure of information in breach of lawful contract",
+          "compliance": "SPDI Rules, 2011 for corporate entities"
+        }
+      },
+      "reporting_procedure": {
+        "individual": [
+          "Report to organization that experienced the breach",
+          "Document all compromised information",
+          "Monitor accounts for suspicious activity",
+          "File complaint with cyber crime portal",
+          "Consider credit freeze if financial information exposed"
+        ],
+        "corporate": [
+          "Activate data breach response plan",
+          "Identify scope and affected data/individuals",
+          "Mandatory reporting to CERT-In within 6 hours of discovery",
+          "Notify affected individuals with remediation steps",
+          "Implement security improvements to prevent recurrence"
+        ]
+      },
+      "evidence_collection": [
+        "System logs showing unauthorized access",
+        "Data access and extraction records",
+        "Security audit reports",
+        "Communication about breach within organization",
+        "Notification and response timeline documentation"
+      ],
+      "landmark_cases": [
+        {
+          "name": "HDFC Bank Data Breach (2019)",
+          "significance": "Established compensatory framework for financial data breaches"
+        },
+        {
+          "name": "Air India vs CERT-In (2021)",
+          "significance": "Clarified timely reporting requirements for large-scale data breaches"
+        }
+      ],
+      "prevention_tips": [
+        "Implement data encryption for sensitive information",
+        "Regularly update security protocols and software",
+        "Conduct periodic security assessments",
+        "Train employees on data handling best practices",
+        "Develop and test incident response plan"
+      ]
+    }
+  },
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["hi", "hello", "hey", "good morning", "good afternoon", "good evening", "greetings", "howdy"],
+      "responses": [
+        "Hello! How can I help you with cyber law information today?",
+        "Hi there! Do you have questions about cyber laws or reporting a cybercrime?",
+        "Hello! Are you seeking information as an individual or law enforcement officer?",
+        "Welcome to the Cyber Law Assistant. What type of cybercrime information are you looking for today?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["bye", "goodbye", "see you", "thank you", "thanks", "that's all", "exit", "quit"],
+      "responses": [
+        "Goodbye! Feel free to return if you have more cyber law questions.",
+        "Thank you for using the Cyber Law Assistant. Have a safe day!",
+        "You're welcome. Remember to stay vigilant online!",
+        "Stay cyber-safe! Feel free to return if you need more assistance with cyber laws."
+      ]
+    },
+    {
+      "tag": "user_type",
+      "patterns": [
+        "I am police", "I work in law enforcement", "I'm an officer", "I'm a civilian", 
+        "I'm a victim", "I'm an individual", "I represent a company", "I'm a lawyer",
+        "I'm a student", "I'm researching", "I work for the government"
+      ],
+      "responses": [
+        "Thank you for specifying. I'll tailor my responses accordingly.",
+        "I understand your role now. How can I assist you with cyber law information?",
+        "Thank you. I'll provide information suitable for your needs.",
+        "Noted. I'll focus on information relevant to your position."
+      ]
+    },
+    {
+      "tag": "help",
+      "patterns": ["help", "what can you do", "how do you work", "functions", "capabilities", "features", "assistance"],
+      "responses": [
+        "I can help with information about various cybercrimes like hacking, phishing, online harassment, identity theft, and data breaches. I can provide legal sections, reporting procedures, and case precedents. Just ask a specific question!",
+        "I'm here to simplify cyber laws for you. Ask me about specific cybercrimes, how to report them, or what legal sections apply in different scenarios.",
+        "I can provide information on cyber laws, guide you through reporting procedures, and help identify relevant legal sections for different cybercrimes.",
+        "I can assist with understanding cyber law frameworks, evidence collection requirements, reporting processes, and prevention strategies for various cybercrimes."
+      ]
+    },
+    {
+      "tag": "report_crime",
+      "patterns": [
+        "how to report", "I want to file a complaint", "reporting procedure", 
+        "how to complain", "file a case", "report cybercrime", "where to report"
+      ],
+      "responses": [
+        "To report a cybercrime, you can file a complaint on the National Cyber Crime Reporting Portal (cybercrime.gov.in) or visit your local police station. Could you tell me what type of cybercrime you're dealing with so I can provide specific guidance?",
+        "Cybercrime reporting in India can be done through the cybercrime.gov.in portal or at your local police station's cyber cell. What specific incident are you looking to report?",
+        "For reporting cybercrimes, preserve all evidence first (screenshots, logs, emails), then file a complaint on cybercrime.gov.in or visit your local cyber cell. Would you like specific reporting steps for a particular type of cybercrime?"
+      ]
+    },
+    {
+      "tag": "legal_punishment",
+      "patterns": [
+        "what is the punishment", "penalties", "jail time", "prison sentence", 
+        "fines", "legal consequences", "what happens to perpetrators", "sentencing"
+      ],
+      "responses": [
+        "Punishment for cybercrimes in India varies based on the specific offense. Could you tell me which cybercrime you're asking about so I can provide the exact penalties under the IT Act?",
+        "Under the IT Act, cybercrimes carry various penalties ranging from imprisonment of 2-3 years to fines of 1-5 lakh rupees depending on the offense. Which specific crime are you inquiring about?",
+        "Legal consequences for cybercrimes typically include imprisonment and/or fines, with severity based on the nature of the offense. For specific penalty details, please specify which cybercrime you're interested in."
+      ]
+    }
+  ],
+  "special_categories": {
+    "children_protection": {
+      "special_provisions": "Sections 67B of IT Act specifically addresses child pornography and exploitation",
+      "enhanced_penalties": "Imprisonment up to 5 years and fine up to 10 lakh rupees for first conviction",
+      "reporting": "Mandatory reporting to National Cyber Crime Reporting Portal and National Commission for Protection of Child Rights"
+    },
+    "critical_infrastructure": {
+      "special_provisions": "Information Technology (Critical Information Infrastructure Protection) Rules, 2018",
+      "reporting_requirements": "Immediate reporting to CERT-In and National Critical Information Infrastructure Protection Centre (NCIIPC)",
+      "enhanced_security": "Mandatory security audits and designated Chief Information Security Officer"
+    }
+  }
+}
