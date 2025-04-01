@@ -1,0 +1,43 @@
+2025-03-31 11:52:09,315 - cyber_law_assistant - INFO - Knowledge base loaded successfully from data/cyber_laws_knowledge_base.json
+2025-03-31 11:52:11,572 - cyber_law_assistant - INFO - CyberLawAssistant initialized successfully
+2025-03-31 11:52:11,612 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-31 11:52:11,612 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-31 11:52:11,630 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-03-31 11:52:14,009 - cyber_law_assistant - INFO - Knowledge base loaded successfully from data/cyber_laws_knowledge_base.json
+2025-03-31 11:52:16,191 - cyber_law_assistant - INFO - CyberLawAssistant initialized successfully
+2025-03-31 11:52:16,205 - werkzeug - WARNING -  * Debugger is active!
+2025-03-31 11:52:16,210 - werkzeug - INFO -  * Debugger PIN: 111-632-260
+2025-03-31 11:53:34,211 - cyber_law_assistant - INFO - Knowledge base loaded successfully from data/cyber_laws_knowledge_base.json
+2025-03-31 11:53:36,348 - cyber_law_assistant - INFO - CyberLawAssistant initialized successfully
+2025-03-31 11:53:36,371 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-31 11:53:36,372 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-31 11:53:36,385 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-03-31 11:53:38,650 - cyber_law_assistant - INFO - Knowledge base loaded successfully from data/cyber_laws_knowledge_base.json
+2025-03-31 11:53:40,778 - cyber_law_assistant - INFO - CyberLawAssistant initialized successfully
+2025-03-31 11:53:40,794 - werkzeug - WARNING -  * Debugger is active!
+2025-03-31 11:53:40,799 - werkzeug - INFO -  * Debugger PIN: 111-632-260
+2025-03-31 11:55:17,676 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-03-31 11:55:17,678 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-03-31 11:55:17,679 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-03-31 11:55:18,619 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-03-31 11:55:21,888 - cyber_law_assistant - INFO - Knowledge base loaded successfully from data/cyber_laws_knowledge_base.json
+2025-03-31 11:55:24,355 - cyber_law_assistant - INFO - CyberLawAssistant initialized successfully
+2025-03-31 11:55:24,368 - werkzeug - WARNING -  * Debugger is active!
+2025-03-31 11:55:24,373 - werkzeug - INFO -  * Debugger PIN: 111-632-260
+2025-03-31 11:58:44,047 - cyber_law_assistant - INFO - Knowledge base loaded successfully from data/cyber_laws_knowledge_base.json
+2025-03-31 11:58:46,202 - cyber_law_assistant - INFO - CyberLawAssistant initialized successfully
+2025-03-31 11:58:46,225 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-31 11:58:46,225 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-31 11:58:46,237 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-03-31 11:58:48,565 - cyber_law_assistant - INFO - Knowledge base loaded successfully from data/cyber_laws_knowledge_base.json
+2025-03-31 11:58:50,800 - cyber_law_assistant - INFO - CyberLawAssistant initialized successfully
+2025-03-31 11:58:50,813 - werkzeug - WARNING -  * Debugger is active!
+2025-03-31 11:58:50,820 - werkzeug - INFO -  * Debugger PIN: 111-632-260
+2025-03-31 12:00:54,195 - cyber_law_assistant - INFO - Knowledge base loaded successfully from data/cyber_laws_knowledge_base.json
+2025-03-31 12:00:56,291 - cyber_law_assistant - INFO - CyberLawAssistant initialized successfully
+2025-03-31 12:00:56,304 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-31 12:00:56,306 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
