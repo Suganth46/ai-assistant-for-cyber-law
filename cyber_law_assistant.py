@@ -1,21 +1,28 @@
-# Cyber Laws AI Assistant
-# An NLP-powered application to provide guidance on cyber laws with conversation history
+# Upgraded Cyber Law Assistant
+# Enhanced with modern NLP techniques including transformers, semantic search, and NER
 
-import nltk
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
-import pandas as pd
-import numpy as np
-import pickle
-import re
 import json
 import os
 import random
 import datetime
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+import re
+from collections import defaultdict
 import logging
+import numpy as np
+from typing import Dict, List, Tuple, Optional, Union, Any
+
+# Import NLP libraries
+try:
+    import torch
+    from transformers import AutoTokenizer, AutoModel, pipeline
+    from sentence_transformers import SentenceTransformer
+    from sklearn.metrics.pairwise import cosine_similarity
+    import spacy
+    from spacy.language import Language
+    from spacy.tokens import Doc
+except ImportError:
+    print("Please install required libraries with: pip install torch transformers sentence-transformers scikit-learn spacy")
+    print("Also download spaCy model with: python -m spacy download en_core_web_sm")
 
 # Set up logging
 logging.basicConfig(
@@ -25,83 +32,473 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-class ConversationManager:
-    """Manages conversation history and context for improved responses"""
+class NLPEngine:
+    """Advanced NLP processing engine using transformers and other techniques"""
+    
+    def __init__(self, use_gpu: bool = False):
+        """Initialize NLP components"""
+        self.device = torch.device("cuda" if torch.cuda.is_available() and use_gpu else "cpu")
+        logger.info(f"Using device: {self.device}")
+        
+        # Load sentence embedding model
+        try:
+            self.embedding_model = SentenceTransformer('paraphrase-MiniLM-L6-v2')
+            self.embedding_model.to(self.device)
+            logger.info("Sentence embedding model loaded")
+        except Exception as e:
+            logger.error(f"Error loading embedding model: {e}")
+            self.embedding_model = None
+            
+        # Load spaCy for NER and linguistic processing
+        try:
+            self.nlp = spacy.load("en_core_web_sm")
+            # Add custom pipeline components
+            self.add_custom_components()
+            logger.info("SpaCy NLP model loaded")
+        except Exception as e:
+            logger.error(f"Error loading spaCy model: {e}")
+            self.nlp = None
+            
+        # Initialize intent classifier
+        try:
+            self.intent_classifier = pipeline("zero-shot-classification", 
+                                             model="facebook/bart-large-mnli", 
+                                             device=0 if self.device.type == "cuda" else -1)
+            logger.info("Intent classifier loaded")
+        except Exception as e:
+            logger.error(f"Error loading intent classifier: {e}")
+            self.intent_classifier = None
+            
+        # Initialize summarizer
+        try:
+            self.summarizer = pipeline("summarization", 
+                                      model="facebook/bart-large-cnn", 
+                                      device=0 if self.device.type == "cuda" else -1)
+            logger.info("Text summarizer loaded")
+        except Exception as e:
+            logger.error(f"Error loading summarizer: {e}")
+            self.summarizer = None
+    
+    def add_custom_components(self):
+        """Add custom pipeline components to spaCy"""
+        if not self.nlp:
+            return
+            
+        # Add cyber law entity recognition component
+        @Language.component("cyber_law_entities")
+        def cyber_law_entities(doc: Doc) -> Doc:
+            """Add custom entity recognition for cyber law terms"""
+            # Define cyber law specific terms and their labels
+            cyber_law_terms = {
+                "hacking": "CYBER_CRIME",
+                "phishing": "CYBER_CRIME",
+                "data breach": "CYBER_CRIME",
+                "malware": "CYBER_CRIME",
+                "ransomware": "CYBER_CRIME",
+                "identity theft": "CYBER_CRIME",
+                "IT Act": "LEGISLATION",
+                "Information Technology Act": "LEGISLATION",
+                "POCSO": "LEGISLATION",
+                "NCIIPC": "ORGANIZATION",
+                "cyber crime": "CYBER_CRIME",
+                "cybercrime": "CYBER_CRIME",
+                "cyber law": "LEGAL_TERM",
+                "cyber security": "CONCEPT"
+            }
+            
+            # Find matches in text and add entities
+            text = doc.text.lower()
+            for term, label in cyber_law_terms.items():
+                for match in re.finditer(r'\b' + re.escape(term) + r'\b', text):
+                    start, end = match.span()
+                    # Find token indices
+                    start_char = match.start()
+                    end_char = match.end()
+                    start_token = None
+                    end_token = None
+                    
+                    for i, token in enumerate(doc):
+                        if token.idx <= start_char < token.idx + len(token.text):
+                            start_token = i
+                        if token.idx <= end_char <= token.idx + len(token.text) and end_token is None:
+                            end_token = i + 1
+                            
+                    if start_token is not None and end_token is not None:
+                        ent = doc.char_span(start_char, end_char, label=label)
+                        if ent is not None:
+                            doc.ents = list(doc.ents) + [ent]
+                            
+            return doc
+            
+        # Add component to pipeline
+        self.nlp.add_pipe("cyber_law_entities", after="ner")
+    
+    def get_embeddings(self, texts: Union[str, List[str]]) -> np.ndarray:
+        """Generate embeddings for text(s)"""
+        if not self.embedding_model:
+            logger.warning("Embedding model not available")
+            # Return zero vectors as fallback
+            if isinstance(texts, str):
+                return np.zeros(384)  # Default dimension for MiniLM model
+            else:
+                return np.zeros((len(texts), 384))
+        
+        try:
+            return self.embedding_model.encode(texts, convert_to_numpy=True, 
+                                              device=self.device, show_progress_bar=False)
+        except Exception as e:
+            logger.error(f"Error generating embeddings: {e}")
+            # Return zero vectors as fallback
+            if isinstance(texts, str):
+                return np.zeros(384)  # Default dimension for MiniLM model
+            else:
+                return np.zeros((len(texts), 384))
+    
+    def calculate_similarity(self, text1: str, text2: str) -> float:
+        """Calculate the semantic similarity between two texts"""
+        try:
+            embedding1 = self.get_embeddings(text1).reshape(1, -1)
+            embedding2 = self.get_embeddings(text2).reshape(1, -1)
+            
+            return cosine_similarity(embedding1, embedding2)[0][0]
+        except Exception as e:
+            logger.error(f"Error calculating similarity: {e}")
+            return 0.0
+    
+    def classify_intent(self, text: str, candidate_intents: List[str]) -> Tuple[str, float]:
+        """Classify the intent of a text using zero-shot classification"""
+        if not self.intent_classifier or not candidate_intents:
+            # Fallback to basic keyword matching
+            return self._fallback_intent_classification(text, candidate_intents)
+            
+        try:
+            result = self.intent_classifier(text, candidate_intents)
+            top_intent = result["labels"][0]
+            confidence = result["scores"][0]
+            return top_intent, confidence
+        except Exception as e:
+            logger.error(f"Error in intent classification: {e}")
+            return self._fallback_intent_classification(text, candidate_intents)
+    
+    def _fallback_intent_classification(self, text: str, candidate_intents: List[str]) -> Tuple[str, float]:
+        """Simple fallback when transformer model is unavailable"""
+        text = text.lower()
+        best_intent = candidate_intents[0]
+        best_score = 0
+        
+        for intent in candidate_intents:
+            # Count word overlap
+            intent_words = intent.lower().split("_")
+            score = sum(1 for word in intent_words if word in text) / len(intent_words)
+            
+            if score > best_score:
+                best_score = score
+                best_intent = intent
+                
+        return best_intent, best_score
+    
+    def extract_entities(self, text: str) -> Dict[str, List[str]]:
+        """Extract named entities from text using spaCy"""
+        if not self.nlp:
+            return {}
+            
+        try:
+            doc = self.nlp(text)
+            
+            # Group entities by label
+            entities = defaultdict(list)
+            for ent in doc.ents:
+                entities[ent.label_].append(ent.text)
+                
+            return dict(entities)
+        except Exception as e:
+            logger.error(f"Error extracting entities: {e}")
+            return {}
+    
+    def summarize_text(self, text: str, max_length: int = 100, min_length: int = 30) -> str:
+        """Generate a concise summary of longer text"""
+        if not self.summarizer:
+            # Fallback to simple extraction
+            return self._fallback_summarization(text, max_length)
+            
+        # Only attempt to summarize if text is long enough
+        if len(text.split()) < 50:
+            return text
+            
+        try:
+            summary = self.summarizer(text, max_length=max_length, min_length=min_length, 
+                                     do_sample=False)
+            return summary[0]['summary_text']
+        except Exception as e:
+            logger.error(f"Error summarizing text: {e}")
+            return self._fallback_summarization(text, max_length)
+    
+    def _fallback_summarization(self, text: str, max_length: int) -> str:
+        """Simple fallback summarization"""
+        sentences = re.split(r'(?<=[.!?])\s+', text)
+        
+        if len(sentences) <= 3:
+            return text
+            
+        return " ".join(sentences[:3]) + "..."
+    
+    def analyze_sentiment(self, text: str) -> Dict[str, Any]:
+        """Analyze the sentiment and emotional content of text"""
+        if not self.nlp:
+            return {"sentiment": "neutral", "score": 0.5}
+            
+        try:
+            doc = self.nlp(text)
+            
+            # Simple rule-based sentiment analysis as fallback
+            pos_words = ["good", "great", "excellent", "helpful", "resolved", "solved", 
+                        "protect", "secure", "safe", "appreciate", "thanks", "thank"]
+            neg_words = ["bad", "terrible", "useless", "unhelpful", "confusing", "difficult", 
+                        "problem", "issue", "threat", "attack", "breach", "victim"]
+            
+            text_lower = text.lower()
+            pos_count = sum(1 for word in pos_words if word in text_lower)
+            neg_count = sum(1 for word in neg_words if word in text_lower)
+            
+            total = pos_count + neg_count
+            if total == 0:
+                sentiment = "neutral"
+                score = 0.5
+            else:
+                score = pos_count / (pos_count + neg_count)
+                if score > 0.6:
+                    sentiment = "positive"
+                elif score < 0.4:
+                    sentiment = "negative"
+                else:
+                    sentiment = "neutral"
+                    
+            return {
+                "sentiment": sentiment,
+                "score": score,
+                "pos_count": pos_count,
+                "neg_count": neg_count
+            }
+        except Exception as e:
+            logger.error(f"Error analyzing sentiment: {e}")
+            return {"sentiment": "neutral", "score": 0.5}
+    
+    def preprocess_text(self, text: str) -> str:
+        """Preprocess text for analysis"""
+        if not text or not isinstance(text, str):
+            return ""
+            
+        # Basic cleanup
+        text = text.strip()
+        
+        # Remove excessive whitespace
+        text = re.sub(r'\s+', ' ', text)
+        
+        # Expand common abbreviations relevant to legal text
+        abbreviations = {
+            r'\bu/?s\b': 'under section',
+            r'\bsec\b': 'section',
+            r'\bIT Act\b': 'Information Technology Act',
+            r'\bIPC\b': 'Indian Penal Code',
+            r'\bNIIA\b': 'National Information Infrastructure Act'
+        }
+        
+        for abbr, expanded in abbreviations.items():
+            text = re.sub(abbr, expanded, text, flags=re.IGNORECASE)
+            
+        return text
 
-    def __init__(self, max_history=10):
+
+class ConversationManager:
+    """Enhanced conversation manager with semantic understanding"""
+
+    def __init__(self, max_history=15):
         self.conversation_history = []
         self.max_history = max_history
         self.context = {
             "user_type": None,
             "current_topic": None,
             "last_law_category": None,
-            "user_info": {},
+            "user_sentiment": "neutral",
+            "conversation_phase": "greeting",
+            "important_entities": [],
             "session_id": self._generate_session_id()
         }
-
+        self.embedding_cache = {}  # Cache for conversation embeddings
+    
     def _generate_session_id(self):
         """Generate a unique session ID"""
         return f"session_{datetime.datetime.now().strftime('%Y%m%d%H%M%S')}_{random.randint(1000, 9999)}"
-
-    def add_interaction(self, user_input, assistant_response):
-        """Add an interaction to the conversation history"""
+    
+    def add_interaction(self, user_input, assistant_response, nlp_engine=None):
+        """Add an interaction to the conversation history with semantic analysis"""
         timestamp = datetime.datetime.now().isoformat()
-
+        
+        # Additional NLP analysis if engine is available
+        nlp_data = {}
+        if nlp_engine:
+            # Extract entities
+            entities = nlp_engine.extract_entities(user_input)
+            
+            # Analyze sentiment
+            sentiment_data = nlp_engine.analyze_sentiment(user_input)
+            
+            # Cache embedding for faster similarity search later
+            embedding = nlp_engine.get_embeddings(user_input)
+            
+            nlp_data = {
+                "entities": entities,
+                "sentiment": sentiment_data,
+                "embedding": embedding.tolist() if isinstance(embedding, np.ndarray) else None
+            }
+            
+            # Update user sentiment in context
+            self.context["user_sentiment"] = sentiment_data["sentiment"]
+            
+            # Update important entities in context
+            for entity_type in ["CYBER_CRIME", "LEGISLATION", "ORG"]:
+                if entity_type in entities:
+                    for entity in entities[entity_type]:
+                        if entity not in self.context["important_entities"]:
+                            self.context["important_entities"].append(entity)
+        
         interaction = {
             "timestamp": timestamp,
             "user_input": user_input,
             "assistant_response": assistant_response,
-            "context": self.context.copy()
+            "context": self.context.copy(),
+            "nlp_data": nlp_data
         }
-
+        
         self.conversation_history.append(interaction)
-
+        
         # Keep history within max size
         if len(self.conversation_history) > self.max_history:
             self.conversation_history.pop(0)
-
+        
         # Log the interaction
         logger.info(f"Session {self.context['session_id']} - User: {user_input[:50]}...")
         logger.info(f"Session {self.context['session_id']} - Assistant: {assistant_response[:50]}...")
-
+    
     def get_last_n_interactions(self, n=3):
         """Get the last n interactions for context"""
         return self.conversation_history[-n:] if len(self.conversation_history) >= n else self.conversation_history
-
+    
     def update_context(self, key, value):
         """Update a specific context value"""
         self.context[key] = value
         logger.debug(f"Updated context: {key}={value}")
-
+    
     def get_context_summary(self):
         """Get a text summary of current context for better responses"""
         summary = []
-
+        
         if self.context["user_type"]:
             summary.append(f"User is {self.context['user_type']}.")
-
+        
         if self.context["current_topic"]:
             summary.append(f"Current topic is {self.context['current_topic']}.")
-
+        
         if self.context["last_law_category"]:
             summary.append(f"Last discussed law category was {self.context['last_law_category']}.")
-
+            
+        if self.context["important_entities"]:
+            summary.append(f"Important entities mentioned: {', '.join(self.context['important_entities'])}.")
+            
+        if self.context["user_sentiment"] != "neutral":
+            summary.append(f"User sentiment is {self.context['user_sentiment']}.")
+        
         return " ".join(summary)
-
+    
+    def find_similar_interactions(self, user_input, nlp_engine, top_n=3):
+        """Find semantically similar past interactions"""
+        if not nlp_engine or len(self.conversation_history) == 0:
+            return []
+            
+        try:
+            # Generate embedding for the current input
+            current_embedding = nlp_engine.get_embeddings(user_input)
+            
+            similarities = []
+            for i, interaction in enumerate(self.conversation_history):
+                # Skip interactions with no embedding data
+                if not interaction.get("nlp_data") or not interaction["nlp_data"].get("embedding"):
+                    continue
+                    
+                # Get cached embedding
+                past_embedding = np.array(interaction["nlp_data"]["embedding"])
+                
+                # Calculate similarity
+                similarity = cosine_similarity(
+                    current_embedding.reshape(1, -1), 
+                    past_embedding.reshape(1, -1)
+                )[0][0]
+                
+                similarities.append((i, similarity))
+                
+            # Sort by similarity (highest first)
+            similarities.sort(key=lambda x: x[1], reverse=True)
+            
+            # Return the top N most similar interactions
+            result = []
+            for i, sim in similarities[:top_n]:
+                interaction = self.conversation_history[i]
+                result.append({
+                    "user_input": interaction["user_input"],
+                    "assistant_response": interaction["assistant_response"],
+                    "similarity": sim
+                })
+                
+            return result
+                
+        except Exception as e:
+            logger.error(f"Error finding similar interactions: {e}")
+            return []
+            
+    def determine_conversation_phase(self):
+        """Determine the current phase of the conversation"""
+        # Simple rule-based approach
+        length = len(self.conversation_history)
+        
+        if length == 0:
+            return "greeting"
+        elif length == 1:
+            return "initial_query"
+        elif any(entity in self.context["important_entities"] for entity in ["CYBER_CRIME", "LEGISLATION"]):
+            return "specific_guidance"
+        elif length > 10:
+            return "advanced_discussion"
+        else:
+            return "exploration"
+    
     def save_conversation(self, filepath):
         """Save the conversation history to a file"""
         try:
+            os.makedirs(os.path.dirname(filepath), exist_ok=True)
+            
+            # Create a version without the large embedding arrays for storage
+            storage_version = []
+            for interaction in self.conversation_history:
+                # Create a deep copy without the embeddings
+                storage_interaction = interaction.copy()
+                if "nlp_data" in storage_interaction and "embedding" in storage_interaction["nlp_data"]:
+                    # Either remove embedding or store a reduced version
+                    storage_interaction["nlp_data"] = storage_interaction["nlp_data"].copy()
+                    storage_interaction["nlp_data"]["embedding"] = None
+                
+                storage_version.append(storage_interaction)
+            
             with open(filepath, 'w') as file:
                 json.dump({
                     "session_id": self.context["session_id"],
                     "timestamp": datetime.datetime.now().isoformat(),
-                    "conversation": self.conversation_history
+                    "conversation": storage_version
                 }, file, indent=4)
             return True
         except Exception as e:
             logger.error(f"Error saving conversation: {e}")
             return False
-
+    
     def load_conversation(self, filepath):
         """Load a conversation history from a file"""
         try:
@@ -109,901 +506,1805 @@ class ConversationManager:
                 data = json.load(file)
                 self.conversation_history = data.get("conversation", [])
                 self.context["session_id"] = data.get("session_id", self._generate_session_id())
+                
+                # Rebuild important context from history
+                if self.conversation_history:
+                    last_interaction = self.conversation_history[-1]
+                    if "context" in last_interaction:
+                        for key, value in last_interaction["context"].items():
+                            self.context[key] = value
             return True
         except Exception as e:
             logger.error(f"Error loading conversation: {e}")
             return False
 
 
-class CyberLawAssistant:
-    def __init__(self, knowledge_base_path='data/cyber_laws_knowledge_base.json'):
-        """Initialize the Cyber Law Assistant with enhanced error handling"""
-        try:
-            # Initialize NLTK components
-            self.initialize_nltk()
-            self.lemmatizer = WordNetLemmatizer()
-            self.stop_words = set(stopwords.words('english'))
-
-            # Load the knowledge base
-            self.knowledge_base_path = knowledge_base_path
-            self.knowledge_base = self.load_knowledge_base(knowledge_base_path)
-
-            # Initialize TF-IDF vectorizer for intent matching
-            self.vectorizer = TfidfVectorizer()
-            self.fit_vectorizer()
-
-            # Initialize conversation manager
-            self.conversation = ConversationManager()
-
-            logger.info("CyberLawAssistant initialized successfully")
-        except Exception as e:
-            logger.error(f"Error initializing CyberLawAssistant: {e}")
-            # Still initialize the conversation manager even if other components fail
-            self.conversation = ConversationManager()
-            print(f"Error during initialization: {e}")
-
-    def initialize_nltk(self):
-        """Download required NLTK resources with error handling"""
-        try:
-            # Download essential NLTK data
-            nltk.download('punkt', quiet=True)
-            nltk.download('stopwords', quiet=True)
-            nltk.download('wordnet', quiet=True)
-        except Exception as e:
-            logger.warning(f"Error downloading NLTK data: {e}")
-            logger.warning("Using fallback mechanisms")
-
-    def preprocess_text(self, text):
-        """Preprocess the input text with robust error handling"""
-        if not text or not isinstance(text, str):
-            logger.warning(f"Invalid text input: {type(text)}")
-            return ""
-
-        # Convert to lowercase and remove special characters
-        try:
-            text = re.sub(r'[^\w\s]', '', text.lower())
-        except:
-            text = text.lower()
-
-        # Tokenize with error handling
-        try:
-            tokens = word_tokenize(text)
-        except Exception:
-            # Fallback to simple whitespace tokenization if NLTK fails
-            tokens = text.split()
-            logger.debug("Using simple tokenization as fallback")
-
-        # Remove stopwords and lemmatize
-        try:
-            tokens = [self.lemmatizer.lemmatize(word) for word in tokens if word not in self.stop_words]
-        except Exception:
-            # Skip lemmatization if not available
-            tokens = [word for word in tokens if word not in self.stop_words]
-            logger.debug("Skipping lemmatization due to resource unavailability")
-
-        return " ".join(tokens)
-
+class SemanticKnowledgeBase:
+    """Enhanced knowledge base with vector search capabilities"""
+    
+    def __init__(self, knowledge_base_path, nlp_engine):
+        self.knowledge_base_path = knowledge_base_path
+        self.nlp_engine = nlp_engine
+        self.knowledge_base = self.load_knowledge_base(knowledge_base_path)
+        self.vector_index = self.build_vector_index()
+        
     def load_knowledge_base(self, filepath):
-        """Load cyber laws knowledge base from JSON file with robust error handling"""
+        """Load knowledge base from JSON file"""
         try:
             # Check if file exists
             if not os.path.exists(filepath):
                 logger.warning(f"Knowledge base file not found: {filepath}")
                 # Try to create directory if needed
                 os.makedirs(os.path.dirname(filepath), exist_ok=True)
-
-                # Return a basic structure
-                return self._create_basic_knowledge_base()
-
+                return self._create_enhanced_knowledge_base()
+            
             # Load the file
             with open(filepath, 'r') as file:
                 data = json.load(file)
                 logger.info(f"Knowledge base loaded successfully from {filepath}")
                 return data
-
-        except json.JSONDecodeError:
-            logger.error(f"Invalid JSON in knowledge base: {filepath}")
-            return self._create_basic_knowledge_base()
+                
         except Exception as e:
             logger.error(f"Error loading knowledge base: {e}")
-            return self._create_basic_knowledge_base()
-
-    def _create_basic_knowledge_base(self):
-        """Create a basic knowledge base structure"""
-        logger.info("Creating basic knowledge base structure")
-        return {
-            "laws": {
+            return self._create_enhanced_knowledge_base()
+    
+    def _create_enhanced_knowledge_base(self):
+        """Create an enhanced knowledge base structure with comprehensive Indian IT laws"""
+        logger.info("Creating enhanced knowledge base structure with comprehensive Indian IT laws")
+    
+    # Base structure with existing detailed cyber laws
+        knowledge_base = {
+             "laws": {
                 "hacking": {
-                    "title": "Computer Hacking",
-                    "description": "Unauthorized access to computer systems",
-                    "keywords": ["hack", "unauthorized access", "breach"],
-                    "legal_framework": {
-                        "primary_sections": ["Section 66 of IT Act, 2000"],
-                        "punishment": "Up to 3 years imprisonment or fine up to 5 lakh rupees or both"
-                    },
-                    "reporting_procedure": {
-                        "individual": ["File FIR at local police station or cyber crime portal"]
-                    },
-                    "evidence_collection": ["Server logs", "Access records"],
-                    "landmark_cases": [
-                        {
-                            "name": "State vs John Doe (2020)",
-                            "significance": "Example case"
-                        }
+                "title": "Computer Hacking",
+                "description": "Unauthorized access to computer systems, networks, or data with malicious intent or without permission from the owner.",
+                "keywords": [
+                    "hack", "unauthorized access", "breach", "intrusion", "system compromise", "password cracking", 
+                    "cyber attack", "illegal access", "network penetration", "security breach", "data theft",
+                    "system infiltration", "computer trespass", "digital break-in", "unauthorized entry",
+                    "system cracking", "security bypass", "credential theft", "network infiltration",
+                    "cyber intrusion", "malicious access", "computer crime", "system exploitation"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66 of IT Act, 2000", "Computer Fraud and Abuse Act (CFAA)","Section 43(a) of IT Act, 2000", 
+                            "Section 66 of IT Act, 2000",
+                            "Section 66B of IT Act, 2000",
+                            "Section 66F of IT Act, 2000 (if critical infrastructure)"],
+                    "punishment": "Up to 3 years imprisonment or fine up to 5 lakh rupees or both",
+                    "aggravating_factors": ["Data theft", "Financial loss", "Critical infrastructure"]
+                },
+                "reporting_procedure": {
+                    "individual": [
+                        "Document all evidence of the breach", 
+                        "File FIR at local police station or cyber crime portal",
+                        "Report to CERT-In if significant breach",
+                        "Notify affected parties if personal data was compromised"
+                    ],
+                    "law_enforcement": [
+                        "Gather digital evidence with proper chain of custody",
+                        "Consult cyber forensics experts",
+                        "Follow jurisdictional procedures",
+                        "Consider multi-agency coordination for cross-border cases"
                     ]
+                },
+                "evidence_collection": [
+                    "Server logs showing unauthorized access", 
+                    "Access records and timestamps", 
+                    "System files with modified timestamps",
+                    "Malware or unauthorized software",
+                    "Network traffic logs showing suspicious activity"
+                ],
+                "prevention_tips": [
+                    "Implement strong access controls and authentication",
+                    "Keep systems and software updated with security patches",
+                    "Use firewalls and intrusion detection systems",
+                    "Conduct regular security audits and penetration testing",
+                    "Train staff on security awareness and social engineering threats"
+                ],
+                "landmark_cases": [
+                    {
+                        "name": "State vs John Doe (2020)",
+                        "significance": "Established precedent for prosecuting remote hacking across jurisdictions",
+                        "key_findings": "Intent to cause damage was proven through digital forensic evidence"
+                    },
+                    {
+                        "name": "United States v. Morris (1991)",
+                        "significance": "First major prosecution under the CFAA involving a worm that caused widespread damage",
+                        "key_findings": "Unintended consequences of malicious code still constitute criminal liability"
+                    }
+                ]
+            },
+            "phishing": {
+                "title": "Phishing",
+                "description": "Fraudulent attempt to obtain sensitive information by disguising as a trustworthy entity in electronic communications",
+                "keywords": [
+                    "phish", "fake email", "credential theft", "impersonation", "spoofing", "fraudulent website",
+                    "email scam", "identity theft", "fake login", "deceptive communication", "brand impersonation",
+                    "social engineering", "account takeover", "fraudulent link", "email forgery", "spoofed domain",
+                    "password harvesting", "fake notification", "malicious attachment", "credential phishing",
+                    "spear phishing", "whaling", "pharming", "clone phishing", "voice phishing", "smishing",
+                    "business email compromise", "CEO fraud", "fake security alert"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66D of IT Act, 2000", "Identity Theft statutes"],
+                    "punishment": "Up to 3 years imprisonment and fine up to 1 lakh rupees",
+                    "aggravating_factors": ["Financial fraud", "Identity theft", "Targeting vulnerable populations"]
+                },
+                "reporting_procedure": {
+                    "individual": [
+                        "Preserve original phishing email or message with headers",
+                        "Report to cyber crime portal or local police",
+                        "Contact your bank if financial information was compromised",
+                        "Report to email service provider or platform where phishing occurred"
+                    ],
+                    "law_enforcement": [
+                        "Track origin of phishing attempt through email headers",
+                        "Coordinate with hosting providers to take down fraudulent websites",
+                        "Work with financial institutions if financial fraud involved",
+                        "Conduct forensic analysis of phishing infrastructure"
+                    ]
+                },
+                "evidence_collection": [
+                    "Original phishing email with complete headers", 
+                    "Screenshots of fake websites",
+                    "URL links from phishing messages",
+                    "Any information submitted to fraudulent sites",
+                    "Bank statements showing unauthorized transactions if applicable"
+                ],
+                "prevention_tips": [
+                    "Verify sender email addresses carefully",
+                    "Never click on suspicious links in emails or messages",
+                    "Check for HTTPS and verify website authenticity before entering credentials",
+                    "Use multi-factor authentication wherever possible",
+                    "Keep software updated, especially browsers and email clients"
+                ],
+                "landmark_cases": [
+                    {
+                        "name": "Cyber Cell v. Anonymous Group (2019)",
+                        "significance": "Major phishing operation targeting government officials",
+                        "key_findings": "Established liability for sophisticated spear-phishing campaigns"
+                    },
+                    {
+                        "name": "FTC v. Wyndham Worldwide Corp (2015)",
+                        "significance": "Established corporate liability for inadequate phishing protection",
+                        "key_findings": "Organizations have a duty to protect customers from foreseeable phishing risks"
+                    }
+                ]
+            },
+            "data_breach": {
+                "title": "Data Breach",
+                "description": "Unauthorized access resulting in exposure of sensitive, protected, or confidential data",
+                "keywords": [
+                    "data leak", "information exposure", "data compromise", "data theft", "unauthorized disclosure",
+                    "data spill", "information breach", "confidentiality breach", "data exfiltration", "data loss",
+                    "sensitive information theft", "database breach", "unauthorized data access", "data security incident",
+                    "records breach", "information leak", "PII exposure", "data breach notification", "compromised records",
+                    "data protection failure", "confidential information exposure", "cloud breach", "personal data exposure",
+                    "data privacy violation", "customer data leak", "medical records breach", "financial data exposure"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 43A of IT Act, 2000", "Data Protection regulations"],
+                    "punishment": "Compensation to affected parties and penalties up to 5 crore rupees depending on severity",
+                    "aggravating_factors": ["Negligence", "Delayed notification", "Sensitive personal data"]
+                },
+                "reporting_procedure": {
+                    "individual": [
+                        "File complaint with Data Protection Authority",
+                        "Notify cyber crime authorities",
+                        "Consider civil legal action for damages"
+                    ],
+                    "law_enforcement": [
+                        "Document extent and nature of breached data",
+                        "Determine notification requirements based on data type",
+                        "Investigate security controls and compliance failures"
+                    ]
+                },
+                "evidence_collection": [
+                    "System logs showing unauthorized access",
+                    "Documentation of affected records",
+                    "Security assessment reports before and after breach",
+                    "Communications regarding the breach response",
+                    "Records of notification to affected individuals"
+                ],
+                "prevention_tips": [
+                    "Implement encryption for sensitive data",
+                    "Conduct regular security assessments",
+                    "Limit data collection to necessary information only",
+                    "Implement strict access controls and authentication",
+                    "Develop and test incident response procedures"
+                ]
+            },
+            "ransomware": {
+                "title": "Ransomware Attacks",
+                "description": "Malicious software that encrypts victim's data and demands payment for decryption key",
+                "keywords": [
+                    "ransom", "encryption", "malware", "extortion", "bitcoin", "cryptocurrency",
+                    "file encryption", "digital extortion", "crypto malware", "ransom demand", "data hostage",
+                    "decryption key", "ransomware infection", "crypto virus", "file hijacking", "system lockout",
+                    "data ransom", "malicious encryption", "crypto locker", "payment demand", "data recovery ransom",
+                    "double extortion", "threatening notice", "data encryption attack", "locked files", "encrypted data",
+                    "ransomware family", "ransomware variant", "ransomware strain", "disk encryption", "system hijack"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66 and 66F of IT Act, 2000", "Extortion laws"],
+                    "punishment": "Up to 3 years imprisonment or fine or both, up to life imprisonment for critical infrastructure",
+                    "aggravating_factors": ["Critical infrastructure targeting", "Healthcare targeting", "Public services disruption"]
+                },
+                "reporting_procedure": {
+                    "individual": [
+                        "Report to cyber crime authorities immediately",
+                        "Contact IT security specialists",
+                        "Do not pay ransom without consulting authorities",
+                        "Isolate affected systems to prevent spread"
+                    ],
+                    "law_enforcement": [
+                        "Preserve ransom notes and communications",
+                        "Track cryptocurrency transactions if payment occurred",
+                        "Coordinate with international agencies if needed",
+                        "Evaluate national security implications"
+                    ]
+                },
+                "evidence_collection": [
+                    "Ransom notes and communications",
+                    "Bitcoin wallet addresses used by attackers",
+                    "Encrypted file samples",
+                    "System logs before encryption",
+                    "Malware samples if available"
+                ],
+                "prevention_tips": [
+                    "Maintain regular, offline backups of all critical data",
+                    "Keep systems and software updated with security patches",
+                    "Implement email filtering to prevent phishing-delivered ransomware",
+                    "Use application whitelisting to prevent unauthorized program execution",
+                    "Train staff on identifying suspicious emails and attachments"
+                ]
+            },
+            # Adding comprehensive Indian IT laws from the JSON file with enhanced keywords
+            "it_act_section_65": {
+                "title": "Tampering with Computer Source Code",
+                "section": "Section 65 of IT Act, 2000",
+                "description": "Knowingly or intentionally concealing, destroying, altering, or causing another to conceal, destroy or alter computer source code required to be kept or maintained by law",
+                "keywords": [
+                    "source code tampering", "code alteration", "concealing source", "computer program",
+                    "source code modification", "program code alteration", "unauthorized code changes",
+                    "source code destruction", "code integrity violation", "software source modification",
+                    "code concealment", "application source tampering", "program source destruction",
+                    "source documentation tampering", "source code manipulation", "algorithm tampering",
+                    "code obfuscation", "illegal code modification", "software tampering", "IT Act 65",
+                    "source code deletion", "program alteration", "code alteration offense", "source code offense"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 65 of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years, or with fine up to ₹2 lakh, or both",
+                    "aggravating_factors": ["Commercial intent", "Intellectual property theft", "Causing system failure"]
                 }
             },
-            "intents": [
-                {
-                    "tag": "greeting",
-                    "patterns": ["hi", "hello", "hey"],
-                    "responses": ["Hello! How can I help you with cyber law questions today?"]
-                },
-                {
-                    "tag": "goodbye",
-                    "patterns": ["bye", "thanks", "thank you"],
-                    "responses": ["Goodbye! Feel free to return if you have more questions about cyber laws."]
+            "it_act_section_66": {
+                "title": "Computer Related Offences",
+                "section": "Section 66 of IT Act, 2000",
+                "description": "Dishonestly or fraudulently accessing a computer, computer system or network, extracting data, or introducing computer contaminant",
+                "keywords": [
+                    "unauthorized access", "data theft", "computer fraud", "hacking", "system breach",
+                    "fraudulent computer use", "dishonest access", "illegal system access", "computer misuse",
+                    "system intrusion", "fraudulent data extraction", "unlawful computer access",
+                    "network breach", "unauthorized system use", "computer contaminant", "malicious code",
+                    "data extraction", "cyber trespass", "illegal computer operation", "IT Act 66",
+                    "fraudulent network access", "unauthorized data access", "computer offense",
+                    "cyber offense", "computer system breach", "network intrusion"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66 of IT Act, 2000"],
+                    "punishment": "Imprisonment for a term which may extend to 3 years or with fine which may extend to ₹5 lakh or both",
+                    "aggravating_factors": ["Commercial gain", "Critical data compromise", "Repeated offenses"]
                 }
-            ]
-        }
-
-    def fit_vectorizer(self):
-        """Prepare the TF-IDF vectorizer with intent patterns"""
-        try:
-            patterns = []
-            for intent in self.knowledge_base.get("intents", []):
-                patterns.extend(intent.get("patterns", []))
-
-            # Ensure we have patterns before fitting
-            if not patterns:
-                patterns = ["default pattern"]
-
-            processed_patterns = [self.preprocess_text(pattern) for pattern in patterns]
-            self.vectorizer.fit(processed_patterns)
-            logger.debug("TF-IDF vectorizer fitted successfully")
-        except Exception as e:
-            logger.error(f"Error fitting vectorizer: {e}")
-            # Initialize with a basic fit
-            self.vectorizer.fit(["hello", "goodbye", "help"])
-
-    def identify_intent(self, query):
-        """Identify the intent of user query with improved error handling"""
-        try:
-            processed_query = self.preprocess_text(query)
-
-            if not processed_query:
-                return None
-
-            # Transform the query using the fitted vectorizer
-            query_vector = self.vectorizer.transform([processed_query])
-
-            best_match = None
-            highest_similarity = -1
-
-            for intent in self.knowledge_base.get("intents", []):
-                for pattern in intent.get("patterns", []):
-                    processed_pattern = self.preprocess_text(pattern)
-                    pattern_vector = self.vectorizer.transform([processed_pattern])
-
-                    similarity = cosine_similarity(query_vector, pattern_vector)[0][0]
-
-                    if similarity > highest_similarity:
-                        highest_similarity = similarity
-                        best_match = intent
-
-            # Threshold for intent matching
-            if highest_similarity > 0.4:
-                return best_match
-            return None
-        except Exception as e:
-            logger.error(f"Error in intent identification: {e}")
-            return None
-
-    def identify_law_category(self, query):
-        """Identify which cyber law category the query is about with improved matching"""
-        try:
-            processed_query = self.preprocess_text(query)
-
-            if not processed_query:
-                return None
-
-            best_category = None
-            highest_match_count = 0
-
-            # Split the processed query into words for better matching
-            query_words = set(processed_query.split())
-
-            for category, details in self.knowledge_base.get("laws", {}).items():
-                # Search for category name in query
-                if category in processed_query:
-                    return category
-
-                # Count matching keywords for better matching
-                match_count = 0
-
-                # Check title words
-                title_words = set(self.preprocess_text(details.get("title", "")).split())
-                match_count += len(query_words.intersection(title_words))
-
-                # Check description words
-                desc_words = set(self.preprocess_text(details.get("description", "")).split())
-                match_count += len(query_words.intersection(desc_words))
-
-                # Search for keywords related to the category
-                for keyword in details.get("keywords", []):
-                    keyword_processed = self.preprocess_text(keyword)
-                    if keyword_processed in processed_query:
-                        match_count += 2  # Give higher weight to keyword matches
-
-                if match_count > highest_match_count:
-                    highest_match_count = match_count
-                    best_category = category
-
-            # Only return if we have enough matches
-            if highest_match_count >= 1:
-                return best_category
-
-            return None
-        except Exception as e:
-            logger.error(f"Error in law category identification: {e}")
-            return None
-
-    def set_user_type(self, user_type):
-        """Set whether the user is an individual or law enforcement"""
-        if user_type.lower() in ["individual", "civilian", "person", "victim"]:
-            self.conversation.update_context("user_type", "individual")
-        elif user_type.lower() in ["police", "law enforcement", "officer", "department"]:
-            self.conversation.update_context("user_type", "law_enforcement")
-        else:
-            self.conversation.update_context("user_type", "unspecified")
-
-    def extract_query_intent(self, user_input):
-        """Determine what type of information the user is seeking with improved accuracy"""
-        query_lower = query.lower()
-
-        # Use regex patterns for more precise matching
-        patterns = {
-            "definition": [r"what is", r"define", r"meaning", r"explain", r"describe"],
-            "legal_sections": [r"section", r"law", r"act", r"legal", r"provision", r"statute"],
-            "reporting": [r"report", r"file", r"complain", r"procedure", r"process", r"steps", r"how to"],
-            "cases": [r"case", r"precedent", r"example", r"similar", r"court", r"ruling", r"judgment"],
-            "prevention": [r"prevent", r"avoid", r"protect", r"secure", r"safeguard", r"precaution", r"safety"],
-            "evidence": [r"evidence", r"proof", r"document", r"record", r"log", r"data", r"collect"],
-            "punishment": [r"punish", r"penalty", r"sentence", r"fine", r"jail", r"prison", r"consequence"]
-        }
-
-        # Score each type based on pattern matches
-        type_scores = {query_type: 0 for query_type in patterns}
-
-        for query_type, pattern_list in patterns.items():
-            for pattern in pattern_list:
-                if re.search(pattern, query_lower):
-                    type_scores[query_type] += 1
-
-        # Find the highest scoring query type
-        best_type = max(type_scores.items(), key=lambda x: x[1])
-
-        # If we have a clear winner with at least one match
-        if best_type[1] > 0:
-            return best_type[0]
-
-        # Fallback to general if no patterns match
-        return "general"
-
-    def get_law_info(self, category, query_type):
-        """Get specific information from a law category based on query type"""
-        try:
-            law_info = self.knowledge_base.get("laws", {}).get(category, {})
-
-            if not law_info:
-                return f"I don't have information about {category} in my knowledge base."
-
-            user_type = self.conversation.context.get("user_type", "individual")
-
-            if query_type == "definition":
-                return f"{law_info.get('title', category.capitalize())}: {law_info.get('description', 'No description available.')}"
-
-            elif query_type == "legal_sections":
-                legal_framework = law_info.get("legal_framework", {})
-                primary_sections = legal_framework.get("primary_sections", ["No specific sections available"])
-
-                if user_type == "law_enforcement":
-                    return f"Legal framework for {law_info.get('title', category)}: {', '.join(primary_sections)}. Punishment: {legal_framework.get('punishment', 'Not specified')}."
-                else:
-                    relevant_sections = legal_framework.get("relevant_sections", {})
-                    individual_section = relevant_sections.get("individual_victims", "No specific section mentioned")
-                    return f"For {law_info.get('title', category)}, the relevant legal section is: {individual_section}."
-
-            elif query_type == "reporting":
-                procedures = law_info.get("reporting_procedure", {})
-
-                if user_type == "law_enforcement":
-                    steps = procedures.get("law_enforcement", procedures.get("corporate", ["No specific procedure available"]))
-                else:
-                    steps = procedures.get("individual", ["No specific procedure available"])
-
-                return f"Reporting procedure for {law_info.get('title', category)}:\n" + "\n".join([f"{i+1}. {step}" for i, step in enumerate(steps)])
-
-            elif query_type == "cases":
-                cases = law_info.get("landmark_cases", [])
-                if not cases:
-                    return f"I don't have case precedent information for {law_info.get('title', category)}."
-
-                case_list = "\n".join([f"• {case.get('name', 'Unnamed case')}: {case.get('significance', 'No details available')}" for case in cases])
-                return f"Landmark cases for {law_info.get('title', category)}:\n{case_list}"
-
-            elif query_type == "prevention":
-                tips = law_info.get("prevention_tips", ["No specific prevention tips available"])
-                return f"Prevention tips for {law_info.get('title', category)}:\n" + "\n".join([f"{i+1}. {tip}" for i, tip in enumerate(tips)])
-
-            elif query_type == "evidence":
-                evidence = law_info.get("evidence_collection", ["No specific evidence collection guidelines available"])
-                return f"Evidence collection for {law_info.get('title', category)}:\n" + "\n".join([f"{i+1}. {item}" for i, item in enumerate(evidence)])
-
-            elif query_type == "punishment":
-                legal_framework = law_info.get("legal_framework", {})
-                return f"Punishment for {law_info.get('title', category)}: {legal_framework.get('punishment', 'Not specified in my knowledge base')}"
-
-            else:
-                # For general queries, provide a comprehensive overview
-                title = law_info.get('title', category.capitalize())
-                description = law_info.get('description', 'No description available')
-                framework = law_info.get('legal_framework', {}).get('primary_sections', ['No specific sections available'])
-
-                return f"{title}: {description}\n\nKey legal sections: {', '.join(framework)}\n\nUse more specific queries about reporting, evidence, prevention, or cases for detailed information."
-
-        except Exception as e:
-            logger.error(f"Error retrieving law info: {e}")
-            return f"I encountered an error while retrieving information about {category}. Please try a different question."
-
-    def get_similarity_score(self, text1, text2):
-        """Get similarity score between two texts"""
-        try:
-            # Preprocess both texts
-            processed_text1 = self.preprocess_text(text1)
-            processed_text2 = self.preprocess_text(text2)
-
-            # Vectorize
-            vectorizer = TfidfVectorizer()
-            tfidf_matrix = vectorizer.fit_transform([processed_text1, processed_text2])
-
-            # Calculate similarity
-            return cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:2])[0][0]
-        except Exception as e:
-            logger.error(f"Error calculating similarity: {e}")
-            return 0
-
-    def is_follow_up_question(self, query):
-        """Determine if the current query is a follow-up to the previous conversation with improved detection"""
-        # Check for empty history
-        if not self.conversation.conversation_history:
-            return False
-
-        # Get the most recent context
-        last_law = self.conversation.context.get("last_law_category")
-        current_topic = self.conversation.context.get("current_topic")
-
-        # Basic pronoun and context indicator checks
-        pronouns = ["it", "this", "that", "these", "those", "they", "them", "he", "she", "his", "her", "their"]
-        follow_up_indicators = ["more", "also", "another", "additional", "further", "else", "again", "what about", "how about"]
-
-        query_lower = query.lower()
-
-        # Check for pronouns at the beginning of the query or embedded within
-        for pronoun in pronouns:
-            # At beginning
-            if query_lower.startswith(pronoun + " "):
-                return True
-            # Within sentence but referring to context
-            if " " + pronoun + " " in query_lower and last_law:
-                # Check if the sentence is referring to the previous context
-                return True
-
-        # Check for follow-up indicators
-        for indicator in follow_up_indicators:
-            if indicator in query_lower:
-                return True
-
-        # Check if the query is very short (likely a follow-up)
-        words = query_lower.split()
-        if len(words) <= 3 and not any(greeting in query_lower for greeting in ["hi", "hello", "hey"]):
-            return True
-        # Check for implicit continuations (questions without clear subjects)
-            question_starters = ["what", "how", "when", "where", "why", "who", "can", "should", "is", "are", "do", "does"]
-        if any(query_lower.startswith(starter) for starter in question_starters):
-            # If starts with question word and doesn't mention a new cybercrime category
-            all_categories = list(self.knowledge_base.get("laws", {}).keys())
-        if not any(category in query_lower for category in all_categories) and last_law:
-            return True
-
-        return False
-
-    def handle_follow_up(self, query):
-        """Handle follow-up questions by maintaining context with improved relevance"""
-        last_law = self.conversation.context.get("last_law_category")
-        current_topic = self.conversation.context.get("current_topic")
-        # Get last few interactions for better context
-        last_interactions = self.conversation.get_last_n_interactions(2)
-        last_assistant_responses = [interaction.get("assistant_response", "") for interaction in last_interactions]
-        last_user_inputs = [interaction.get("user_input", "") for interaction in last_interactions]
-
-        if not last_law and not current_topic:
-            return None, "I'm not sure what you're referring to. Could you provide more context or ask a more specific question?"
-
-        query_type = self.extract_query_type(query)
-
-        # Check if we're shifting query type within the same topic
-        response = ""
-        if query_type != "general" and last_law:
-            base_response = self.get_law_info(last_law, query_type)
-
-            # Add contextual transition based on previous exchanges
-            response = f"Regarding {self.knowledge_base.get('laws', {}).get(last_law, {}).get('title', last_law)}, here's information about {query_type.replace('_', ' ')}:\n\n{base_response}"
-        elif current_topic and current_topic.startswith("special_"):
-            # Handle follow-ups for special categories
-            special_info = self.knowledge_base.get("special_categories", {}).get(current_topic, {})
-        if special_info:
-            # Try to focus on the specific aspect being asked about
-            if "provision" in query.lower() or "law" in query.lower():
-                return current_topic, f"The special provisions for {current_topic.replace('_', ' ')} are: {special_info.get('special_provisions', 'Not specified')}"
-            elif "report" in query.lower():
-                return current_topic, f"Reporting requirements for {current_topic.replace('_', ' ')}: {special_info.get('reporting_requirements', special_info.get('reporting', 'Not specified'))}"
-            else:
-                # Generic response about the special category
-                response = f"Regarding {current_topic.replace('_', ' ')}:\n" + "\n".join([f"• {key.replace('_', ' ')}: {value}" for key, value in special_info.items()])
-        else:
-            # If we can't determine the query type from the follow-up, provide general info
-            if last_law:
-                response = self.get_law_info(last_law, "general")
-
-        return last_law or current_topic, response
-
-    def answer_query(self, query):
-        """Process the user query and generate a response with enhanced context handling"""
-        try:
-            # Check if it's a general intent
-            intent = self.identify_intent(query)
-            if intent:
-                # Use conversation context to choose the most appropriate response
-                if len(self.conversation.conversation_history) > 0:
-                    # For returning users, use more personalized responses
-                    response = intent.get("responses", ["I'm not sure how to respond to that."])[0]
-                else:
-                    # For new users, use general welcome responses
-                    response = random.choice(intent.get("responses", ["I'm not sure how to respond to that."]))
-                return response
-
-            # Extract potential real-world scenario details
-            scenario_details = self._extract_scenario_details(query)
-
-            # Check if it's a follow-up question with enhanced detection
-            if self.is_follow_up_question(query):
-                category, response = self.handle_follow_up(query)
-
-                # Enrich follow-up responses with context from previous interactions
-                if category and len(self.conversation.get_last_n_interactions()) > 0:
-                    context_summary = self.conversation.get_context_summary()
-                    if context_summary:
-                        response += f"\n\nBased on our conversation about {category}, I understand {context_summary.lower()}"
-
-                return response
-
-            # Identify law category with improved confidence scoring
-            category = self.identify_law_category(query)
-            confidence = self._calculate_category_confidence(query, category) if category else 0
-
-            if category:
-                # Update context with current law category
-                self.conversation.update_context("last_law_category", category)
-                self.conversation.update_context("current_topic", category)
-
-                # Get query type
-                query_type = self.extract_query_type(query)
-
-                # Get specific information with scenario-specific details
-                base_response = self.get_law_info(category, query_type)
-
-                # Add real-world scenario adaptation if applicable
-                if scenario_details and confidence > 0.6:
-                    scenario_adaptation = self._adapt_to_scenario(category, query_type, scenario_details)
-                    if scenario_adaptation:
-                        base_response += f"\n\nIn your specific scenario: {scenario_adaptation}"
-
-                return base_response
-
-            # Check for multi-category questions
-            categories = self._identify_multiple_categories(query)
-            if len(categories) > 1:
-                return self._generate_multi_category_response(categories, query)
-
-            # If no category found, check special categories with improved matching
-            special_match = self._check_special_categories(query)
-            if special_match:
-                return special_match
-
-            # If still no match, provide a smart fallback with suggestions
-            return self._generate_smart_fallback(query)
-
-        except Exception as e:
-            logger.error(f"Error in answer_query: {e}")
-            return "I encountered an error processing your question. Could you try rephrasing it?"
-    def _extract_scenario_details(self, query):
-        """Extract real-world scenario details from the query"""
-        scenario_details = {}
-
-        # Look for temporal indicators
-        time_patterns = [r'(\d+)\s+(day|week|month|year)s?\s+ago', r'yesterday', r'last\s+(week|month|year)']
-        for pattern in time_patterns:
-            matches = re.findall(pattern, query.lower())
-            if matches:
-                scenario_details['timeframe'] = matches[0] if isinstance(matches[0], str) else ' '.join(matches[0])
-
-        # Look for action verbs indicating what happened
-        action_verbs = ['hacked', 'stole', 'phished', 'breached', 'leaked', 'attacked', 'compromised', 'harassed']
-        for verb in action_verbs:
-            if verb in query.lower():
-                scenario_details['action'] = verb
-
-        # Look for affected targets/systems
-        target_patterns = [r'my\s+(account|email|computer|phone|data|information)', r'our\s+(system|network|database|website)']
-        for pattern in target_patterns:
-            matches = re.findall(pattern, query.lower())
-            if matches:
-                scenario_details['target'] = matches[0]
-
-        # Look for potential perpetrator information
-        perpetrator_patterns = [r'someone', r'they', r'hacker', r'person', r'company', r'ex', r'stranger']
-        for perp in perpetrator_patterns:
-            if perp in query.lower().split():
-                scenario_details['perpetrator'] = perp
-
-        return scenario_details
-
-def _adapt_to_scenario(self, category, query_type, scenario_details):
-    """Adapt the response to the specific scenario details provided"""
-    adaptations = []
-
-    # Tailor response based on the specific action that occurred
-    if 'action' in scenario_details:
-        action = scenario_details['action']
-        if query_type == "reporting":
-            adaptations.append(f"Since your {scenario_details.get('target', 'system')} was {action}, be sure to include exact details of how the {action} occurred in your report.")
-        elif query_type == "evidence":
-            adaptations.append(f"For a {action} incident, focus on collecting {self._get_priority_evidence(action)} as your top priority evidence.")
-
-    # Tailor response based on timeframe
-    if 'timeframe' in scenario_details:
-        timeframe = scenario_details['timeframe']
-        if 'month' in timeframe or 'year' in timeframe:
-            adaptations.append(f"Since this happened {timeframe}, focus on gathering any archived logs or backups that might still contain evidence.")
-        elif 'day' in timeframe or 'week' in timeframe or 'yesterday' in timeframe:
-            adaptations.append(f"This is a recent incident ({timeframe}), so prioritize preserving all current digital evidence before it's overwritten.")
-
-    return " ".join(adaptations) if adaptations else ""
-
-def _get_priority_evidence(self, action):
-    """Get priority evidence types based on the specific action"""
-    evidence_map = {
-        'hacked': "system logs, unusual login attempts, and modified files",
-        'phished': "the phishing email with full headers and any websites you were directed to",
-        'breached': "access logs, data access records, and any unauthorized account activities",
-        'leaked': "copies of the leaked information and where it appeared online",
-        'harassed': "screenshots of all communications with timestamps and account information"
+            },
+            "it_act_section_66a": {
+                "title": "Sending offensive messages through communication service",
+                "section": "Section 66A of IT Act, 2000",
+                "description": "Sending offensive or menacing information through communication services",
+                "keywords": [
+                    "offensive communication", "electronic message", "threat", "annoyance", "false information",
+                    "menacing message", "offensive content", "insulting messages", "grossly offensive",
+                    "threatening message", "online harassment", "digital communication offense", "cyber intimidation",
+                    "annoying messages", "false communications", "menacing content", "electronic threat",
+                    "IT Act 66A", "Shreya Singhal case", "unconstitutional section", "struck down section",
+                    "online speech", "communication offense", "digital threat", "invalid section"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66A of IT Act, 2000"],
+                    "punishment": "Note: This section was struck down by the Supreme Court in Shreya Singhal v. Union of India (2015) as unconstitutional",
+                    "current_status": "Invalid and unenforceable"
+                }
+            },
+            "it_act_section_66b": {
+                "title": "Dishonestly receiving stolen computer resource or communication device",
+                "section": "Section 66B of IT Act, 2000",
+                "description": "Dishonestly receiving or retaining stolen computer resource or communication device",
+                "keywords": [
+                    "stolen hardware", "receiving stolen property", "dishonest possession", "stolen devices",
+                    "stolen computer", "stolen laptop", "stolen phone", "receiving stolen computer",
+                    "dishonest retention", "stolen digital device", "IT equipment theft", "stolen computer parts",
+                    "computer theft proceeds", "stolen IT resources", "stolen server", "stolen network device",
+                    "IT Act 66B", "receiving stolen computer resource", "handling stolen computer",
+                    "stolen device possession", "stolen communications device", "dishonest acquisition",
+                    "stolen technology", "retaining stolen computers", "stolen storage device"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66B of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years or fine up to ₹1 lakh or both",
+                    "aggravating_factors": ["Commercial intent", "Large volume of devices", "Organized crime connection"]
+                }
+            },
+            "it_act_section_66c": {
+                "title": "Identity Theft",
+                "section": "Section 66C of IT Act, 2000",
+                "description": "Fraudulently or dishonestly making use of the electronic signature, password, or any other unique identification feature of any person",
+                "keywords": [
+                    "identity fraud", "password theft", "credential abuse", "impersonation", "electronic signature misuse",
+                    "digital identity theft", "password stealing", "credential harvesting", "online identity theft",
+                    "signature forgery", "identity misrepresentation", "authentication theft", "login credential theft",
+                    "biometric identity theft", "digital impersonation", "unique identifier theft", "OTP theft",
+                    "IT Act 66C", "electronic identity fraud", "online credential theft", "password misuse",
+                    "authentication data theft", "digital signature theft", "identity credential theft",
+                    "electronic identity misappropriation", "online authentication fraud"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66C of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years and fine up to ₹1 lakh",
+                    "aggravating_factors": ["Financial loss", "Multiple victims", "Sensitive credentials"]
+                }
+            },
+            "it_act_section_66d": {
+                "title": "Cheating by Personation by using computer resource",
+                "section": "Section 66D of IT Act, 2000",
+                "description": "Cheating by impersonation using computer resource or communication device",
+                "keywords": [
+                    "impersonation", "electronic fraud", "online cheating", "fake identity", "digital impersonation",
+                    "online identity fraud", "profile impersonation", "digital personation", "fake profile",
+                    "fraudulent representation", "identity deception", "online impersonation fraud", "fake social media account",
+                    "false persona", "identity spoofing", "pretexting", "impersonation scam", "IT Act 66D",
+                    "digital deception", "fraudulent digital identity", "cheating by impersonation", "online deception",
+                    "communication device fraud", "false identity fraud", "electronic impersonation", "online persona fraud"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66D of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years and fine up to ₹1 lakh",
+                    "aggravating_factors": ["Financial fraud", "Impersonating officials", "Mass targeting"]
+                }
+            },
+            "it_act_section_66e": {
+                "title": "Violation of Privacy",
+                "section": "Section 66E of IT Act, 2000",
+                "description": "Capturing, publishing or transmitting images of private areas of any person without consent",
+                "keywords": [
+                    "privacy violation", "unauthorized photography", "private images", "consent violation", "voyeurism",
+                    "image privacy", "non-consensual images", "intimate images", "privacy breach", "unauthorized recording",
+                    "private area images", "privacy intrusion", "unauthorized surveillance", "hidden camera",
+                    "non-consensual photography", "image capture violation", "unauthorized image sharing",
+                    "IT Act 66E", "privacy violation penalty", "digital voyeurism", "image privacy breach",
+                    "unauthorized image transmission", "image consent violation", "private recording",
+                    "intimate privacy violation", "body privacy", "digital privacy violation"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66E of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years or fine up to ₹2 lakh, or both",
+                    "aggravating_factors": ["Distribution of content", "Blackmail intent", "Repeated violations"]
+                }
+            },
+            "it_act_section_66f": {
+                "title": "Cyber Terrorism",
+                "section": "Section 66F of IT Act, 2000",
+                "description": "Acts of cybercrime with intent to threaten the unity, integrity, security or sovereignty of India",
+                "keywords": [
+                    "cyber terrorism", "national security threat", "critical infrastructure attack", "digital sabotage",
+                    "cyber attack national security", "digital terrorism", "critical information infrastructure",
+                    "cyber warfare", "nation state attack", "cyber sabotage", "strategic system attack",
+                    "cybersecurity threat", "sovereign system attack", "national digital infrastructure",
+                    "cybersecurity breach", "IT Act 66F", "anti-national cyber activity", "sovereignty threat",
+                    "cyber integrity threat", "unity threat", "national digital security", "cyber terrorism act",
+                    "critical infrastructure sabotage", "national sovereignty cyber attack", "digital insurgency"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66F of IT Act, 2000"],
+                    "punishment": "Imprisonment which may extend to life imprisonment",
+                    "aggravating_factors": ["Loss of life", "Critical infrastructure damage", "Foreign involvement"]
+                }
+            },
+            "it_act_section_67": {
+                "title": "Publishing or transmitting obscene material in electronic form",
+                "section": "Section 67 of IT Act, 2000",
+                "description": "Publishing or transmitting material which is lascivious or appeals to prurient interest in electronic form",
+                "keywords": [
+                    "obscene content", "digital pornography", "electronic obscenity", "indecent material",
+                    "obscene publication", "digital obscenity", "prurient content", "lascivious material",
+                    "obscene electronic transmission", "online obscene content", "digital indecency",
+                    "obscene digital publication", "online obscene material", "obscene transmission",
+                    "IT Act 67", "electronic obscene content", "digital obscene material", "indecent digital content",
+                    "electronic pornography", "obscene digital communication", "obscene electronic content",
+                    "electronic indecent transmission", "online pornography", "electronic obscene material",
+                    "digital indecent content"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 67 of IT Act, 2000"],
+                    "punishment": "First conviction: Up to 3 years and fine up to ₹5 lakh; Subsequent conviction: Up to 5 years and fine up to ₹10 lakh",
+                    "aggravating_factors": ["Commercial distribution", "Minor access", "Repeat offense"]
+                }
+            },
+            "it_act_section_67a": {
+                "title": "Publishing or transmitting of material containing sexually explicit act in electronic form",
+                "section": "Section 67A of IT Act, 2000",
+                "description": "Publishing or transmitting material containing sexually explicit acts in electronic form",
+                "keywords": [
+                    "explicit content", "sexual material", "adult content", "pornographic transmission",
+                    "sexually explicit publication", "electronic sexual content", "digital sexual material",
+                    "explicit electronic content", "digital explicit material", "explicit content sharing",
+                    "sexual content transmission", "explicit electronic publication", "sexual act depiction",
+                    "IT Act 67A", "electronic sexual material", "digital pornography", "explicit content distribution",
+                    "sexual content publication", "electronic explicit material", "digital sexual content",
+                    "online sexual material", "electronic pornography", "sexually explicit digital content",
+                    "sexual electronic transmission", "explicit digital material"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 67A of IT Act, 2000"],
+                    "punishment": "First conviction: Up to 5 years and fine up to ₹10 lakh; Subsequent conviction: Up to 7 years and fine up to ₹10 lakh",
+                    "aggravating_factors": ["Commercial intent", "Wide distribution", "Non-consensual content"]
+                }
+            },
+            "it_act_section_67b": {
+                "title": "Publishing or transmitting material depicting children in sexually explicit act in electronic form",
+                "section": "Section 67B of IT Act, 2000",
+                "description": "Publishing, transmitting, collecting, seeking, browsing, or storing material depicting children in sexually explicit acts in electronic form",
+                "keywords": [
+                    "child sexual abuse material", "CSAM", "child pornography", "minor exploitation",
+                    "child sexual content", "child exploitation material", "underage sexual images",
+                    "child abuse imagery", "child explicit content", "child sexual imagery", "minor sexual content",
+                    "underage explicit material", "child sexual exploitation", "electronic child exploitation",
+                    "IT Act 67B", "child abuse material", "CSEM", "digital child exploitation", "online child abuse",
+                    "child sexual abuse online", "digital CSAM", "minor sexual material", "child sexual abuse images",
+                    "electronic child pornography", "child exploitation imagery", "underage sexual content"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 67B of IT Act, 2000"],
+                    "punishment": "First conviction: Up to 5 years and fine up to ₹10 lakh; Subsequent conviction: Up to 7 years and fine up to ₹10 lakh",
+                    "aggravating_factors": ["Direct involvement with children", "Distribution network", "Large collection"]
+                }
+            },
+            "it_act_section_67c": {
+                "title": "Preservation and retention of information by intermediaries",
+                "section": "Section 67C of IT Act, 2000",
+                "description": "Intermediary intentionally or knowingly contravening the directions about preservation and retention of information",
+                "keywords": [
+                    "data retention", "evidence preservation", "intermediary compliance", "information storage",
+                    "data preservation", "intermediary obligation", "information retention", "data storage requirements",
+                    "electronic records retention", "digital evidence preservation", "transaction data retention",
+                    "log preservation", "record keeping obligation", "data maintenance", "IT Act 67C",
+                    "data preservation failure", "information retention violation", "intermediary non-compliance",
+                    "data storage violation", "record retention failure", "information preservation breach",
+                    "digital record retention", "intermediary data obligation", "log retention requirement",
+                    "electronic record maintenance"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 67C of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years and fine",
+                    "aggravating_factors": ["Intentional destruction", "Obstruction of investigation", "Large scale non-compliance"]
+                }
+            },
+            "it_act_section_68": {
+                "title": "Failure to comply with Controller's directions",
+                "section": "Section 68 of IT Act, 2000",
+                "description": "Failure to comply with the directions given by Controller of Certifying Authorities",
+                "keywords": [
+                    "controller directions", "non-compliance", "certification authority", "regulatory failure",
+                    "controller non-compliance", "certification regulation", "authority directive failure",
+                    "compliance violation", "CCA directions", "IT Act 68", "controller order violation",
+                    "certifying authority non-compliance", "controller instruction disobedience", "CCA compliance",
+                    "digital certification compliance", "regulatory order violation", "certificate compliance",
+                    "controller direction breach", "certification directive failure", "digital certificate compliance",
+                    "certification authority violation", "electronic certification regulation", "controller mandate violation"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 68 of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years or fine up to ₹2 lakh, or both",
+                    "aggravating_factors": ["Repeat violation", "Public impact", "Willful disobedience"]
+                }
+            },
+            "it_act_section_69": {
+                "title": "Failure to assist in interception or monitoring",
+                "section": "Section 69 of IT Act, 2000",
+                "description": "Failure to assist authorized agency with interception, monitoring, or decryption of information",
+                "keywords": [
+                    "interception refusal", "monitoring non-compliance", "decryption failure", "surveillance assistance",
+                    "lawful interception", "monitoring assistance", "decryption assistance", "information access",
+                    "interception compliance", "government surveillance assistance", "IT Act 69", "decryption order",
+                    "interception order", "monitoring directive", "lawful access", "encryption assistance",
+                    "interception assistance refusal", "surveillance cooperation", "lawful monitoring",
+                    "technical assistance order", "decryption non-compliance", "interception non-cooperation",
+                    "authorized monitoring", "information interception", "legal surveillance"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 69 of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 7 years and fine",
+                    "aggravating_factors": ["Intentional obstruction", "National security implications", "Systematic non-compliance"]
+                }
+            },
+            "it_act_section_69a": {
+                "title": "Failure to comply with blocking orders",
+                "section": "Section 69A of IT Act, 2000",
+                "description": "Failure of the intermediary to comply with direction for blocking public access to information",
+                "keywords": [
+                    "blocking directive", "content removal", "access restriction", "intermediary compliance",
+                    "website blocking", "content blocking", "access blocking", "information restriction",
+                    "internet blocking", "online content removal", "IT Act 69A", "content censorship",
+                    "blocking order", "web access restriction", "content filtering", "intermediary blocking",
+                    "public access restriction", "blocking non-compliance", "content takedown", "information filtering",
+                    "internet content removal", "digital content restriction", "website takedown", "web filtering",
+                    "internet censorship"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 69A of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 7 years and fine",
+                    "aggravating_factors": ["Willful disobedience", "Public harm", "Repeat violation"]
+                }
+            },
+            "it_act_section_69b": {
+                "title": "Failure to comply with cybersecurity monitoring directions",
+                "section": "Section 69B of IT Act, 2000",
+                "description": "Intermediary contravening provisions regarding monitoring and collecting traffic data for cybersecurity",
+                "keywords": [
+                    "traffic monitoring", "cybersecurity compliance", "data collection", "network surveillance",
+                    "security monitoring", "traffic data", "cybersecurity monitoring", "network monitoring",
+                    "security data collection", "traffic analysis", "cyber intelligence", "IT Act 69B",
+                    "traffic inspection", "security surveillance", "network data collection", "security compliance",
+                    "intermediary monitoring", "traffic data retention", "cyber traffic analysis", "security intelligence",
+                    "digital surveillance", "network traffic monitoring", "cyber data collection", "security traffic data",
+                    "cybersecurity intelligence"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 69B of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years and fine",
+                    "aggravating_factors": ["Critical infrastructure", "Persistent non-compliance", "Data destruction"]
+                }
+            },
+            "it_act_section_70": {
+                "title": "Unauthorized access to protected systems",
+                "section": "Section 70 of IT Act, 2000",
+                "description": "Securing or attempting to secure access to protected system declared by government",
+                "keywords": [
+                    "critical infrastructure", "protected system", "unauthorized access", "secured computer",
+                    "critical system access", "government protected computer", "notified system", "critical network",
+                    "protected infrastructure", "national system", "security breach", "IT Act 70", "critical IT system",
+                    "sensitive system access", "protected computer access", "government computer security",
+                    "critical digital infrastructure", "secured system breach", "important computer system",
+                    "notified protected system", "essential computer facility", "protected network access",
+                    "nationally important system", "critical computer resource", "government protected network"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 70 of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 10 years and fine",
+                    "aggravating_factors": ["Data theft", "System damage", "National security impact"]
+                }
+            },
+           
+            # For section 70B (CERT-In)
+"it_act_section_70b": {
+    "title": "Failure to provide information to CERT-In",
+    "section": "Section 70B of IT Act, 2000",
+    "description": "Failure to provide information called for or comply with direction issued by CERT-In",
+    "keywords": [
+        "CERT-In", "incident reporting", "cybersecurity compliance", "information sharing",
+        "security incident", "cyber incident notification", "mandatory reporting", "security breach reporting",
+        "CERT-In directives", "incident response", "cybersecurity coordination", "computer emergency response",
+        "security incident disclosure", "breach notification", "national cybersecurity", "IT Act 70B",
+        "cyber incident compliance", "security information sharing", "incident notification requirement",
+        "security response coordination", "cyber emergency reporting", "digital incident response",
+        "cybersecurity cooperation", "security breach notification", "incident handling procedures"
+    ],
+    "legal_framework": {
+        "primary_sections": ["Section 70B of IT Act, 2000"],
+        "punishment": "Imprisonment up to 1 year or fine up to ₹1 lakh, or both",
+        "aggravating_factors": ["Critical incident", "Delayed notification", "Concealment of breach"]
     }
+},
 
-    return evidence_map.get(action, "all digital communications and system activities")
+# For section 71 (Misrepresentation)
+"it_act_section_71": {
+    "title": "Misrepresentation to Controller or Certifying Authority",
+    "section": "Section 71 of IT Act, 2000",
+    "description": "Making false statements or representation to Controller of Certifying Authorities or Certifying Authority",
+    "keywords": [
+        "false representation", "certification fraud", "digital signature misrepresentation", "authority deception",
+        "certificate falsehood", "false statements", "misrepresentation offense", "certification authority deception",
+        "controller misrepresentation", "digital certificate fraud", "certification falsehood", "authentication fraud",
+        "false certification information", "certificate authority deception", "IT Act 71", "false digital certificate", 
+        "signature authority fraud", "certification misrepresentation", "digital identity fraud", "certificate misstatement",
+        "controller deception", "certification document fraud", "digital certificate misrepresentation",
+        "signature verification fraud", "authentication authority deception"
+    ],
+    "legal_framework": {
+        "primary_sections": ["Section 71 of IT Act, 2000"],
+        "punishment": "Imprisonment up to 3 years or fine up to ₹1 lakh, or both",
+        "aggravating_factors": ["Fraudulent intent", "Public impact", "Multiple misrepresentations"]
+    }
+},
 
-def _identify_multiple_categories(self, query):
-    """Identify if query spans multiple cybercrime categories"""
-    categories = []
-    category_confidence = {}
+# For section 72 (Confidentiality breach)
+"it_act_section_72": {
+    "title": "Breach of Confidentiality and Privacy",
+    "section": "Section 72 of IT Act, 2000",
+    "description": "Disclosure of confidential information by person with official access without consent",
+    "keywords": [
+        "confidentiality breach", "unauthorized disclosure", "privacy violation", "information leak",
+        "confidential data exposure", "official secrecy breach", "authorized access misuse", "privileged information disclosure",
+        "data confidentiality violation", "unauthorized information sharing", "official trust breach", "privacy breach",
+        "IT Act 72", "access privilege abuse", "confidentiality violation", "information security breach",
+        "secure data disclosure", "unauthorized revelation", "secret information exposure", "professional confidence breach",
+        "data privacy violation", "information protection failure", "confidential knowledge disclosure",
+        "authorized personnel breach", "secure information leak"
+    ],
+    "legal_framework": {
+        "primary_sections": ["Section 72 of IT Act, 2000"],
+        "punishment": "Imprisonment up to 2 years or fine up to ₹1 lakh, or both",
+        "aggravating_factors": ["Sensitive information", "Multiple breaches", "Commercial intent"]
+    }
+},
 
-    # Check each category keyword against the query
-    for category, details in self.knowledge_base.get("laws", {}).items():
-        # Check title match
-        if category in query.lower() or details.get('title', '').lower() in query.lower():
-            categories.append(category)
-            category_confidence[category] = 0.9
-            continue
+# For section 72A (Contract breach)
+"it_act_section_72a": {
+    "title": "Disclosure of information in breach of lawful contract",
+    "section": "Section 72A of IT Act, 2000",
+    "description": "Disclosure of personal information in breach of lawful contract by service provider",
+    "keywords": [
+        "contract violation", "data protection breach", "confidentiality agreement", "personal data disclosure",
+        "service provider breach", "contractual confidentiality", "data protection violation", "personal information misuse",
+        "confidentiality contract breach", "service agreement violation", "customer data exposure", "contractual obligation breach",
+        "IT Act 72A", "lawful contract violation", "client data misuse", "confidential information sharing",
+        "data handling breach", "provider trust violation", "sensitive information disclosure", "customer privacy breach",
+        "data custody violation", "terms of service breach", "personal data protection failure", "provider confidentiality violation",
+        "data stewardship breach", "contractual privacy violation"
+    ],
+    "legal_framework": {
+        "primary_sections": ["Section 72A of IT Act, 2000"],
+        "punishment": "Imprisonment up to 3 years or fine up to ₹5 lakh, or both",
+        "aggravating_factors": ["Commercial advantage", "Sensitive personal data", "Large scale disclosure"]
+    }
+},
 
-        # Check keywords
-        hit_count = 0
-        for keyword in details.get('keywords', []):
-            if keyword.lower() in query.lower():
-                hit_count += 1
+# For section 73 (False Digital Signature Certificate)
+"it_act_section_73": {
+    "title": "Publishing false Digital Signature Certificate",
+    "section": "Section 73 of IT Act, 2000",
+    "description": "Publishing electronic Signature Certificate false in certain particulars",
+    "keywords": [
+        "false certificate", "digital signature fraud", "certificate forgery", "electronic authentication",
+        "fraudulent digital certificate", "signature certificate falsification", "PKI fraud", "certificate authenticity",
+        "digital identity forgery", "electronic certificate fraud", "signature verification fraud", "authentication certificate fraud",
+        "IT Act 73", "digital certificate misrepresentation", "certificate integrity violation", "electronic signature fraud",
+        "digital certificate forgery", "authentication credential fraud", "false verification certificate", "identity certificate fraud",
+        "electronic signature certificate", "digital authentication fraud", "certificate publication offense",
+        "electronic verification fraud", "identity verification certificate"
+    ],
+    "legal_framework": {
+        "primary_sections": ["Section 73 of IT Act, 2000"],
+        "punishment": "Imprisonment up to 2 years or fine up to ₹1 lakh, or both",
+        "aggravating_factors": ["Multiple certificates", "Commercial gain", "Identity theft"]
+    }
+},
 
-        if hit_count >= 1:
-            confidence = min(0.5 + (hit_count * 0.1), 0.9)  # Cap at 0.9
-            categories.append(category)
-            category_confidence[category] = confidence
-
-    # Sort by confidence
-    return sorted(categories, key=lambda c: category_confidence.get(c, 0), reverse=True)
-
-def _generate_multi_category_response(self, categories, query):
-    """Generate a response that addresses multiple cybercrime categories"""
-    if len(categories) <= 1:
-        return self.get_law_info(categories[0], "general")
-
-    # Determine what the user is asking about these multiple categories
-    if "difference" in query.lower() or "versus" in query.lower() or " vs " in query.lower():
-        return self._explain_differences(categories[:2])  # Focus on top 2 for clarity
-
-    # If asking which law applies
-    if "which law" in query.lower() or "what law" in query.lower() or "legal" in query.lower():
-        return self._summarize_relevant_laws(categories[:3])  # Top 3 categories
-
-    # Default multi-category response
-    response = "Your question appears to involve multiple cyber law areas:\n\n"
-    for category in categories[:3]:  # Limit to top 3 for clarity
-        law_info = self.knowledge_base.get("laws", {}).get(category, {})
-        response += f"• {law_info.get('title', category.capitalize())}: {law_info.get('description', 'No description available.')}\n"
-
-    response += "\nFor more specific information, could you clarify which aspect you're most interested in?"
-    return response
-
-def _explain_differences(self, categories):
-    """Explain the differences between two cybercrime categories"""
-    if len(categories) < 2:
-        return self.get_law_info(categories[0], "general")
-
-    cat1 = self.knowledge_base.get("laws", {}).get(categories[0], {})
-    cat2 = self.knowledge_base.get("laws", {}).get(categories[1], {})
-
-    response = f"Comparing {cat1.get('title', categories[0])} and {cat2.get('title', categories[1])}:\n\n"
-
-    # Definition differences
-    response += "Definitions:\n"
-    response += f"• {cat1.get('title')}: {cat1.get('description')}\n"
-    response += f"• {cat2.get('title')}: {cat2.get('description')}\n\n"
-
-    # Legal framework differences
-    response += "Legal Framework:\n"
-    response += f"• {cat1.get('title')}: {', '.join(cat1.get('legal_framework', {}).get('primary_sections', ['N/A']))}\n"
-    response += f"• {cat2.get('title')}: {', '.join(cat2.get('legal_framework', {}).get('primary_sections', ['N/A']))}\n\n"
-
-    # Punishment differences
-    response += "Punishment:\n"
-    response += f"• {cat1.get('title')}: {cat1.get('legal_framework', {}).get('punishment', 'Not specified')}\n"
-    response += f"• {cat2.get('title')}: {cat2.get('legal_framework', {}).get('punishment', 'Not specified')}\n"
-
-    return response
-
-def _summarize_relevant_laws(self, categories):
-    """Summarize relevant legal sections for multiple categories"""
-    response = "Relevant legal sections for your query:\n\n"
-
-    for category in categories:
-        law_info = self.knowledge_base.get("laws", {}).get(category, {})
-        legal_framework = law_info.get("legal_framework", {})
-
-        response += f"For {law_info.get('title', category)}:\n"
-        response += f"• Primary sections: {', '.join(legal_framework.get('primary_sections', ['Not specified']))}\n"
-        response += f"• Punishment: {legal_framework.get('punishment', 'Not specified')}\n\n"
-
-    return response
-
-def _check_special_categories(self, query):
-    """Check for special categories with improved detection"""
-    special_categories = self.knowledge_base.get("special_categories", {})
-
-    # First check direct matches
-    for category_name, category_info in special_categories.items():
-        category_display = category_name.replace("_", " ")
-        if category_display in query.lower():
-            self.conversation.update_context("current_topic", category_name)
-            return f"Information about {category_display}:\n" + "\n".join([f"• {key.replace('_', ' ')}: {value}" for key, value in category_info.items()])
-
-    # Then check indirect references
-    for category_name, category_info in special_categories.items():
-        # Check for category-specific keywords
-        category_keywords = []
-        if category_name == "children_protection":
-            category_keywords = ["minor", "child", "kid", "underage", "young", "youth"]
-        elif category_name == "critical_infrastructure":
-            category_keywords = ["infrastructure", "critical", "essential service", "utility", "national security"]
-
-        for keyword in category_keywords:
-            if keyword in query.lower():
-                category_display = category_name.replace("_", " ")
-                self.conversation.update_context("current_topic", category_name)
-                return f"Since your query involves {keyword}, here's information about {category_display}:\n" + "\n".join([f"• {key.replace('_', ' ')}: {value}" for key, value in category_info.items()])
-
-    return None
-
-def _generate_smart_fallback(self, query):
-    """Generate a smart fallback response with helpful suggestions"""
-    # Extract key terms from the query
-    query_terms = set(self.preprocess_text(query).split())
-
-    # Find the most relevant categories based on term overlap
-    category_relevance = {}
-    for category, details in self.knowledge_base.get("laws", {}).items():
-        # Create a set of words from title, description and keywords
-        category_words = set(self.preprocess_text(details.get("title", "")).split())
-        category_words.update(self.preprocess_text(details.get("description", "")).split())
-        for keyword in details.get("keywords", []):
-            category_words.update(self.preprocess_text(keyword).split())
-
-        # Calculate overlap
-        overlap = len(query_terms.intersection(category_words))
-        if overlap > 0:
-            category_relevance[category] = overlap
-
-    # If we found some potentially relevant categories
-    if category_relevance:
-        top_categories = sorted(category_relevance.items(), key=lambda x: x[1], reverse=True)[:3]
-
-        response = "I'm not sure exactly what cyber law information you're seeking. You might be interested in:"
-        for category, _ in top_categories:
-            law_info = self.knowledge_base.get("laws", {}).get(category, {})
-            response += f"\n• {law_info.get('title', category.capitalize())}"
-
-        response += "\n\nCould you specify which of these areas you'd like information about, or clarify your question?"
-        return response
-    def _calculate_category_confidence(self, query, category):
-        """Calculate confidence score for category identification"""
-        if not category:
-            return 0
-
-        # Get category info
-        cat_info = self.knowledge_base.get("laws", {}).get(category, {})
-        if not cat_info:
-            return 0.3  # Base confidence if we have the category but no details
-
-        # Start with base confidence
-        confidence = 0.5
-
-        # Direct category name match is high confidence
-        if category in query.lower():
-            confidence += 0.3
-
-        # Check for title match
-        if cat_info.get("title", "").lower() in query.lower():
-            confidence += 0.3
-
-        # Count keyword matches
-        keyword_matches = 0
-        for keyword in cat_info.get("keywords", []):
-            if keyword.lower() in query.lower():
-                keyword_matches += 1
-
-        # Add confidence based on keyword matches (diminishing returns)
-        if keyword_matches > 0:
-            confidence += min(0.4, 0.1 * keyword_matches)
-
-        # Cap at 1.0
-        return min(confidence, 1.0)
-        # Generic fallback
-        return "I'm not sure which cyber law you're asking about. Could you provide more details or specify the type of cybercrime (e.g., hacking, phishing, online harassment, identity theft) you're interested in?"
-    def process_user_input(self, user_input):
-        """Main function to process user input and return appropriate response"""
+# For section 74 (Fraudulent Publication)
+"it_act_section_74": {
+    "title": "Publication for fraudulent purpose",
+    "section": "Section 74 of IT Act, 2000",
+    "description": "Publication of Digital Signature Certificate for fraudulent purpose",
+    "keywords": [
+        "fraudulent certificate", "deceptive publication", "certificate misuse", "digital fraud",
+        "certificate fraud purpose", "signature certificate scam", "fraudulent digital identity", "malicious certificate publication",
+        "digital certificate misuse", "signature fraud", "deceptive digital certificate", "certificate publication fraud",
+        "IT Act 74", "fraudulent verification certificate", "deceptive authentication", "signature identity fraud",
+        "certificate scheme", "electronic identity fraud", "signature certificate deception", "fraudulent digital verification",
+        "electronic certificate scam", "authentication fraud", "digital identity misrepresentation", "fraudulent electronic certificate",
+        "digital certificate scheme"
+    ],
+    "legal_framework": {
+        "primary_sections": ["Section 74 of IT Act, 2000"],
+        "punishment": "Imprisonment up to 2 years or fine up to ₹1 lakh, or both",
+        "aggravating_factors": ["Financial fraud", "Multiple victims", "Systematic operation"]
+    }
+}
+        },
+        "intents": [
+    {
+        "tag": "greeting",
+        "patterns": [
+            "hi", "hello", "hey", "greetings", "good morning", "good evening", "good afternoon",
+            "hi there", "hello there", "howdy", "what's up", "namaste", "hola", "start", 
+            "begin conversation", "hey assistant", "hi bot", "hello cyber assistant",
+            "cyber law assistant", "let's talk", "hi cyber law expert", "help me"
+        ],
+        "responses": [
+            "Hello! How can I help you with cyber law questions today?",
+            "Hi there! What cyber law information do you need?",
+            "Greetings! I'm your cyber law assistant. What would you like to know?",
+            "Welcome! I'm here to help with your questions about Indian IT laws and cyber security.",
+            "Hello! I'm specialized in Indian cyber laws. How may I assist you today?",
+            "Hi! Ask me about IT Act sections, cyber crimes, or reporting procedures in India."
+        ]
+    },
+    {
+        "tag": "law_information",
+        "patterns": [
+            "tell me about", "what is", "explain", "describe", "details on", "information about",
+            "define", "elaborate on", "clarify", "what does mean", "information regarding",
+            "meaning of", "tell me more about", "what are", "how does work", "concept of",
+            "details about", "information on", "summarize", "brief me on", "overview of",
+            "enlighten me about", "educate me on", "what exactly is", "can you explain"
+        ],
+        "responses": [
+            "Here's what I know about {topic}...",
+            "Let me provide information about {topic}...",
+            "According to cyber laws, {topic} refers to...",
+            "In the context of Indian IT laws, {topic} is defined as...",
+            "The IT Act describes {topic} as...",
+            "Under Indian cyber legislation, {topic} encompasses...",
+            "Let me explain the concept of {topic} according to the IT Act...",
+            "Here's a comprehensive explanation of {topic} under Indian cyber laws..."
+        ]
+    },
+    {
+        "tag": "reporting_procedure",
+        "patterns": [
+            "how to report", "reporting process", "file complaint", "who to contact", "where to report",
+            "steps to report", "complaint procedure", "report cyber crime", "lodge complaint",
+            "report incident", "cybercrime reporting", "file FIR", "notify authorities",
+            "reporting channel", "official complaint", "report to police", "cybercrime portal",
+            "online reporting", "complaint mechanism", "inform authorities", "legal procedure for reporting",
+            "proper channel to report", "official reporting", "register complaint", "notify about breach"
+        ],
+        "responses": [
+            "To report {crime}, you should follow these steps...",
+            "The reporting procedure for {crime} includes...",
+            "For reporting {crime}, the recommended approach is...",
+            "To file a complaint about {crime}, here's the official process...",
+            "The standard procedure for reporting {crime} in India involves...",
+            "If you've experienced {crime}, here's how to properly report it to authorities...",
+            "For {crime} incidents, follow this reporting protocol for proper legal action...",
+            "The most effective way to report {crime} is through these official channels..."
+        ]
+    },
+    {
+        "tag": "prevention",
+        "patterns": [
+            "how to prevent", "protection against", "safeguard", "security measures", "avoid", "protect from",
+            "preventive steps", "safety measures", "mitigate risk", "defensive measures", "safeguarding against",
+            "securing against", "protective steps", "avoid being victim", "reduce vulnerability",
+            "preventive action", "risk reduction", "secure from", "safety protocols", "cybersecurity measures",
+            "best practices", "security protocols", "prevention tips", "safety guidelines", "precautions against"
+        ],
+        "responses": [
+            "To prevent {crime}, consider these measures...",
+            "Protection against {crime} includes...",
+            "Here are some prevention tips for {crime}...",
+            "Safeguarding yourself from {crime} requires...",
+            "To minimize the risk of {crime}, implement these security practices...",
+            "Effective protection against {crime} involves these key strategies...",
+            "Security experts recommend these measures to prevent {crime}...",
+            "To protect yourself or your organization from {crime}, follow these best practices..."
+        ]
+    },
+    {
+        "tag": "legal_consequences",
+        "patterns": [
+            "punishment", "penalty", "sentence", "fine", "imprisonment", "consequences",
+            "legal action", "prosecution", "criminal charges", "sanctions", "legal penalties",
+            "jail time", "criminal punishment", "legal ramifications", "court action",
+            "punitive measures", "legal repercussions", "statutory penalties", "conviction consequences",
+            "judicial punishment", "legal liability", "punitive action", "what happens if caught",
+            "punishment under law", "legal penalties for offense"
+        ],
+        "responses": [
+            "The legal consequences for {crime} include...",
+            "Under the IT Act, {crime} is punishable by...",
+            "For {crime}, the penalties can range from...",
+            "Indian law prescribes the following punishment for {crime}...",
+            "If convicted of {crime}, an individual may face...",
+            "The IT Act stipulates these specific penalties for {crime}...",
+            "Legal consequences for {crime} under Indian cyber law include...",
+            "The judiciary typically imposes these punishments for {crime} cases..."
+        ]
+    },
+    {
+        "tag": "evidence_collection",
+        "patterns": [
+            "evidence needed", "prove", "documentation", "collect evidence", "document incident",
+            "types of evidence", "digital evidence", "forensic requirements", "what evidence",
+            "documenting breach", "proof required", "evidence gathering", "forensic collection",
+            "legal evidence", "documentation procedure", "evidence preservation", "case building",
+            "admissible evidence", "court proof", "prosecutorial evidence", "evidential requirements",
+            "evidence trail", "chain of custody", "digital forensics", "incident documentation"
+        ],
+        "responses": [
+            "To document a {crime} incident, collect the following evidence...",
+            "Important evidence for {crime} cases includes...",
+            "For prosecuting {crime}, you should gather these types of evidence...",
+            "Effective documentation of {crime} requires these specific records...",
+            "Digital forensics experts recommend collecting this evidence for {crime} cases...",
+            "To build a strong legal case for {crime}, ensure you preserve...",
+            "The chain of evidence for {crime} should include these critical elements...",
+            "Courts typically require these forms of evidence when prosecuting {crime}..."
+        ]
+    },
+    {
+        "tag": "section_inquiry",
+        "patterns": [
+            "section", "IT Act section", "what does section", "explain section", "provision of", "law section",
+            "section details", "legal provision", "act section", "statutory provision", "legal section",
+            "section number", "IT legislation", "law provision", "statute section", "clause in act",
+            "legal clause", "section in IT Act", "what is section about", "provision details",
+            "law clause", "section meaning", "provision explanation", "section interpretation", "legislative provision"
+        ],
+        "responses": [
+            "Section {section} of the IT Act pertains to {description}...",
+            "As per the IT Act, Section {section} covers {description}...",
+            "The IT Act's Section {section} deals with {description}...",
+            "Section {section} specifically addresses {description} under Indian cyber law...",
+            "The legal provision in Section {section} of the IT Act states that {description}...",
+            "Under Indian cyber legislation, Section {section} is concerned with {description}...",
+            "The IT Act Section {section} establishes legal framework for {description}...",
+            "Section {section}'s primary focus is on {description} with specific provisions for..."
+        ]
+    },
+    {
+        "tag": "case_law",
+        "patterns": [
+            "landmark case", "precedent", "court ruling", "legal case", "judicial decision",
+            "famous case", "court precedent", "case study", "legal judgment", "important decision",
+            "high court ruling", "supreme court case", "judicial precedent", "significant case",
+            "case law", "legal history", "court decision", "judicial history", "case example",
+            "legal interpretation", "court judgment", "case verdict", "notable case", "legal reference case"
+        ],
+        "responses": [
+            "A landmark case regarding {topic} is {case_name}, which established...",
+            "The judicial precedent for {topic} was set in {case_name}, where the court ruled...",
+            "In the case of {case_name}, the court's interpretation of {topic} established that...",
+            "Legal understanding of {topic} was significantly shaped by {case_name}, in which...",
+            "The {case_name} case provides important guidance on {topic}, particularly regarding...",
+            "Courts typically refer to {case_name} when adjudicating matters related to {topic}...",
+            "The legal framework for {topic} was tested in {case_name}, resulting in..."
+        ]
+    },
+    {
+        "tag": "jurisdiction",
+        "patterns": [
+            "jurisdiction", "which court", "legal authority", "territorial application",
+            "which police", "jurisdictional issues", "cyber jurisdiction", "legal territory",
+            "cross-border", "international jurisdiction", "court authority", "territorial reach",
+            "applicable law", "legal boundary", "jurisdictional challenge", "enforcement jurisdiction",
+            "territorial jurisdiction", "legal reach", "jurisdiction determination", "authority limits",
+            "jurisdiction transfer", "multi-state jurisdiction", "international case", "local enforcement"
+        ],
+        "responses": [
+            "For {crime} cases, jurisdiction is typically determined by...",
+            "The jurisdictional considerations for {crime} under Indian law include...",
+            "When {crime} crosses borders, the jurisdiction is established based on...",
+            "The IT Act addresses jurisdictional challenges for {crime} by...",
+            "In cases of {crime}, the following factors determine proper jurisdiction...",
+            "Jurisdiction for online {crime} is complex and involves these key principles...",
+            "Indian courts establish jurisdiction over {crime} cases through these legal mechanisms..."
+        ]
+    },
+    {
+        "tag": "recent_updates",
+        "patterns": [
+            "recent changes", "new amendments", "latest updates", "law updates", "recent modifications",
+            "new provisions", "act amendments", "current laws", "updated regulations", "legal revisions",
+            "recent developments", "latest legislation", "new rules", "regulatory updates", "law revisions",
+            "policy changes", "new guidelines", "recent legal developments", "legislation updates",
+            "contemporary laws", "modern provisions", "updated legal framework", "current legal status"
+        ],
+        "responses": [
+            "Recent updates to laws concerning {topic} include...",
+            "The IT Act provisions related to {topic} were recently amended to...",
+            "As of our last update, the legal framework for {topic} has changed in these ways...",
+            "Current legislation around {topic} has evolved to address...",
+            "The most recent amendments affecting {topic} have introduced...",
+            "Legal approaches to {topic} have been modernized through these recent changes...",
+            "Regulatory updates for {topic} now include these important provisions..."
+        ]
+    },
+    {
+        "tag": "thank_you",
+        "patterns": [
+            "thanks", "thank you", "appreciate it", "helpful", "thank you so much", "thanks a lot",
+            "very helpful", "that helps", "appreciate your help", "great help", "thanks for info",
+            "gratitude", "much appreciated", "thank you for assistance", "thanks for explaining",
+            "that was useful", "good information", "thanks for clarification", "well explained",
+            "thanks for your time", "appreciate the guidance", "thanks for the details"
+        ],
+        "responses": [
+            "You're welcome! Feel free to ask if you have more questions about cyber law.",
+            "Happy to help! Let me know if you need more information.",
+            "You're welcome. Is there anything else you'd like to know about cyber laws?",
+            "Glad I could assist! Don't hesitate to ask about other IT law topics.",
+            "My pleasure! I'm here for any other cyber law questions you might have.",
+            "You're welcome! Understanding cyber laws is important, so feel free to ask more.",
+            "Anytime! Let me know if you need clarification on any other cyber law matters."
+        ]
+    },
+    {
+        "tag": "goodbye",
+        "patterns": [
+            "bye", "goodbye", "see you", "that's all", "end", "quit", "exit", "good night",
+            "farewell", "have a good day", "until next time", "closing", "terminate", "finish",
+            "end conversation", "that will be all", "no more questions", "signing off",
+            "done for now", "thanks bye", "leaving now", "conversation over", "that's it"
+        ],
+        "responses": [
+            "Goodbye! Feel free to return if you have more cyber law questions.",
+            "Take care! I'm here if you need cyber law assistance in the future.",
+            "Goodbye and stay cyber-safe!",
+            "Until next time! Remember to practice good cyber security.",
+            "Farewell! If you have more questions about IT laws, I'll be here.",
+            "Goodbye! Stay informed about cyber laws to protect yourself online.",
+            "Take care and be safe in your digital activities!"
+        ]
+    },
+    {
+        "tag": "data_protection",
+        "patterns": [
+            "data protection", "information security", "privacy law", "personal data", "data privacy",
+            "data security", "information protection", "private information", "confidential data",
+            "data protection law", "privacy regulation", "personal information protection", "data rights",
+            "data subject rights", "privacy compliance", "data protection framework", "privacy legislation",
+            "data security practices", "information privacy", "data handling", "privacy requirements",
+            "digital privacy", "protect personal data", "information safety", "cybersecurity compliance"
+        ],
+        "responses": [
+            "Data protection under Indian law includes these key principles...",
+            "For personal data protection, the IT Act provides these safeguards...",
+            "The legal framework for data privacy in India consists of...",
+            "Organizations handling personal data must comply with these requirements...",
+            "Under current Indian law, data protection encompasses these rights and obligations...",
+            "The data protection regime in India addresses privacy through these mechanisms...",
+            "Personal information protection is governed by these specific provisions..."
+        ]
+    },
+    {
+        "tag": "intermediary_liability",
+        "patterns": [
+            "intermediary liability", "platform responsibility", "social media liability", "website responsibility",
+            "online platform duty", "intermediary obligations", "hosting liability", "internet provider responsibility",
+            "social network liability", "online intermediary", "safe harbor provisions", "platform legal obligations",
+            "internet intermediary", "website legal responsibility", "app liability", "digital platform responsibility",
+            "e-commerce liability", "online marketplace responsibility", "content host liability", "due diligence requirements",
+            "takedown obligation", "ISP liability", "content removal duty", "intermediary guidelines"
+        ],
+        "responses": [
+            "Intermediary liability under Indian law is governed by...",
+            "Online platforms have these specific legal responsibilities in India...",
+            "The IT Act establishes these requirements for intermediaries...",
+            "Social media and other online platforms must follow these guidelines...",
+            "The legal framework for intermediary liability includes these key obligations...",
+            "Under Indian cyber law, intermediaries are protected if they comply with...",
+            "Content hosting platforms must follow these due diligence requirements..."
+        ]
+    }
+]
+    }
+    
+        return knowledge_base
+    def build_vector_index(self):
+        """Build vector representations of knowledge base items for semantic search"""
+        vector_index = {}
+        
+        if not self.nlp_engine or not hasattr(self.nlp_engine, "get_embeddings"):
+            logger.warning("NLP engine not available for vector indexing")
+            return vector_index
+        
         try:
-            # Check for empty or invalid input
-            if not user_input or not isinstance(user_input, str) or user_input.strip() == "":
-                return "I didn't catch that. Could you please provide a question about cyber laws?"
-
-            # Check if user is specifying their type
-            if "i am" in user_input.lower() or "i'm a" in user_input.lower() or "i'm an" in user_input.lower():
-                if any(term in user_input.lower() for term in ["police", "officer", "law enforcement"]):
-                    self.set_user_type("law_enforcement")
-                    response = "I understand you're with law enforcement. How can I help you with cyber law information today?"
-                    self.conversation.add_interaction(user_input, response)
-                    return response
-                elif any(term in user_input.lower() for term in ["individual", "victim", "civilian", "person"]):
-                    self.set_user_type("individual")
-                    response = "I understand you're an individual seeking information. How can I help you with cyber law questions today?"
-                    self.conversation.add_interaction(user_input, response)
-                    return response
-
-            # Process the actual query
-            response = self.answer_query(user_input)
-
-            # Add to conversation history
-            self.conversation.add_interaction(user_input, response)
-
-            return response
-
+            # Create embeddings for laws
+            for law_id, law_info in self.knowledge_base.get("laws", {}).items():
+                # Create a document text combining important fields for better semantic matching
+                doc_text = f"{law_info.get('title', '')}. {law_info.get('description', '')}. " + \
+                          f"Keywords: {', '.join(law_info.get('keywords', []))}."
+                
+                # Generate embedding
+                embedding = self.nlp_engine.get_embeddings(doc_text)
+                vector_index[f"law:{law_id}"] = {
+                    "embedding": embedding.tolist() if isinstance(embedding, np.ndarray) else embedding,
+                    "type": "law",
+                    "id": law_id
+                }
+                
+            # Create embeddings for intents
+            for intent in self.knowledge_base.get("intents", []):
+                # Combine patterns for better semantic matching
+                doc_text = f"{intent.get('tag', '')}. {'. '.join(intent.get('patterns', []))}"
+                
+                # Generate embedding
+                embedding = self.nlp_engine.get_embeddings(doc_text)
+                vector_index[f"intent:{intent.get('tag')}"] = {
+                    "embedding": embedding.tolist() if isinstance(embedding, np.ndarray) else embedding,
+                    "type": "intent",
+                    "id": intent.get('tag')
+                }
+                
+            logger.info(f"Built vector index with {len(vector_index)} entries")
+            return vector_index
+            
         except Exception as e:
-            logger.error(f"Error in process_user_input: {e}")
-            return "I encountered an unexpected error. Please try asking your question again."
-
-    def save_conversation_history(self, filepath=None):
-        """Save the current conversation history to a file"""
-        if not filepath:
-            # Generate a timestamped filename
-            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-            filepath = f"conversations/conversation_{timestamp}.json"
-
-        # Make sure the directory exists
-        os.makedirs(os.path.dirname(filepath), exist_ok=True)
-
-        return self.conversation.save_conversation(filepath)
-
-    def load_conversation_history(self, filepath):
-        """Load conversation history from a file"""
-        return self.conversation.load_conversation(filepath)
-
-    def update_knowledge_base(self, new_data):
-        """Update the knowledge base with new information"""
+            logger.error(f"Error building vector index: {e}")
+            return {}
+    
+    def search(self, query, top_n=3):
+        """Search the knowledge base semantically and by keywords"""
+        results = []
+        
+        # Try semantic search first if NLP engine is available
+        if self.nlp_engine and hasattr(self.nlp_engine, "get_embeddings"):
+            semantic_results = self.semantic_search(query, top_n)
+            results.extend(semantic_results)
+        
+        # Fall back to keyword search if semantic search fails or produces no results
+        if not results:
+            keyword_results = self.keyword_search(query, top_n)
+            results.extend(keyword_results)
+            
+        return results
+    
+    def semantic_search(self, query, top_n=3):
+        """Search using vector representations and semantic similarity"""
+        if not self.nlp_engine or not self.vector_index:
+            return []
+            
         try:
-            # Update in-memory knowledge base
-            for key, value in new_data.items():
-                if key in self.knowledge_base and isinstance(self.knowledge_base[key], dict) and isinstance(value, dict):
-                    self.knowledge_base[key].update(value)
-                else:
-                    self.knowledge_base[key] = value
-
-            # Save to file
+            # Generate embedding for query
+            query_embedding = self.nlp_engine.get_embeddings(query)
+            if not isinstance(query_embedding, np.ndarray):
+                return []
+                
+            # Calculate similarity with all items in vector index
+            similarities = []
+            for key, item in self.vector_index.items():
+                if not item.get("embedding"):
+                    continue
+                    
+                item_embedding = np.array(item["embedding"])
+                similarity = cosine_similarity(
+                    query_embedding.reshape(1, -1),
+                    item_embedding.reshape(1, -1)
+                )[0][0]
+                
+                similarities.append((key, similarity, item))
+            
+            # Sort by similarity (highest first)
+            similarities.sort(key=lambda x: x[1], reverse=True)
+            
+            # Return top N results
+            results = []
+            for key, similarity, item in similarities[:top_n]:
+                if similarity < 0.3:  # Threshold for meaningful results
+                    continue
+                    
+                if item["type"] == "law":
+                    law_id = item["id"]
+                    law_info = self.knowledge_base["laws"].get(law_id, {})
+                    results.append({
+                        "type": "law",
+                        "id": law_id,
+                        "content": law_info,
+                        "similarity": similarity,
+                        "relevance": "high" if similarity > 0.7 else "medium" if similarity > 0.5 else "low"
+                    })
+                elif item["type"] == "intent":
+                    intent_tag = item["id"]
+                    intent_info = next((i for i in self.knowledge_base["intents"] if i.get("tag") == intent_tag), {})
+                    results.append({
+                        "type": "intent",
+                        "id": intent_tag,
+                        "content": intent_info,
+                        "similarity": similarity,
+                        "relevance": "high" if similarity > 0.7 else "medium" if similarity > 0.5 else "low"
+                    })
+                    
+            return results
+                
+        except Exception as e:
+            logger.error(f"Error in semantic search: {e}")
+            return []
+    
+    def keyword_search(self, query, top_n=3):
+        """Search using keyword matching as fallback"""
+        results = []
+        query_lower = query.lower()
+        
+        # Search laws by keywords
+        for law_id, law_info in self.knowledge_base.get("laws", {}).items():
+            matches = 0
+            
+            # Check title
+            if law_info.get("title", "").lower() in query_lower:
+                matches += 10
+                
+            # Check description
+            if any(word in query_lower for word in law_info.get("description", "").lower().split()):
+                matches += 5
+                
+            # Check keywords
+            for keyword in law_info.get("keywords", []):
+                if keyword.lower() in query_lower:
+                    matches += 8
+                    
+            if matches > 0:
+                results.append({
+                    "type": "law",
+                    "id": law_id,
+                    "content": law_info,
+                    "similarity": min(matches / 20, 1.0),  # Normalize to 0-1 range
+                    "relevance": "high" if matches > 15 else "medium" if matches > 7 else "low"
+                })
+        
+        # Search intents by patterns
+        for intent in self.knowledge_base.get("intents", []):
+            matches = 0
+            
+            # Check patterns
+            for pattern in intent.get("patterns", []):
+                if pattern.lower() in query_lower:
+                    matches += 10
+                elif any(word in query_lower for word in pattern.lower().split()):
+                    matches += 3
+                    
+            if matches > 0:
+                results.append({
+                    "type": "intent",
+                    "id": intent.get("tag"),
+                    "content": intent,
+                    "similarity": min(matches / 20, 1.0),  # Normalize to 0-1 range
+                    "relevance": "high" if matches > 15 else "medium" if matches > 7 else "low"
+                })
+                
+        # Sort results by similarity (highest first)
+        results.sort(key=lambda x: x["similarity"], reverse=True)
+        
+        # Return top N results
+        return results[:top_n]
+    
+    def get_law_by_id(self, law_id):
+        """Get law details by ID"""
+        return self.knowledge_base.get("laws", {}).get(law_id)
+    
+    def get_intent_by_tag(self, tag):
+        """Get intent details by tag"""
+        for intent in self.knowledge_base.get("intents", []):
+            if intent.get("tag") == tag:
+                return intent
+        return None
+    
+    def save_knowledge_base(self):
+        """Save the current knowledge base to file"""
+        try:
             with open(self.knowledge_base_path, 'w') as file:
                 json.dump(self.knowledge_base, file, indent=4)
-
-            # Re-fit the vectorizer with new data
-            self.fit_vectorizer()
-
-            logger.info("Knowledge base updated successfully")
+            logger.info(f"Knowledge base saved to {self.knowledge_base_path}")
+            return True
+        except Exception as e:
+            logger.error(f"Error saving knowledge base: {e}")
+            return False
+    
+    def update_knowledge_base(self, new_data):
+        """Update the knowledge base with new data"""
+        try:
+            if "laws" in new_data:
+                for law_id, law_info in new_data["laws"].items():
+                    self.knowledge_base.setdefault("laws", {})[law_id] = law_info
+                    
+            if "intents" in new_data:
+                # Replace intents with matching tags
+                existing_tags = [intent.get("tag") for intent in self.knowledge_base.get("intents", [])]
+                for new_intent in new_data["intents"]:
+                    if new_intent.get("tag") in existing_tags:
+                        # Replace existing intent
+                        for i, intent in enumerate(self.knowledge_base.get("intents", [])):
+                            if intent.get("tag") == new_intent.get("tag"):
+                                self.knowledge_base["intents"][i] = new_intent
+                    else:
+                        # Add new intent
+                        self.knowledge_base.setdefault("intents", []).append(new_intent)
+            
+            # Rebuild vector index with updated knowledge
+            self.vector_index = self.build_vector_index()
+            
+            # Save updated knowledge base
+            self.save_knowledge_base()
+            
             return True
         except Exception as e:
             logger.error(f"Error updating knowledge base: {e}")
             return False
 
 
-# Example usage with CLI interface
-def run_cli():
-    # Create an instance of the assistant
-    assistant = CyberLawAssistant()
-
-    print("\n===== Cyber Law AI Assistant =====")
-    print("Type 'exit' to end the conversation")
-    print("Type 'save' to save the conversation")
-    print("Type 'help' for available commands")
-    print("==================================\n")
-
-    while True:
-        user_input = input("\nYou: ").strip()
-
-        if user_input.lower() == 'exit':
-            print("\nAssistant: Thank you for using the Cyber Law Assistant. Goodbye!")
-            # Save conversation on exit
-            assistant.save_conversation_history()
-            break
-
-        elif user_input.lower() == 'save':
-            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"conversations/conversation_{timestamp}.json"
-            if assistant.save_conversation_history(filename):
-                print(f"\nAssistant: Conversation saved to {filename}")
+class ResponseGenerator:
+    """Generate contextually relevant responses based on knowledge base and conversation context"""
+    
+    def __init__(self, knowledge_base, nlp_engine):
+        self.knowledge_base = knowledge_base
+        self.nlp_engine = nlp_engine
+        self.templates = self._load_response_templates()
+    
+    def _load_response_templates(self):
+        """Load response templates for different scenarios"""
+        return {
+            "greeting": [
+                "Hello! I'm your cyber law assistant. How can I help you today?",
+                "Welcome! I'm here to provide information about cyber laws. What would you like to know?",
+                "Greetings! I can help with cyber law questions, reporting procedures, or prevention tips. What information do you need?"
+            ],
+            "goodbye": [
+                "Thank you for using the cyber law assistant. Stay cyber-safe!",
+                "Goodbye! Feel free to return if you have more cyber law questions.",
+                "Thanks for chatting. Remember to stay vigilant online!"
+            ],
+            "not_understood": [
+                "I'm not sure I understand your question about cyber laws. Could you rephrase it?",
+                "I didn't quite catch that. Can you provide more details about your cyber law query?",
+                "I'm having trouble understanding your question. Could you ask it differently or provide more context?"
+            ],
+            "law_information": [
+                "Here's what you should know about {law_title}: {law_description} {legal_framework}",
+                "Regarding {law_title}: {law_description} According to {legal_framework}",
+                "{law_title} refers to {law_description} Under current laws, {legal_framework}"
+            ],
+            "prevention_tips": [
+                "To protect against {law_title}, consider these prevention measures: {prevention_tips}",
+                "Here are some recommended ways to prevent {law_title}: {prevention_tips}",
+                "To minimize the risk of {law_title}, experts recommend: {prevention_tips}"
+            ],
+            "reporting_procedure": [
+                "If you need to report a {law_title} incident, follow these steps: {reporting_procedure}",
+                "The proper procedure for reporting {law_title} includes: {reporting_procedure}",
+                "To report {law_title}, here's what you should do: {reporting_procedure}"
+            ],
+            "evidence_collection": [
+                "When documenting a {law_title} incident, collect these types of evidence: {evidence_collection}",
+                "For {law_title} cases, the following evidence is crucial: {evidence_collection}",
+                "To build a strong case for {law_title}, gather this evidence: {evidence_collection}"
+            ]
+        }
+    
+    def generate_response(self, user_input, conversation_manager):
+        """Generate a comprehensive response based on user input and conversation context"""
+        if not user_input or not isinstance(user_input, str):
+            return self._get_template_response("not_understood")
+            
+        # Preprocess user input
+        if self.nlp_engine:
+            processed_input = self.nlp_engine.preprocess_text(user_input)
+        else:
+            processed_input = user_input
+            
+        # Get conversation context
+        context = conversation_manager.context
+        conversation_phase = context.get("conversation_phase", "greeting")
+        
+        # Check for greetings or goodbyes first
+        if conversation_phase == "greeting" or any(greeting in processed_input.lower() for greeting in ["hello", "hi", "hey", "greetings"]):
+            # Update conversation phase
+            conversation_manager.update_context("conversation_phase", "initial_query")
+            return self._get_template_response("greeting")
+            
+        if any(goodbye in processed_input.lower() for goodbye in ["bye", "goodbye", "exit", "quit", "end"]):
+            return self._get_template_response("goodbye")
+            
+        # Search knowledge base for relevant information
+        search_results = self.knowledge_base.search(processed_input)
+        
+        # If no results found, check for similar past interactions
+        if not search_results and self.nlp_engine:
+            similar_interactions = conversation_manager.find_similar_interactions(
+                processed_input, self.nlp_engine, top_n=1
+            )
+            
+            if similar_interactions and similar_interactions[0]["similarity"] > 0.7:
+                return similar_interactions[0]["assistant_response"]
             else:
-                print("\nAssistant: Failed to save conversation.")
-            continue
+                return self._get_template_response("not_understood")
+                
+        # Process search results and generate response
+        response = self._process_search_results(search_results, processed_input, context)
+        
+        # Update conversation context based on response
+        if search_results:
+            top_result = search_results[0]
+            if top_result["type"] == "law":
+                conversation_manager.update_context("last_law_category", top_result["id"])
+                conversation_manager.update_context("current_topic", top_result["content"].get("title"))
+            conversation_manager.update_context("conversation_phase", "specific_guidance")
+            
+        return response
+    
+    def _process_search_results(self, search_results, user_input, context):
+        """Process search results and construct a response"""
+        if not search_results:
+            return self._get_template_response("not_understood")
+            
+        # Analyze top result
+        top_result = search_results[0]
+        
+        if top_result["type"] == "intent":
+            # Handle intent-based response
+            intent_tag = top_result["id"]
+            intent_info = top_result["content"]
+            
+            if intent_tag == "greeting":
+                return self._get_template_response("greeting")
+            elif intent_tag == "goodbye":
+                return self._get_template_response("goodbye")
+            elif intent_tag == "thank_you":
+                return random.choice(intent_info.get("responses", ["You're welcome!"]))
+            else:
+                # For other intents, check if we need law-specific information
+                if context.get("last_law_category"):
+                    law_info = self.knowledge_base.get_law_by_id(context["last_law_category"])
+                    if law_info:
+                        return self._generate_law_specific_response(intent_tag, law_info)
+                
+                # Generic response if no specific law context
+                return random.choice(intent_info.get("responses", ["I understand you're asking about cyber laws."]))
+                
+        elif top_result["type"] == "law":
+            # Handle law-based response
+            law_id = top_result["id"]
+            law_info = top_result["content"]
+            
+            # Determine specific aspect of law the user is asking about
+            aspect = self._determine_law_aspect(user_input)
+            return self._generate_law_specific_response(aspect, law_info)
+            
+        return self._get_template_response("not_understood")
+    
+    def _determine_law_aspect(self, user_input):
+        """Determine which aspect of a law the user is interested in"""
+        user_input_lower = user_input.lower()
+        
+        aspect_keywords = {
+            "law_information": ["what is", "explain", "describe", "tell me about", "define", "meaning of"],
+            "legal_consequences": ["punishment", "penalty", "jail", "fine", "sentence", "consequences"],
+            "reporting_procedure": ["report", "complain", "file", "inform", "notify", "contact", "procedure"],
+            "prevention_tips": ["prevent", "protect", "avoid", "secure", "safeguard", "security", "safety"],
+            "evidence_collection": ["evidence", "proof", "document", "record", "collect", "prove"]
+        }
+        
+        # Check for aspect keywords in user input
+        for aspect, keywords in aspect_keywords.items():
+            if any(keyword in user_input_lower for keyword in keywords):
+                return aspect
+                
+        # Default to general information
+        return "law_information"
+    
+    def _generate_law_specific_response(self, aspect, law_info):
+        """Generate a response for a specific aspect of a law"""
+        if not law_info:
+            return self._get_template_response("not_understood")
+            
+        template = self._get_template_response(aspect if aspect in self.templates else "law_information")
+        
+        # Prepare replacement values
+        replacements = {
+            "law_title": law_info.get("title", "this cyber crime"),
+            "law_description": law_info.get("description", ""),
+            "legal_framework": self._format_legal_framework(law_info.get("legal_framework", {})),
+            "prevention_tips": self._format_list(law_info.get("prevention_tips", [])),
+            "reporting_procedure": self._format_reporting_procedure(law_info.get("reporting_procedure", {})),
+            "evidence_collection": self._format_list(law_info.get("evidence_collection", []))
+        }
+        
+        # Replace placeholders in template
+        for key, value in replacements.items():
+            template = template.replace("{" + key + "}", value)
+            
+        # Add additional information based on aspect
+        if aspect == "law_information":
+            if law_info.get("landmark_cases"):
+                template += f"\n\nNotable cases: {self._format_landmark_cases(law_info['landmark_cases'])}"
+                
+        return template
+    
+    def _format_legal_framework(self, framework):
+        """Format legal framework information"""
+        if not framework:
+            return ""
+            
+        result = ""
+        if framework.get("primary_sections"):
+            result += f" It falls under {', '.join(framework['primary_sections'])}."
+        if framework.get("punishment"):
+            result += f" Punishment includes {framework['punishment']}."
+            
+        return result
+    
+    def _format_list(self, items):
+        """Format a list of items for response"""
+        if not items:
+            return ""
+            
+        return ", ".join(items[:3]) + (f", and {len(items) - 3} more" if len(items) > 3 else "")
+    
+    def _format_reporting_procedure(self, procedure):
+        """Format reporting procedure for response"""
+        if not procedure:
+            return ""
+            
+        individual = procedure.get("individual", [])
+        if individual:
+            return ", ".join(individual[:3]) + (f", and {len(individual) - 3} more steps" if len(individual) > 3 else "")
+        return ""
+    
+    def _format_landmark_cases(self, cases):
+        """Format landmark cases for response"""
+        if not cases or len(cases) == 0:
+            return ""
+            
+        case = cases[0]  # Take the first case
+        return f"{case.get('name', '')}: {case.get('significance', '')}"
+    
+    def _get_template_response(self, template_key):
+        """Get a random response from templates"""
+        templates = self.templates.get(template_key, ["I understand you're asking about cyber laws."])
+        return random.choice(templates)
+class ScenarioAnalyzer:
+    """Analyze cyber crime scenarios and map them to relevant legal sections"""
+    
+    def __init__(self, knowledge_base, nlp_engine):
+        self.knowledge_base = knowledge_base
+        self.nlp_engine = nlp_engine
+        self.crime_patterns = self._load_crime_patterns()
+        
+    def _load_crime_patterns(self):
+        """Load patterns for recognizing common elements in cyber crime scenarios"""
+        return {
+            "unauthorized_access": [
+                "hack", "broke into", "unauthorized access", "illegal access", "gain access", 
+                "breach", "compromise", "infiltrate", "login without permission"
+            ],
+            "data_theft": [
+                "stole data", "took information", "downloaded files", "exfiltrated", "copied data",
+                "data theft", "credential theft", "stole credentials", "identity theft"
+            ],
+            "malware": [
+                "malware", "virus", "ransomware", "trojan", "worm", "spyware", "keylogger",
+                "infected", "malicious software", "malicious code"
+            ],
+            "denial_of_service": [
+                "dos attack", "ddos", "denial of service", "crashed server", "flooded",
+                "made unavailable", "disrupted service"
+            ],
+            "fraud": [
+                "fraud", "deceived", "impersonated", "fake", "pretended to be", "scam", 
+                "fraudulent", "misrepresented", "social engineering"
+            ],
+            "harassment": [
+                "harass", "stalk", "threaten", "blackmail", "extort", "intimidate",
+                "bullying", "threatening messages", "defame"
+            ],
+            "sexual_offenses": [
+                "obscene", "explicit content", "child exploitation", "revenge porn",
+                "non-consensual", "intimate images", "sexually explicit"
+            ],
+            "intellectual_property": [
+                "copyright", "piracy", "illegal download", "counterfeit", "plagiarize",
+                "intellectual property", "trademark", "patent"
+            ]
+        }
+        
+    def analyze_scenario(self, scenario_text):
+        """Analyze a scenario and identify applicable legal sections"""
+        if not scenario_text or not isinstance(scenario_text, str):
+            return {
+                "crime_elements": [],
+                "applicable_laws": [],
+                "analysis": "Insufficient scenario details provided."
+            }
+            
+        # Preprocess scenario text
+        if self.nlp_engine:
+            processed_text = self.nlp_engine.preprocess_text(scenario_text)
+        else:
+            processed_text = scenario_text
+            
+        # Extract crime elements from scenario
+        crime_elements = self._extract_crime_elements(processed_text)
+        
+        # Find applicable laws
+        applicable_laws = self._find_applicable_laws(crime_elements, processed_text)
+        
+        # Generate comprehensive analysis
+        analysis = self._generate_analysis(crime_elements, applicable_laws, processed_text)
+        
+        return {
+            "crime_elements": crime_elements,
+            "applicable_laws": applicable_laws,
+            "analysis": analysis
+        }
+        
+    def _extract_crime_elements(self, text):
+        """Extract crime elements from scenario text"""
+        text_lower = text.lower()
+        elements = []
+        
+        # Match crime patterns
+        for crime_type, patterns in self.crime_patterns.items():
+            if any(pattern in text_lower for pattern in patterns):
+                elements.append(crime_type)
+                
+        # Extract entities if NLP engine is available
+        if self.nlp_engine:
+            entities = self.nlp_engine.extract_entities(text)
+            
+            # Add cyber crime entities
+            if "CYBER_CRIME" in entities:
+                for crime in entities["CYBER_CRIME"]:
+                    if crime.lower() not in [e.lower() for e in elements]:
+                        elements.append(crime)
+        
+        return elements
+    
+    def _find_applicable_laws(self, crime_elements, text):
+        """Find all applicable laws based on crime elements and text"""
+        applicable_laws = []
+        
+        # Search knowledge base for relevant laws
+        if self.knowledge_base:
+            # First try semantic search on the full text
+            search_results = self.knowledge_base.search(text, top_n=5)
+            
+            # Filter to only include law results
+            law_results = [result for result in search_results if result["type"] == "law"]
+            
+            # Add high and medium relevance results
+            for result in law_results:
+                if result["relevance"] in ["high", "medium"]:
+                    law_info = result["content"]
+                    applicable_laws.append({
+                        "id": result["id"],
+                        "title": law_info.get("title", "Unknown Law"),
+                        "sections": law_info.get("legal_framework", {}).get("primary_sections", []),
+                        "relevance": result["relevance"],
+                        "description": law_info.get("description", ""),
+                        "punishment": law_info.get("legal_framework", {}).get("punishment", "")
+                    })
+            
+            # If no high/medium relevance results, search by crime elements
+            if not applicable_laws:
+                for element in crime_elements:
+                    element_results = self.knowledge_base.search(element, top_n=3)
+                    for result in element_results:
+                        if result["type"] == "law":
+                            law_info = result["content"]
+                            applicable_laws.append({
+                                "id": result["id"],
+                                "title": law_info.get("title", "Unknown Law"),
+                                "sections": law_info.get("legal_framework", {}).get("primary_sections", []),
+                                "relevance": result["relevance"],
+                                "description": law_info.get("description", ""),
+                                "punishment": law_info.get("legal_framework", {}).get("punishment", "")
+                            })
+        
+        # Remove duplicates while preserving order
+        seen = set()
+        unique_laws = []
+        for law in applicable_laws:
+            if law["id"] not in seen:
+                seen.add(law["id"])
+                unique_laws.append(law)
+                
+        return unique_laws
+    
+    def _generate_analysis(self, crime_elements, applicable_laws, scenario_text):
+        """Generate comprehensive analysis of the scenario"""
+        if not crime_elements and not applicable_laws:
+            return "No specific cyber crime elements were identified in this scenario. Please provide more details."
+            
+        analysis = "Based on the scenario provided, the following analysis applies:\n\n"
+        
+        # Add crime elements identified
+        if crime_elements:
+            analysis += "Criminal elements identified:\n"
+            for i, element in enumerate(crime_elements, 1):
+                # Convert snake_case to readable format
+                readable_element = " ".join(element.split("_")).capitalize()
+                analysis += f"{i}. {readable_element}\n"
+            analysis += "\n"
+            
+        # Add applicable laws with sections
+        if applicable_laws:
+            analysis += "Applicable legal provisions:\n"
+            for i, law in enumerate(applicable_laws, 1):
+                analysis += f"{i}. {law['title']}\n"
+                
+                # Add sections
+                if law["sections"]:
+                    analysis += f"   Relevant sections: {', '.join(law['sections'])}\n"
+                    
+                # Add brief description
+                if law["description"]:
+                    analysis += f"   {law['description']}\n"
+                    
+                # Add punishment
+                if law["punishment"]:
+                    analysis += f"   Potential penalties: {law['punishment']}\n"
+                    
+                analysis += "\n"
+        else:
+            analysis += "No specific legal provisions were identified. Consider consulting a legal professional for more detailed analysis.\n"
+            
+        # Add disclaimer
+        analysis += "\nDisclaimer: This analysis is provided for informational purposes only and should not be construed as legal advice. Please consult with a qualified legal professional for advice specific to your situation."
+        
+        return analysis
 
-        elif user_input.lower() == 'help':
-            print("\nAssistant: Available commands:")
-            print("  'exit' - End the conversation")
-            print("  'save' - Save the current conversation")
-            print("  'help' - Show this help message")
-            print("  'clear' - Clear the conversation history")
-            print("  'status' - Show the current conversation status")
-            continue
 
-        elif user_input.lower() == 'clear':
-            assistant.conversation = ConversationManager()
-            print("\nAssistant: Conversation history cleared.")
-            continue
+# Modify the CyberLawAssistant class to incorporate the ScenarioAnalyzer
+class CyberLawAssistant:
+    """Main application class integrating all components"""
+    
+    def __init__(self, use_gpu=False):
+        self.logger = logging.getLogger("CyberLawAssistant")
+        
+        # Setup paths
+        self.data_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+        os.makedirs(self.data_path, exist_ok=True)
+        
+        # Initialize components
+        self.nlp_engine = self._init_nlp_engine(use_gpu)
+        self.knowledge_base = self._init_knowledge_base()
+        self.conversation_manager = ConversationManager(max_history=20)
+        self.response_generator = ResponseGenerator(self.knowledge_base, self.nlp_engine)
+        self.scenario_analyzer = ScenarioAnalyzer(self.knowledge_base, self.nlp_engine)
+        
+        self.logger.info("Cyber Law Assistant initialized")
+    
+    def _init_nlp_engine(self, use_gpu):
+        """Initialize NLP engine with error handling"""
+        try:
+            nlp_engine = NLPEngine(use_gpu=use_gpu)
+            return nlp_engine
+        except Exception as e:
+            self.logger.error(f"Failed to initialize NLP engine: {e}")
+            return None
+    
+    def _init_knowledge_base(self):
+        """Initialize knowledge base"""
+        try:
+            kb_path = os.path.join(self.data_path, "knowledge_base.json")
+            knowledge_base = SemanticKnowledgeBase(kb_path, self.nlp_engine)
+            return knowledge_base
+        except Exception as e:
+            self.logger.error(f"Failed to initialize knowledge base: {e}")
+            return None
+    
+    def process_input(self, user_input):
+        """Process user input and generate response"""
+        if not user_input or not isinstance(user_input, str):
+            return "I couldn't understand that input. Please try again with a clear question about cyber law."
+            
+        try:
+            # Check if this appears to be a crime scenario
+            if self._is_crime_scenario(user_input):
+                # Use scenario analyzer
+                analysis = self.scenario_analyzer.analyze_scenario(user_input)
+                response = analysis["analysis"]
+            else:
+                # Use regular response generator
+                response = self.response_generator.generate_response(user_input, self.conversation_manager)
+            
+            # Add to conversation history
+            self.conversation_manager.add_interaction(user_input, response, self.nlp_engine)
+            
+            return response
+        except Exception as e:
+            self.logger.error(f"Error processing input: {e}")
+            return "I encountered an error while processing your request. Please try again with a different question."
+    
+    def _is_crime_scenario(self, text):
+        """Determine if input text appears to be a crime scenario description"""
+        # Check length - scenarios tend to be longer
+        if len(text.split()) < 15:  # Arbitrary threshold
+            return False
+            
+        # Check for narrative markers
+        narrative_markers = ["yesterday", "last week", "someone", "person", "individual", 
+                           "received", "accessed", "stole", "hacked", "happened", 
+                           "incident", "case", "scenario", "situation", "occurred"]
+        
+        text_lower = text.lower()
+        marker_count = sum(1 for marker in narrative_markers if marker in text_lower)
+        
+        # Check for scenario request markers
+        scenario_requests = ["analyze this", "this scenario", "this case", "what law", 
+                           "which section", "sections apply", "legal provisions",
+                           "provisions apply", "legal analysis"]
+        
+        request_marker = any(marker in text_lower for marker in scenario_requests)
+        
+        # Use NLP if available for better detection
+        nlp_detection = False
+        if self.nlp_engine and hasattr(self.nlp_engine, "classify_intent"):
+            intent, confidence = self.nlp_engine.classify_intent(
+                text, ["ask_question", "describe_scenario", "request_help", "report_crime"]
+            )
+            nlp_detection = intent in ["describe_scenario", "report_crime"] and confidence > 0.6
+            
+        # Combine signals
+        return (marker_count >= 2) or request_marker or nlp_detection
+    
+    def analyze_scenario(self, scenario_text):
+        """Direct access to scenario analysis functionality"""
+        return self.scenario_analyzer.analyze_scenario(scenario_text)
+    
+    def save_session(self, filepath=None):
+        """Save the current session"""
+        if not filepath:
+            filepath = os.path.join(self.data_path, 
+                                  f"session_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
+                                  
+        return self.conversation_manager.save_conversation(filepath)
+    
+    def load_session(self, filepath):
+        """Load a previous session"""
+        return self.conversation_manager.load_conversation(filepath)
+    
+    def update_knowledge_base(self, new_data):
+        """Update the knowledge base with new data"""
+        if self.knowledge_base:
+            return self.knowledge_base.update_knowledge_base(new_data)
+        return False
 
-        elif user_input.lower() == 'status':
-            context = assistant.conversation.context
-            print("\nAssistant: Current conversation status:")
-            print(f"  Session ID: {context.get('session_id', 'None')}")
-            print(f"  User type: {context.get('user_type', 'Not specified')}")
-            print(f"  Current topic: {context.get('current_topic', 'None')}")
-            print(f"  Conversation length: {len(assistant.conversation.conversation_history)} interactions")
-            continue
 
-        response = assistant.process_user_input(user_input)
-        print(f"\nAssistant: {response}")
+def main():
+    """Main function to run the assistant"""
+    print("Initializing Cyber Law Assistant...")
+    
+    # Check for GPU availability
+    use_gpu = False
+    try:
+        import torch
+        use_gpu = torch.cuda.is_available()
+        if use_gpu:
+            print(f"GPU detected: {torch.cuda.get_device_name(0)}")
+        else:
+            print("No GPU detected, using CPU")
+    except ImportError:
+        print("PyTorch not installed or GPU not available, using CPU")
+    
+    # Initialize assistant
+    assistant = CyberLawAssistant(use_gpu=use_gpu)
+    
+    print("\nCyber Law Assistant is ready!")
+    print("Type your questions about cyber laws, crimes, reporting procedures, etc.")
+    print("Type 'exit' or 'quit' to end the session.")
+    
+    while True:
+        try:
+            user_input = input("\nYou: ").strip()
+            
+            if user_input.lower() in ["exit", "quit", "bye", "goodbye"]:
+                print("\nAssistant: Thank you for using the Cyber Law Assistant. Stay cyber-safe!")
+                break
+                
+            if user_input:
+                response = assistant.process_input(user_input)
+                print(f"\nAssistant: {response}")
+        except KeyboardInterrupt:
+            print("\n\nSession terminated by user.")
+            break
+        except Exception as e:
+            print(f"\nAn error occurred: {e}")
+    
+    # Save session on exit
+    session_path = os.path.join(assistant.data_path, f"session_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
+    if assistant.save_session(session_path):
+        print(f"\nSession saved to {session_path}")
+    
 
-
-# For importable module
 if __name__ == "__main__":
-    run_cli()
+     main()
