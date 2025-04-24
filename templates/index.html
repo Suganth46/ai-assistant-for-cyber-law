@@ -176,15 +176,291 @@
             --bot-bubble: #334155;
             --user-bubble: #3b82f6;
         }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e9ecef, #007bff);
+            color: #343a40;
+            line-height: 1.6;
+            animation: fadeIn 1s ease-in;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: background-color 0.3s, color 0.3s;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        /* Header section */
+        header {
+            display: none; /* Remove duplicate header */
+        }
+
+        /* Main chat area */
+        .chat-container {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            background-color: #e1f5fe; /* Change to light blue */
+        }
+
+        /* Save button */
+        .save-btn {
+            background-color: #1e88e5; /* Change to blue */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .save-btn:hover {
+            background-color: #1565c0;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: #d0e7ff; /* Change sidebar background to light blue */
+            padding: 20px;
+            overflow-y: auto;
+            border-right: 1px solid #ddd;
+        }
+
+        .sidebar h2 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #0056b3;
+            background-color: #b3d1ff; /* Change section header background to a darker blue */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 25px;
+        }
+
+        .topic-list {
+            list-style: none;
+        }
+
+        .topic-list li {
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+            background-color: #e6f2ff; /* Change topic item background to very light blue */
+        }
+
+        .topic-list li:hover {
+            background-color: #cce5ff;
+        }
+
+        .topic-list li.active {
+            background-color: #b3d1ff;
+            font-weight: 500;
+        }
+
+        /* Chat main content */
+        .chat-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Messages area */
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background-color: #007bff;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .assistant-message {
+            align-self: flex-start;
+            background-color: #f8f9fa;
+            color: #343a40;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message-time {
+            font-size: 0.7rem;
+            opacity: 0.8;
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        /* Input area */
+        .chat-input {
+            border-top: 1px solid #ddd;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .chat-input input:focus {
+            border-color: #007bff;
+        }
+
+        .send-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .send-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Status bar */
+        .status-bar {
+            padding: 8px 15px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
+            font-size: 0.85rem;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .typing-indicator {
+            display: none;
+            align-items: center;
+        }
+
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            margin: 0 2px;
+            background-color: #8c8c8c;
+            display: block;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        .typing-indicator span:nth-of-type(1) {
+            animation: pulse 1s infinite;
+        }
+
+        .typing-indicator span:nth-of-type(2) {
+            animation: pulse 1s infinite 0.2s;
+        }
+
+        .typing-indicator span:nth-of-type(3) {
+            animation: pulse 1s infinite 0.4s;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1> Cyber Law Assistant</h1>
-            
+        <div class="navbar">
+            <div class="logo">
+              
+                <h1>Cyber Law Assistant</h1>
+            </div>
+            <nav>
+                <a href="newindex.html">Home</a>
+                <a href="/about">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="/login">Login</a>
+            </nav>
+            <button id="saveBtn" class="save-btn">Save Conversation</button>
         </div>
-
         <div class="chat-container">
             <div class="tools">
                <!--  <button onclick="toggleDarkMode()">

@@ -12,6 +12,12 @@ assistant = CyberLawAssistant(use_gpu=False)
 @app.route('/')
 def home():
     return render_template('index.html')
+@app.route('/login')
+def login():
+    return render_template('login.html')
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 @app.route('/ask', methods=['POST'])
 def ask():

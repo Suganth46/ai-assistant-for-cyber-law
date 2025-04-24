@@ -39,7 +39,7 @@ class NLPEngine:
         """Initialize NLP components"""
         self.device = torch.device("cuda" if torch.cuda.is_available() and use_gpu else "cpu")
         logger.info(f"Using device: {self.device}")
-        
+        print("Initialize NLP components")
         # Load sentence embedding model
         try:
             
@@ -265,6 +265,7 @@ class NLPEngine:
     
     def analyze_sentiment(self, text: str) -> Dict[str, Any]:
         """Analyze the sentiment and emotional content of text"""
+        print("Analyze the sentiment and emotional content of text")
         if not self.nlp:
             return {"sentiment": "neutral", "score": 0.5}
             
@@ -306,6 +307,7 @@ class NLPEngine:
     
     def preprocess_text(self, text: str) -> str:
         """Enhanced preprocessing for better accuracy with robust error handling"""
+        print("Enhanced preprocessing for better accuracy with robust error handling")
         try:
             # Input validation
             if not text or not isinstance(text, str):
@@ -377,6 +379,7 @@ class NLPEngine:
             return text.strip() if isinstance(text, str) else ""
     def analyze_sentences(self, text: str) -> List[Dict]:
         """Break down text into sentences with detailed analysis"""
+        print("Break down text into sentences with detailed analysis")
         if not self.nlp:
             return []
         
@@ -410,7 +413,7 @@ class NLPEngine:
 
 class ConversationManager:
     """Enhanced conversation manager with semantic understanding"""
-
+    print("Enhanced conversation manager with semantic understanding")
     def __init__(self, max_history=15):
         self.conversation_history = []
         self.max_history = max_history
@@ -650,7 +653,7 @@ class SemanticKnowledgeBase:
     def _create_enhanced_knowledge_base(self):
         """Create an enhanced knowledge base structure with comprehensive Indian IT laws"""
         logger.info("Creating enhanced knowledge base structure with comprehensive Indian IT laws")
-    
+        print("Create an enhanced knowledge base structure with comprehensive Indian IT laws")
     # Base structure with existing detailed cyber laws
         knowledge_base = {
              "laws": {
@@ -2074,7 +2077,7 @@ class ResponseGenerator:
         return random.choice(templates)
 class ScenarioAnalyzer:
     """Analyze cyber crime scenarios and map them to relevant legal sections"""
-    
+    print("Analyze cyber crime scenarios and map them to relevant legal sections")
     def __init__(self, knowledge_base, nlp_engine):
         self.knowledge_base = knowledge_base
         self.nlp_engine = nlp_engine
