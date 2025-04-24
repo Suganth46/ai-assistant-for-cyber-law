@@ -738,3 +738,561 @@
 2025-04-21 21:57:50,890 - cyber_law_assistant - INFO - Session session_20250421215636_8073 - User: hacker...
 2025-04-21 21:57:50,890 - cyber_law_assistant - INFO - Session session_20250421215636_8073 - Assistant: Here's what you should know about Computer Hacking...
 2025-04-21 21:57:50,891 - werkzeug - INFO - 127.0.0.1 - - [21/Apr/2025 21:57:50] "POST /ask HTTP/1.1" 200 -
+2025-04-24 18:28:24,055 - CyberLawAssistant - ERROR - Failed to initialize NLP engine: name 'torch' is not defined
+2025-04-24 18:28:24,055 - cyber_law_assistant - WARNING - Knowledge base file not found: D:\AI assisantant\AI-git-collab\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-24 18:28:24,057 - cyber_law_assistant - INFO - Creating enhanced knowledge base structure with comprehensive Indian IT laws
+2025-04-24 18:28:24,057 - cyber_law_assistant - WARNING - NLP engine not available for vector indexing
+2025-04-24 18:28:24,057 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-24 18:28:24,307 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.33.224:5000
+2025-04-24 18:28:24,307 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-24 18:28:24,309 - werkzeug - INFO -  * Restarting with stat
+2025-04-24 18:28:25,047 - CyberLawAssistant - ERROR - Failed to initialize NLP engine: name 'torch' is not defined
+2025-04-24 18:28:25,047 - cyber_law_assistant - WARNING - Knowledge base file not found: D:\AI assisantant\AI-git-collab\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-24 18:28:25,051 - cyber_law_assistant - INFO - Creating enhanced knowledge base structure with comprehensive Indian IT laws
+2025-04-24 18:28:25,051 - cyber_law_assistant - WARNING - NLP engine not available for vector indexing
+2025-04-24 18:28:25,051 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-24 18:28:25,119 - werkzeug - WARNING -  * Debugger is active!
+2025-04-24 18:28:25,128 - werkzeug - INFO -  * Debugger PIN: 142-977-803
+2025-04-24 18:35:45,545 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-24 18:35:45,545 - cyber_law_assistant - ERROR - Error loading embedding model: name 'SentenceTransformer' is not defined
+2025-04-24 18:35:45,545 - cyber_law_assistant - ERROR - Error loading spaCy model: name 'spacy' is not defined
+2025-04-24 18:35:45,545 - cyber_law_assistant - ERROR - Error loading intent classifier: name 'pipeline' is not defined
+2025-04-24 18:35:45,545 - cyber_law_assistant - ERROR - Error loading summarizer: name 'pipeline' is not defined
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Knowledge base file not found: D:\AI assisantant\AI-git-collab\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-24 18:35:45,545 - cyber_law_assistant - INFO - Creating enhanced knowledge base structure with comprehensive Indian IT laws
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:45,545 - cyber_law_assistant - INFO - Built vector index with 41 entries
+2025-04-24 18:35:45,545 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-24 18:35:45,636 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.33.224:5000
+2025-04-24 18:35:45,636 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-24 18:35:45,643 - werkzeug - INFO -  * Restarting with stat
+2025-04-24 18:35:48,000 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-24 18:35:48,000 - cyber_law_assistant - ERROR - Error loading embedding model: name 'SentenceTransformer' is not defined
+2025-04-24 18:35:48,000 - cyber_law_assistant - ERROR - Error loading spaCy model: name 'spacy' is not defined
+2025-04-24 18:35:48,000 - cyber_law_assistant - ERROR - Error loading intent classifier: name 'pipeline' is not defined
+2025-04-24 18:35:48,000 - cyber_law_assistant - ERROR - Error loading summarizer: name 'pipeline' is not defined
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Knowledge base file not found: D:\AI assisantant\AI-git-collab\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-24 18:35:48,000 - cyber_law_assistant - INFO - Creating enhanced knowledge base structure with comprehensive Indian IT laws
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:35:48,000 - cyber_law_assistant - INFO - Built vector index with 41 entries
+2025-04-24 18:35:48,000 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-24 18:35:48,028 - werkzeug - WARNING -  * Debugger is active!
+2025-04-24 18:35:48,033 - werkzeug - INFO -  * Debugger PIN: 142-977-803
+2025-04-24 18:38:45,633 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-24 18:38:45,633 - cyber_law_assistant - ERROR - Error loading embedding model: name 'SentenceTransformer' is not defined
+2025-04-24 18:38:45,633 - cyber_law_assistant - ERROR - Error loading spaCy model: name 'spacy' is not defined
+2025-04-24 18:38:45,633 - cyber_law_assistant - ERROR - Error loading intent classifier: name 'pipeline' is not defined
+2025-04-24 18:38:45,633 - cyber_law_assistant - ERROR - Error loading summarizer: name 'pipeline' is not defined
+2025-04-24 18:38:45,633 - cyber_law_assistant - WARNING - Knowledge base file not found: D:\AI assisantant\AI-git-collab\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-24 18:38:45,633 - cyber_law_assistant - INFO - Creating enhanced knowledge base structure with comprehensive Indian IT laws
+2025-04-24 18:38:45,633 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,633 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,633 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,633 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,633 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,633 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,633 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,633 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,633 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,638 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,638 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,638 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,638 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,638 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,640 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,641 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,641 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,641 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,641 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,641 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,641 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,641 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,641 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,641 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,641 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:45,641 - cyber_law_assistant - INFO - Built vector index with 41 entries
+2025-04-24 18:38:45,641 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-24 18:38:45,681 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.33.224:5000
+2025-04-24 18:38:45,681 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-24 18:38:45,681 - werkzeug - INFO -  * Restarting with stat
+2025-04-24 18:38:48,689 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-24 18:38:48,689 - cyber_law_assistant - ERROR - Error loading embedding model: name 'SentenceTransformer' is not defined
+2025-04-24 18:38:48,689 - cyber_law_assistant - ERROR - Error loading spaCy model: name 'spacy' is not defined
+2025-04-24 18:38:48,689 - cyber_law_assistant - ERROR - Error loading intent classifier: name 'pipeline' is not defined
+2025-04-24 18:38:48,689 - cyber_law_assistant - ERROR - Error loading summarizer: name 'pipeline' is not defined
+2025-04-24 18:38:48,689 - cyber_law_assistant - WARNING - Knowledge base file not found: D:\AI assisantant\AI-git-collab\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-24 18:38:48,689 - cyber_law_assistant - INFO - Creating enhanced knowledge base structure with comprehensive Indian IT laws
+2025-04-24 18:38:48,689 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,689 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,689 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,689 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,689 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,689 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,689 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,689 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,689 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:38:48,691 - cyber_law_assistant - INFO - Built vector index with 41 entries
+2025-04-24 18:38:48,691 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-24 18:38:48,706 - werkzeug - WARNING -  * Debugger is active!
+2025-04-24 18:38:48,719 - werkzeug - INFO -  * Debugger PIN: 142-977-803
+2025-04-24 18:40:05,855 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-24 18:40:05,855 - cyber_law_assistant - ERROR - Error loading embedding model: name 'SentenceTransformer' is not defined
+2025-04-24 18:40:05,855 - cyber_law_assistant - ERROR - Error loading spaCy model: name 'spacy' is not defined
+2025-04-24 18:40:05,855 - cyber_law_assistant - ERROR - Error loading intent classifier: name 'pipeline' is not defined
+2025-04-24 18:40:05,855 - cyber_law_assistant - ERROR - Error loading summarizer: name 'pipeline' is not defined
+2025-04-24 18:40:05,855 - cyber_law_assistant - WARNING - Knowledge base file not found: D:\AI assisantant\AI-git-collab\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-24 18:40:05,855 - cyber_law_assistant - INFO - Creating enhanced knowledge base structure with comprehensive Indian IT laws
+2025-04-24 18:40:05,855 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,855 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,855 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,855 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,855 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,855 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,855 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,855 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,855 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:05,863 - cyber_law_assistant - INFO - Built vector index with 41 entries
+2025-04-24 18:40:05,863 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-24 18:40:05,907 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.33.224:5000
+2025-04-24 18:40:05,907 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-24 18:40:05,907 - werkzeug - INFO -  * Restarting with stat
+2025-04-24 18:40:08,542 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-24 18:40:08,542 - cyber_law_assistant - ERROR - Error loading embedding model: name 'SentenceTransformer' is not defined
+2025-04-24 18:40:08,542 - cyber_law_assistant - ERROR - Error loading spaCy model: name 'spacy' is not defined
+2025-04-24 18:40:08,542 - cyber_law_assistant - ERROR - Error loading intent classifier: name 'pipeline' is not defined
+2025-04-24 18:40:08,542 - cyber_law_assistant - ERROR - Error loading summarizer: name 'pipeline' is not defined
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Knowledge base file not found: D:\AI assisantant\AI-git-collab\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-24 18:40:08,542 - cyber_law_assistant - INFO - Creating enhanced knowledge base structure with comprehensive Indian IT laws
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:08,542 - cyber_law_assistant - INFO - Built vector index with 41 entries
+2025-04-24 18:40:08,542 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-24 18:40:08,568 - werkzeug - WARNING -  * Debugger is active!
+2025-04-24 18:40:08,571 - werkzeug - INFO -  * Debugger PIN: 142-977-803
+2025-04-24 18:40:56,831 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-24 18:40:56,831 - cyber_law_assistant - ERROR - Error loading embedding model: name 'SentenceTransformer' is not defined
+2025-04-24 18:40:56,831 - cyber_law_assistant - ERROR - Error loading spaCy model: name 'spacy' is not defined
+2025-04-24 18:40:56,831 - cyber_law_assistant - ERROR - Error loading intent classifier: name 'pipeline' is not defined
+2025-04-24 18:40:56,831 - cyber_law_assistant - ERROR - Error loading summarizer: name 'pipeline' is not defined
+2025-04-24 18:40:56,831 - cyber_law_assistant - WARNING - Knowledge base file not found: D:\AI assisantant\AI-git-collab\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-24 18:40:56,831 - cyber_law_assistant - INFO - Creating enhanced knowledge base structure with comprehensive Indian IT laws
+2025-04-24 18:40:56,831 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,831 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,831 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,831 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,831 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,831 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,831 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,831 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:56,842 - cyber_law_assistant - INFO - Built vector index with 41 entries
+2025-04-24 18:40:56,842 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-24 18:40:56,882 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.33.224:5000
+2025-04-24 18:40:56,882 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-24 18:40:56,882 - werkzeug - INFO -  * Restarting with stat
+2025-04-24 18:40:59,426 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-24 18:40:59,426 - cyber_law_assistant - ERROR - Error loading embedding model: name 'SentenceTransformer' is not defined
+2025-04-24 18:40:59,430 - cyber_law_assistant - ERROR - Error loading spaCy model: name 'spacy' is not defined
+2025-04-24 18:40:59,430 - cyber_law_assistant - ERROR - Error loading intent classifier: name 'pipeline' is not defined
+2025-04-24 18:40:59,430 - cyber_law_assistant - ERROR - Error loading summarizer: name 'pipeline' is not defined
+2025-04-24 18:40:59,430 - cyber_law_assistant - WARNING - Knowledge base file not found: D:\AI assisantant\AI-git-collab\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-24 18:40:59,431 - cyber_law_assistant - INFO - Creating enhanced knowledge base structure with comprehensive Indian IT laws
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:40:59,431 - cyber_law_assistant - INFO - Built vector index with 41 entries
+2025-04-24 18:40:59,431 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-24 18:40:59,458 - werkzeug - WARNING -  * Debugger is active!
+2025-04-24 18:40:59,467 - werkzeug - INFO -  * Debugger PIN: 142-977-803
+2025-04-24 18:41:49,193 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-24 18:41:49,193 - cyber_law_assistant - ERROR - Error loading embedding model: name 'SentenceTransformer' is not defined
+2025-04-24 18:41:49,193 - cyber_law_assistant - ERROR - Error loading spaCy model: name 'spacy' is not defined
+2025-04-24 18:41:49,193 - cyber_law_assistant - ERROR - Error loading intent classifier: name 'pipeline' is not defined
+2025-04-24 18:41:49,193 - cyber_law_assistant - ERROR - Error loading summarizer: name 'pipeline' is not defined
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Knowledge base file not found: D:\AI assisantant\AI-git-collab\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-24 18:41:49,193 - cyber_law_assistant - INFO - Creating enhanced knowledge base structure with comprehensive Indian IT laws
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:49,193 - cyber_law_assistant - INFO - Built vector index with 41 entries
+2025-04-24 18:41:49,193 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-24 18:41:49,238 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.33.224:5000
+2025-04-24 18:41:49,238 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-24 18:41:49,238 - werkzeug - INFO -  * Restarting with stat
+2025-04-24 18:41:51,586 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-24 18:41:51,586 - cyber_law_assistant - ERROR - Error loading embedding model: name 'SentenceTransformer' is not defined
+2025-04-24 18:41:51,586 - cyber_law_assistant - ERROR - Error loading spaCy model: name 'spacy' is not defined
+2025-04-24 18:41:51,586 - cyber_law_assistant - ERROR - Error loading intent classifier: name 'pipeline' is not defined
+2025-04-24 18:41:51,586 - cyber_law_assistant - ERROR - Error loading summarizer: name 'pipeline' is not defined
+2025-04-24 18:41:51,586 - cyber_law_assistant - WARNING - Knowledge base file not found: D:\AI assisantant\AI-git-collab\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-24 18:41:51,586 - cyber_law_assistant - INFO - Creating enhanced knowledge base structure with comprehensive Indian IT laws
+2025-04-24 18:41:51,586 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,586 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,586 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,586 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,586 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,586 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,586 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,586 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - WARNING - Embedding model not available
+2025-04-24 18:41:51,592 - cyber_law_assistant - INFO - Built vector index with 41 entries
+2025-04-24 18:41:51,592 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-24 18:41:51,609 - werkzeug - WARNING -  * Debugger is active!
+2025-04-24 18:41:51,612 - werkzeug - INFO -  * Debugger PIN: 142-977-803
