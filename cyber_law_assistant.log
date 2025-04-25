@@ -1697,3 +1697,718 @@
 2025-04-24 22:01:59,736 - cyber_law_assistant - INFO - Session session_20250424220128_9370 - User: tampeering...
 2025-04-24 22:01:59,737 - cyber_law_assistant - INFO - Session session_20250424220128_9370 - Assistant: Here's what you should know about Tampering with C...
 2025-04-24 22:01:59,738 - werkzeug - INFO - 127.0.0.1 - - [24/Apr/2025 22:01:59] "POST /ask HTTP/1.1" 200 -
+2025-04-25 20:49:19,418 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 20:49:19,421 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 20:49:19,421 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 20:49:26,038 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 20:49:26,649 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 20:49:28,039 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 20:49:33,114 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 20:49:33,116 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 20:49:40,401 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 20:49:40,402 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 20:49:40,454 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.1.15.248:5000
+2025-04-25 20:49:40,454 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 20:49:40,524 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 20:49:50,394 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 20:49:50,397 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 20:49:50,397 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 20:50:17,303 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 20:50:17,805 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 20:50:19,361 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 20:50:24,208 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 20:50:24,212 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 20:50:32,272 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 20:50:32,273 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 20:50:32,296 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 20:50:32,316 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 20:50:32,430 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 20:50:32] "GET / HTTP/1.1" 200 -
+2025-04-25 20:50:32,577 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 20:50:32] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-04-25 20:50:44,931 - cyber_law_assistant - INFO - Session session_20250425205032_9026 - User: hi...
+2025-04-25 20:50:44,931 - cyber_law_assistant - INFO - Session session_20250425205032_9026 - Assistant: Greetings! I can help with cyber law questions, re...
+2025-04-25 20:50:44,931 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 20:50:44] "POST /ask HTTP/1.1" 200 -
+2025-04-25 20:51:15,055 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 20:51:15] "POST /ask HTTP/1.1" 200 -
+2025-04-25 20:51:34,762 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 20:51:34] "POST /ask HTTP/1.1" 200 -
+2025-04-25 20:51:47,407 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 20:51:47] "GET / HTTP/1.1" 200 -
+2025-04-25 20:54:35,840 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 20:54:35,844 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 20:54:35,844 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 20:54:44,113 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 20:54:44,524 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 20:54:45,745 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 20:54:48,827 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 20:54:48,829 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 20:54:57,077 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 20:54:57,077 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 20:54:57,095 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.1.15.248:5000
+2025-04-25 20:54:57,096 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 20:54:57,107 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 20:55:04,667 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 20:55:04,670 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 20:55:04,670 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 20:55:08,512 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 20:55:08,902 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 20:55:10,419 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 20:55:12,519 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 20:55:12,521 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 20:55:19,134 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 20:55:19,134 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 20:55:19,148 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 20:55:19,158 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 20:55:19,205 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 20:55:19] "GET / HTTP/1.1" 200 -
+2025-04-25 20:55:19,238 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 20:55:19] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+2025-04-25 21:10:28,701 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:10:28,706 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:10:28,706 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:10:32,144 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:10:32,803 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:10:34,444 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:10:37,690 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:10:37,692 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:10:47,315 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:10:47,315 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:10:47,341 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.1.15.248:5000
+2025-04-25 21:10:47,341 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 21:10:47,369 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:10:57,944 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:10:57,947 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:10:57,947 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:11:01,919 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:11:02,373 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:11:03,717 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:11:08,241 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:11:08,245 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:11:19,131 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:11:19,131 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:11:19,151 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:11:19,179 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:11:19,275 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:11:19] "GET / HTTP/1.1" 200 -
+2025-04-25 21:13:50,907 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:13:50,909 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:13:50,910 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:13:55,821 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:13:56,241 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:13:57,428 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:13:59,782 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:13:59,784 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:14:07,015 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:14:07,015 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:14:07,035 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.1.15.248:5000
+2025-04-25 21:14:07,035 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 21:14:07,050 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:14:15,414 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:14:15,416 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:14:15,416 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:14:19,640 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:14:20,068 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:14:21,538 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:14:23,939 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:14:23,941 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:14:31,650 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:14:31,651 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:14:31,660 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:14:31,667 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:15:12,964 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\concurrent\\__init__.py', reloading
+2025-04-25 21:15:12,973 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\idlelib\\__init__.py', reloading
+2025-04-25 21:15:12,981 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\lib2to3\\__init__.py', reloading
+2025-04-25 21:15:12,989 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\test\\__init__.py', reloading
+2025-04-25 21:15:12,998 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\turtledemo\\__init__.py', reloading
+2025-04-25 21:15:13,007 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\wsgiref\\__init__.py', reloading
+2025-04-25 21:15:13,017 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\xml\\__init__.py', reloading
+2025-04-25 21:15:13,096 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\xmlrpc\\__init__.py', reloading
+2025-04-25 21:15:13,113 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\__phello__\\__init__.py', reloading
+2025-04-25 21:15:13,125 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\.venv\\Lib\\site-packages\\blinker\\__init__.py', reloading
+2025-04-25 21:15:13,146 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\.venv\\Lib\\site-packages\\blinker\\base.py', reloading
+2025-04-25 21:15:13,171 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\.venv\\Lib\\site-packages\\click\\__init__.py', reloading
+2025-04-25 21:15:13,200 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\.venv\\Lib\\site-packages\\click\\core.py', reloading
+2025-04-25 21:15:14,566 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:15:27,320 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:15:27,322 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:15:27,322 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:15:35,278 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:15:35,742 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:15:36,952 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:15:40,052 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:15:40,054 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:15:45,077 - CyberLawAssistant - ERROR - Failed to initialize NLP engine: name 'torch' is not defined
+2025-04-25 21:15:45,078 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:15:45,079 - cyber_law_assistant - WARNING - NLP engine not available for vector indexing
+2025-04-25 21:15:45,079 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:15:45,156 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.1.15.248:5000
+2025-04-25 21:15:45,156 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 21:15:45,160 - werkzeug - INFO -  * Restarting with stat
+2025-04-25 21:15:45,943 - CyberLawAssistant - ERROR - Failed to initialize NLP engine: name 'torch' is not defined
+2025-04-25 21:15:45,945 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:15:45,945 - cyber_law_assistant - WARNING - NLP engine not available for vector indexing
+2025-04-25 21:15:45,945 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:15:45,988 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:15:45,996 - werkzeug - INFO -  * Debugger PIN: 113-154-668
+2025-04-25 21:15:47,618 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:15:47,618 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:15:47,629 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:15:47,636 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:17:31,567 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\copy.py', reloading
+2025-04-25 21:17:32,969 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:17:43,199 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:17:43,202 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:17:43,202 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:17:48,919 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:17:49,367 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:17:50,504 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:17:53,397 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:17:53,400 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:17:59,945 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:17:59,945 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:17:59,957 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:17:59,965 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:18:18,257 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-04-25 21:18:18,259 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-04-25 21:18:18,259 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-04-25 21:18:18,668 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\flask\\blueprints.py', reloading
+2025-04-25 21:18:18,696 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\flask\\sansio\\blueprints.py', reloading
+2025-04-25 21:18:18,711 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-04-25 21:18:18,777 - werkzeug - INFO -  * Restarting with stat
+2025-04-25 21:18:20,302 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:19:26,680 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:19:26,682 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:19:26,683 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:19:29,829 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:19:30,256 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:19:31,653 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:19:33,884 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:19:33,886 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:19:41,877 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:19:41,877 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:19:41,899 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.1.15.248:5000
+2025-04-25 21:19:41,899 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 21:19:41,913 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:19:50,859 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:19:50,863 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:19:50,864 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:19:54,341 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:19:54,812 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:19:56,473 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:19:59,710 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:19:59,713 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:20:07,428 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:20:07,429 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:20:07,441 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:20:07,446 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:22:05,188 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-04-25 21:22:05,189 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-04-25 21:22:05,190 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-04-25 21:22:06,658 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:22:16,956 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:22:16,962 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:22:16,962 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:22:20,833 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:22:21,386 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:22:22,753 - cyber_law_assistant - ERROR - Error loading intent classifier: 
+ requires the protobuf library but it was not found in your environment. Checkout the instructions on the
+installation page of its repo: https://github.com/protocolbuffers/protobuf/tree/master/python#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+
+2025-04-25 21:22:25,537 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:22:25,539 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:30:52,348 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:30:52,351 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:30:52,351 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:30:55,647 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:30:56,084 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:30:57,330 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:30:59,653 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:30:59,655 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:31:06,203 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:31:06,203 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:31:06,225 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.1.15.248:5000
+2025-04-25 21:31:06,225 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 21:31:06,244 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:31:13,569 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:31:13,573 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:31:13,573 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:31:16,454 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:31:16,869 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:31:18,262 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:31:20,658 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:31:20,660 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:31:30,547 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:31:30,548 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:31:30,569 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:31:30,582 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:31:30,652 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:31:30] "GET / HTTP/1.1" 200 -
+2025-04-25 21:31:40,397 - cyber_law_assistant - INFO - Session session_20250425213130_3777 - User: hi...
+2025-04-25 21:31:40,397 - cyber_law_assistant - INFO - Session session_20250425213130_3777 - Assistant: Welcome! I'm here to provide information about cyb...
+2025-04-25 21:31:40,398 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:31:40] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:31:47,646 - cyber_law_assistant - INFO - Session session_20250425213130_3777 - User: how are u...
+2025-04-25 21:31:47,646 - cyber_law_assistant - INFO - Session session_20250425213130_3777 - Assistant: Here's what I know about {topic}......
+2025-04-25 21:31:47,646 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:31:47] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:32:08,300 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-04-25 21:32:08,301 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-04-25 21:32:08,302 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-04-25 21:32:10,185 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:32:22,727 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:32:22,730 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:32:22,731 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:32:27,271 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:32:28,004 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:32:29,596 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:32:34,288 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:32:34,292 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:32:44,350 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:32:44,350 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:32:44,367 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:32:44,376 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:32:44,430 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:32:44] "GET / HTTP/1.1" 200 -
+2025-04-25 21:32:44,442 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:32:44] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+2025-04-25 21:33:58,923 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: hi...
+2025-04-25 21:33:58,924 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Greetings! I can help with cyber law questions, re...
+2025-04-25 21:33:58,925 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:33:58] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:34:08,569 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: some one trying to hack me...
+2025-04-25 21:34:08,569 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Computer Hacking refers to Unauthorized access to ...
+2025-04-25 21:34:08,569 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:34:08] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:34:16,594 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: reporting procedure...
+2025-04-25 21:34:16,594 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: To report Computer Hacking, here's what you should...
+2025-04-25 21:34:16,595 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:34:16] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:35:42,908 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: phishing...
+2025-04-25 21:35:42,908 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Greetings! I can help with cyber law questions, re...
+2025-04-25 21:35:42,908 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:35:42] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:35:47,659 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: email...
+2025-04-25 21:35:47,660 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Regarding Computer Hacking: Unauthorized access to...
+2025-04-25 21:35:47,660 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:35:47] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:35:58,296 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: Tell me about hacking...
+2025-04-25 21:35:58,297 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Regarding Computer Hacking: Unauthorized access to...
+2025-04-25 21:35:58,299 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:35:58] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:36:00,155 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: Tell me about phishing...
+2025-04-25 21:36:00,155 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Hello! I'm your cyber law assistant. How can I hel...
+2025-04-25 21:36:00,156 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:36:00] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:36:02,819 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: Tell me about data breach...
+2025-04-25 21:36:02,826 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Regarding Data Breach: Unauthorized access resulti...
+2025-04-25 21:36:02,828 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:36:02] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:36:05,133 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: Tell me about identity theft...
+2025-04-25 21:36:05,134 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Regarding Identity Theft: Fraudulently or dishones...
+2025-04-25 21:36:05,136 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:36:05] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:36:13,351 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: Tell me about online harassment...
+2025-04-25 21:36:13,351 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Cyber Bullying refers to Use of electronic communi...
+2025-04-25 21:36:13,352 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:36:13] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:36:15,541 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: Tell me about children protection...
+2025-04-25 21:36:15,542 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Hello! I'm your cyber law assistant. How can I hel...
+2025-04-25 21:36:15,542 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:36:15] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:36:18,501 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: Tell me about critical infrastructure...
+2025-04-25 21:36:18,502 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Cyber Bullying refers to Use of electronic communi...
+2025-04-25 21:36:18,503 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:36:18] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:36:28,908 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: clear...
+2025-04-25 21:36:28,910 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Regarding Phishing: Fraudulent attempt to obtain s...
+2025-04-25 21:36:28,913 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:36:28] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:36:37,526 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: clear...
+2025-04-25 21:36:37,528 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Here's what you should know about Phishing: Fraudu...
+2025-04-25 21:36:37,531 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:36:37] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:36:41,147 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: Tell me about phishing...
+2025-04-25 21:36:41,147 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Greetings! I can help with cyber law questions, re...
+2025-04-25 21:36:41,148 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:36:41] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:36:49,395 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - User: clear...
+2025-04-25 21:36:49,397 - cyber_law_assistant - INFO - Session session_20250425213244_5333 - Assistant: Here's what you should know about Phishing: Fraudu...
+2025-04-25 21:36:49,398 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:36:49] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:37:55,061 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-04-25 21:37:55,061 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-04-25 21:37:58,114 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:38:12,232 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:38:12,237 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:38:12,237 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:38:18,398 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:38:19,213 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:38:57,029 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:38:57,033 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:38:57,033 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:39:01,132 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:39:01,633 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:39:02,923 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:39:08,226 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:39:08,228 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:39:18,786 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:39:18,787 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:40:09,904 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:40:09,908 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:40:09,908 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:40:13,791 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:40:14,275 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:40:15,524 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:40:18,051 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:40:18,053 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:40:26,446 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:40:26,447 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:40:26,484 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.1.15.248:5000
+2025-04-25 21:40:26,485 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 21:40:26,512 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:40:36,306 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:40:36,308 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:40:36,310 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:40:40,362 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:40:41,078 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:40:42,671 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:40:45,199 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:40:45,202 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:40:56,136 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:40:56,137 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:40:56,155 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:40:56,173 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:45:03,015 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:45:03] "GET / HTTP/1.1" 200 -
+2025-04-25 21:45:03,221 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:45:03] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+2025-04-25 21:45:09,284 - cyber_law_assistant - INFO - Session session_20250425214056_9201 - User: Tell me about critical infrastructure...
+2025-04-25 21:45:09,287 - cyber_law_assistant - INFO - Session session_20250425214056_9201 - Assistant: Hello! I'm your cyber law assistant. How can I hel...
+2025-04-25 21:45:09,290 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:45:09] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:45:13,678 - cyber_law_assistant - INFO - Session session_20250425214056_9201 - User: Tell me about critical infrastructure...
+2025-04-25 21:45:13,679 - cyber_law_assistant - INFO - Session session_20250425214056_9201 - Assistant: For cyber emergencies, the response protocol invol...
+2025-04-25 21:45:13,681 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:45:13] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:45:18,391 - cyber_law_assistant - INFO - Session session_20250425214056_9201 - User: Tell me about phishing...
+2025-04-25 21:45:18,392 - cyber_law_assistant - INFO - Session session_20250425214056_9201 - Assistant: Welcome! I'm here to provide information about cyb...
+2025-04-25 21:45:18,393 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:45:18] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:45:21,148 - cyber_law_assistant - INFO - Session session_20250425214056_9201 - User: Tell me about identity theft...
+2025-04-25 21:45:21,148 - cyber_law_assistant - INFO - Session session_20250425214056_9201 - Assistant: Identity Theft refers to Fraudulently or dishonest...
+2025-04-25 21:45:21,149 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:45:21] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:48:26,336 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:48:26,340 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:48:26,340 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:48:31,075 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:48:31,572 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:48:33,070 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:48:36,917 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:48:36,919 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:48:45,267 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:48:45,268 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:48:45,299 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.1.15.248:5000
+2025-04-25 21:48:45,299 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 21:48:45,322 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:48:56,398 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:48:56,402 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:48:56,402 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:48:59,933 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:49:00,477 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:49:02,141 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:49:07,703 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:49:07,706 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:49:27,936 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:49:27,938 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:49:28,050 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:49:28,079 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:49:28,303 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:49:28] "GET / HTTP/1.1" 200 -
+2025-04-25 21:49:28,362 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:49:28] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+2025-04-25 21:49:39,217 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - User: Tell me about hacking...
+2025-04-25 21:49:39,218 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - Assistant: Computer Hacking involves unauthorized access to c...
+2025-04-25 21:49:39,218 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:49:39] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:49:42,180 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - User: Tell me about phishing...
+2025-04-25 21:49:42,180 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - Assistant: Phishing attacks attempt to steal sensitive inform...
+2025-04-25 21:49:42,183 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:49:42] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:49:48,000 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - User: Tell me about data breach...
+2025-04-25 21:49:48,002 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - Assistant: Data Breaches can have serious legal and financial...
+2025-04-25 21:49:48,002 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:49:48] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:49:51,341 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - User: Tell me about identity theft...
+2025-04-25 21:49:51,342 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - Assistant: Identity Theft is a serious cyber crime with signi...
+2025-04-25 21:49:51,343 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:49:51] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:49:56,076 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - User: Tell me about online harassment...
+2025-04-25 21:49:56,076 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - Assistant: Online Harassment includes cyberbullying, stalking...
+2025-04-25 21:49:56,077 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:49:56] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:49:58,490 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - User: Tell me about children protection...
+2025-04-25 21:49:58,492 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - Assistant: Online Harassment is a serious offense with legal ...
+2025-04-25 21:49:58,493 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:49:58] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:50:01,004 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - User: Tell me about critical infrastructure...
+2025-04-25 21:50:01,004 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - Assistant: Critical Infrastructure Protection: This refers to...
+2025-04-25 21:50:01,005 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:50:01] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:50:12,718 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - User: reporting procedure...
+2025-04-25 21:50:12,718 - cyber_law_assistant - INFO - Session session_20250425214927_1379 - Assistant: Critical Infrastructure (CI) refers to systems and...
+2025-04-25 21:50:12,718 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:50:12] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:50:44,492 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\sentence_transformers\\__init__.py', reloading
+2025-04-25 21:50:44,507 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\site-packages\\sentence_transformers\\SentenceTransformer.py', reloading
+2025-04-25 21:50:46,701 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:51:00,137 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:51:00,141 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:51:00,141 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:51:04,957 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:51:05,591 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:51:06,789 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:51:11,474 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:51:11,476 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:51:21,898 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:51:21,898 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:51:21,911 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:51:21,921 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:52:01,300 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:52:01] "GET / HTTP/1.1" 200 -
+2025-04-25 21:52:01,324 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:52:01] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+2025-04-25 21:52:06,830 - cyber_law_assistant - INFO - Session session_20250425215121_6749 - User: clear...
+2025-04-25 21:52:06,830 - cyber_law_assistant - INFO - Session session_20250425215121_6749 - Assistant: I didn't quite catch that. Can you provide more de...
+2025-04-25 21:52:06,831 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:52:06] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:52:09,779 - cyber_law_assistant - INFO - Session session_20250425215121_6749 - User: Tell me about phishing...
+2025-04-25 21:52:09,781 - cyber_law_assistant - INFO - Session session_20250425215121_6749 - Assistant: Phishing attacks attempt to steal sensitive inform...
+2025-04-25 21:52:09,785 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:52:09] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:52:14,352 - cyber_law_assistant - INFO - Session session_20250425215121_6749 - User: clear...
+2025-04-25 21:52:14,353 - cyber_law_assistant - INFO - Session session_20250425215121_6749 - Assistant: Phishing is a cybercrime where targets are contact...
+2025-04-25 21:52:14,358 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:52:14] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:53:13,690 - cyber_law_assistant - INFO - Session session_20250425215121_6749 - User: copy...
+2025-04-25 21:53:13,690 - cyber_law_assistant - INFO - Session session_20250425215121_6749 - Assistant: Phishing is a cybercrime where targets are contact...
+2025-04-25 21:53:13,691 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:53:13] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:53:17,392 - cyber_law_assistant - INFO - Session session_20250425215121_6749 - User: copy...
+2025-04-25 21:53:17,392 - cyber_law_assistant - INFO - Session session_20250425215121_6749 - Assistant: Phishing attacks attempt to steal sensitive inform...
+2025-04-25 21:53:17,394 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:53:17] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:53:21,552 - cyber_law_assistant - INFO - Session session_20250425215121_6749 - User: tampering...
+2025-04-25 21:53:21,553 - cyber_law_assistant - INFO - Session session_20250425215121_6749 - Assistant: Phishing attacks attempt to steal sensitive inform...
+2025-04-25 21:53:21,557 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:53:21] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:53:44,765 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\cyber_law_assistant.py', reloading
+2025-04-25 21:53:44,766 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\cyber_law_assistant.py', reloading
+2025-04-25 21:53:44,768 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\cyber_law_assistant.py', reloading
+2025-04-25 21:53:47,356 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:54:00,668 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:54:00,677 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:54:00,677 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:54:04,387 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:54:05,135 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:54:06,545 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:54:10,163 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:54:10,169 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:54:22,621 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:54:22,621 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:54:22,635 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:54:22,644 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:54:25,781 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\cyber_law_assistant.py', reloading
+2025-04-25 21:54:25,782 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\cyber_law_assistant.py', reloading
+2025-04-25 21:54:25,783 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\cyber_law_assistant.py', reloading
+2025-04-25 21:54:28,240 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:54:41,528 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:54:41,531 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:54:41,532 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:54:45,572 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:54:46,163 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:54:48,004 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:54:50,780 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:54:50,781 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:55:02,760 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:55:02,761 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:55:02,778 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:55:02,788 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:55:09,963 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\cyber_law_assistant.py', reloading
+2025-04-25 21:55:12,313 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:55:25,272 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:55:25,276 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:55:25,276 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:55:29,653 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:55:30,520 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:55:32,438 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:55:35,393 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:55:35,394 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:55:43,283 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:55:43,283 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:55:43,293 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:55:43,300 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:55:43,343 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:55:43] "GET / HTTP/1.1" 200 -
+2025-04-25 21:55:43,353 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:55:43] "[33mGET /styles.css HTTP/1.1[0m" 404 -
+2025-04-25 21:55:49,914 - cyber_law_assistant - INFO - Session session_20250425215543_9557 - User: tampering...
+2025-04-25 21:55:49,914 - cyber_law_assistant - INFO - Session session_20250425215543_9557 - Assistant: Hello! I'm your cyber law assistant. How can I hel...
+2025-04-25 21:55:49,916 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:55:49] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:55:54,766 - cyber_law_assistant - INFO - Session session_20250425215543_9557 - User: tampering...
+2025-04-25 21:55:54,767 - CyberLawAssistant - ERROR - Error processing short input: 'NoneType' object is not subscriptable
+2025-04-25 21:55:54,769 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:55:54] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:56:02,830 - cyber_law_assistant - INFO - Session session_20250425215543_9557 - User: copy...
+2025-04-25 21:56:02,831 - CyberLawAssistant - ERROR - Error processing short input: 'NoneType' object is not subscriptable
+2025-04-25 21:56:02,837 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:56:02] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:56:05,630 - cyber_law_assistant - INFO - Session session_20250425215543_9557 - User: hack...
+2025-04-25 21:56:05,630 - CyberLawAssistant - ERROR - Error processing short input: 'NoneType' object is not subscriptable
+2025-04-25 21:56:05,631 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:56:05] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:56:49,594 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\cyber_law_assistant.py', reloading
+2025-04-25 21:56:49,594 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\cyber_law_assistant.py', reloading
+2025-04-25 21:56:49,594 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\cyber_law_assistant.py', reloading
+2025-04-25 21:56:51,413 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:57:01,285 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:57:01,289 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:57:01,289 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:57:05,443 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:57:06,059 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:57:07,551 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:57:10,044 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:57:10,046 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:57:18,761 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:57:18,762 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:57:18,771 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:57:18,780 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:57:24,149 - werkzeug - INFO -  * Detected change in 'D:\\git\\project\\ai-assistant-for-cyber-law\\app.py', reloading
+2025-04-25 21:57:25,911 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 21:57:35,515 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 21:57:35,518 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 21:57:35,518 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 21:57:38,943 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 21:57:39,366 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 21:57:40,709 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 21:57:43,354 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 21:57:43,356 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 21:57:50,070 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 21:57:50,070 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 21:57:50,083 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 21:57:50,088 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 21:57:50,125 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:57:50] "GET / HTTP/1.1" 200 -
+2025-04-25 21:57:57,620 - cyber_law_assistant - INFO - Session session_20250425215750_7323 - User: hi...
+2025-04-25 21:57:57,621 - cyber_law_assistant - INFO - Session session_20250425215750_7323 - Assistant: Greetings! I can help with cyber law questions, re...
+2025-04-25 21:57:57,621 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:57:57] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:58:02,088 - cyber_law_assistant - INFO - Session session_20250425215750_7323 - User: tampering...
+2025-04-25 21:58:02,088 - cyber_law_assistant - INFO - Session session_20250425215750_7323 - Assistant: Here's what you should know about Tampering with C...
+2025-04-25 21:58:02,089 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:58:02] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:58:11,950 - cyber_law_assistant - INFO - Session session_20250425215750_7323 - User: copy...
+2025-04-25 21:58:11,950 - cyber_law_assistant - INFO - Session session_20250425215750_7323 - Assistant: Regarding Digital Piracy: Unauthorized reproductio...
+2025-04-25 21:58:11,951 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:58:11] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:58:33,143 - cyber_law_assistant - INFO - Session session_20250425215750_7323 - User: reporting procedure...
+2025-04-25 21:58:33,143 - cyber_law_assistant - INFO - Session session_20250425215750_7323 - Assistant: If you need to report a Digital Piracy incident, f...
+2025-04-25 21:58:33,143 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:58:33] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:58:39,472 - cyber_law_assistant - INFO - Session session_20250425215750_7323 - User: tips...
+2025-04-25 21:58:39,472 - cyber_law_assistant - INFO - Session session_20250425215750_7323 - Assistant: Here's what you should know about Digital Piracy: ...
+2025-04-25 21:58:39,472 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:58:39] "POST /ask HTTP/1.1" 200 -
+2025-04-25 21:59:26,740 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:59:26] "GET / HTTP/1.1" 200 -
+2025-04-25 21:59:29,458 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:59:29] "GET /about HTTP/1.1" 200 -
+2025-04-25 21:59:38,861 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:59:38] "GET /login HTTP/1.1" 200 -
+2025-04-25 21:59:40,942 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 21:59:40] "GET /contact HTTP/1.1" 200 -
+2025-04-25 22:01:22,738 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:01:22] "GET / HTTP/1.1" 200 -
+2025-04-25 22:01:25,117 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:01:25] "GET / HTTP/1.1" 200 -
+2025-04-25 22:01:27,513 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:01:27] "GET /about HTTP/1.1" 200 -
+2025-04-25 22:01:30,018 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:01:30] "GET /contact HTTP/1.1" 200 -
+2025-04-25 22:01:32,330 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:01:32] "GET /login HTTP/1.1" 200 -
+2025-04-25 22:01:33,310 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:01:33] "GET /about HTTP/1.1" 200 -
+2025-04-25 22:01:34,087 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:01:34] "GET /contact HTTP/1.1" 200 -
+2025-04-25 22:01:34,878 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:01:34] "GET / HTTP/1.1" 200 -
+2025-04-25 22:12:23,878 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 22:12:23,881 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 22:12:23,881 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 22:12:27,921 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 22:12:28,462 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 22:12:29,825 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 22:12:32,015 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 22:12:32,017 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 22:12:40,343 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 22:12:40,343 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 22:12:40,368 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.1.15.248:5000
+2025-04-25 22:12:40,368 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 22:12:40,386 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 22:12:49,916 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 22:12:49,918 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 22:12:49,918 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 22:12:54,275 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 22:12:54,873 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 22:12:56,666 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 22:12:59,069 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 22:12:59,072 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 22:13:06,143 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 22:13:06,145 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 22:13:06,160 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 22:13:06,170 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 22:13:06,211 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:13:06] "GET / HTTP/1.1" 200 -
+2025-04-25 22:20:38,140 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Suganth\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\logging\\__init__.py', reloading
+2025-04-25 22:20:40,015 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-25 22:20:55,169 - cyber_law_assistant - INFO - Using device: cpu
+2025-04-25 22:20:55,171 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-04-25 22:20:55,171 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-mpnet-base-v2
+2025-04-25 22:20:59,110 - cyber_law_assistant - INFO - Sentence embedding model loaded
+2025-04-25 22:20:59,758 - cyber_law_assistant - INFO - SpaCy NLP model loaded
+2025-04-25 22:21:01,427 - cyber_law_assistant - INFO - Intent classifier loaded
+2025-04-25 22:21:06,814 - cyber_law_assistant - INFO - Text summarizer loaded
+2025-04-25 22:21:06,817 - cyber_law_assistant - INFO - Knowledge base loaded successfully from D:\git\project\ai-assistant-for-cyber-law\data\knowledge_base.json
+2025-04-25 22:21:17,558 - cyber_law_assistant - INFO - Built vector index with 65 entries
+2025-04-25 22:21:17,559 - CyberLawAssistant - INFO - Cyber Law Assistant initialized
+2025-04-25 22:21:17,573 - werkzeug - WARNING -  * Debugger is active!
+2025-04-25 22:21:17,583 - werkzeug - INFO -  * Debugger PIN: 494-450-734
+2025-04-25 22:21:17,634 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:21:17] "GET / HTTP/1.1" 200 -
+2025-04-25 22:21:25,599 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: hi...
+2025-04-25 22:21:25,599 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Hello! I'm your cyber law assistant. How can I hel...
+2025-04-25 22:21:25,600 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:21:25] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:21:51,291 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: some one trying to hack me...
+2025-04-25 22:21:51,291 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Here's what you should know about Computer Hacking...
+2025-04-25 22:21:51,292 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:21:51] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:21:56,858 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: tampering...
+2025-04-25 22:21:56,858 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Tampering with Computer Source Code refers to Know...
+2025-04-25 22:21:56,859 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:21:56] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:22:04,484 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: copy...
+2025-04-25 22:22:04,485 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Here's what you should know about Digital Piracy: ...
+2025-04-25 22:22:04,485 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:22:04] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:25:29,413 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:25:29] "GET / HTTP/1.1" 200 -
+2025-04-25 22:25:34,423 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: hi...
+2025-04-25 22:25:34,429 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Hello! I'm your cyber law assistant. How can I hel...
+2025-04-25 22:25:34,429 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:25:34] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:26:51,890 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: tampering...
+2025-04-25 22:26:51,891 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Here's what you should know about Tampering with C...
+2025-04-25 22:26:51,892 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:26:51] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:26:59,962 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: copy...
+2025-04-25 22:26:59,962 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Regarding Digital Piracy: Unauthorized reproductio...
+2025-04-25 22:26:59,963 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:26:59] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:27:10,088 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: reporting procedure...
+2025-04-25 22:27:10,092 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: To report Digital Piracy, here's what you should d...
+2025-04-25 22:27:10,094 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:27:10] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:27:16,892 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:27:16] "GET /about HTTP/1.1" 200 -
+2025-04-25 22:27:18,225 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:27:18] "GET /contact HTTP/1.1" 200 -
+2025-04-25 22:27:19,101 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:27:19] "GET /login HTTP/1.1" 200 -
+2025-04-25 22:27:20,057 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:27:20] "GET / HTTP/1.1" 200 -
+2025-04-25 22:27:50,111 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: hi...
+2025-04-25 22:27:50,112 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Hello! I'm your cyber law assistant. How can I hel...
+2025-04-25 22:27:50,112 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:27:50] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:29:31,597 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:29:31] "GET /login HTTP/1.1" 200 -
+2025-04-25 22:29:32,664 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:29:32] "GET /about HTTP/1.1" 200 -
+2025-04-25 22:29:33,684 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:29:33] "GET / HTTP/1.1" 200 -
+2025-04-25 22:29:37,510 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: clear...
+2025-04-25 22:29:37,510 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Phishing refers to Fraudulent attempt to obtain se...
+2025-04-25 22:29:37,511 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:29:37] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:29:44,468 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: phishing...
+2025-04-25 22:29:44,468 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Welcome! I'm here to provide information about cyb...
+2025-04-25 22:29:44,469 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:29:44] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:29:54,016 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: email...
+2025-04-25 22:29:54,016 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Here's what you should know about Phishing: Fraudu...
+2025-04-25 22:29:54,017 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:29:54] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:30:04,338 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: some one trying to hack me...
+2025-04-25 22:30:04,340 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Computer Hacking refers to Unauthorized access to ...
+2025-04-25 22:30:04,341 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:30:04] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:30:09,514 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: it...
+2025-04-25 22:30:09,514 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Here's what you should know about Computer Hacking...
+2025-04-25 22:30:09,515 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:30:09] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:30:19,743 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: data...
+2025-04-25 22:30:19,744 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Data Breach refers to Unauthorized access resultin...
+2025-04-25 22:30:19,745 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:30:19] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:30:24,951 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: child...
+2025-04-25 22:30:24,951 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Hello! I'm your cyber law assistant. How can I hel...
+2025-04-25 22:30:24,953 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:30:24] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:30:29,090 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: child...
+2025-04-25 22:30:29,091 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Greetings! I can help with cyber law questions, re...
+2025-04-25 22:30:29,091 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:30:29] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:30:32,916 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: protection...
+2025-04-25 22:30:32,916 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: Here's what you should know about Data Breach: Una...
+2025-04-25 22:30:32,917 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:30:32] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:30:38,901 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - User: pocso...
+2025-04-25 22:30:38,901 - cyber_law_assistant - INFO - Session session_20250425222117_6188 - Assistant: My pleasure! I'm here for any other cyber law ques...
+2025-04-25 22:30:38,903 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:30:38] "POST /ask HTTP/1.1" 200 -
+2025-04-25 22:30:47,332 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:30:47] "GET /about HTTP/1.1" 200 -
+2025-04-25 22:30:52,767 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:30:52] "GET /contact HTTP/1.1" 200 -
+2025-04-25 22:30:59,950 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:30:59] "GET /login HTTP/1.1" 200 -
+2025-04-25 22:31:07,952 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:31:07] "GET /login?username=SUGANHTH&password=fsjlfr HTTP/1.1" 200 -
+2025-04-25 22:31:18,906 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:31:18] "GET /about HTTP/1.1" 200 -
+2025-04-25 22:31:20,272 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:31:20] "GET /login HTTP/1.1" 200 -
+2025-04-25 22:31:28,230 - werkzeug - INFO - 127.0.0.1 - - [25/Apr/2025 22:31:28] "GET / HTTP/1.1" 200 -

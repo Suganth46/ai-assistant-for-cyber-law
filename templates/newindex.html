@@ -458,14 +458,14 @@
     <div class="container">
         <div class="navbar">
             <div class="logo">
-                <div class="logo-icon">CLA</div>
+               
                 <h1>Cyber Law Assistant</h1>
             </div>
             <nav>
-                <a href="newindex.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-                <a href="login.html">Login</a>
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="/login">Login</a>
             </nav>
             <button id="saveBtn" class="save-btn">Save Conversation</button>
         </div>
@@ -481,7 +481,7 @@
                         <li data-topic="identity_theft">Identity Theft</li>
                         <li data-topic="online_harassment">Online Harassment</li>
                         <li data-topic="children_protection">Child Protection</li>
-                        <li data-topic="critical_infrastructure">Critical Infrastructure</li>
+                        <!-- <li data-topic="critical_infrastructure">Critical Infrastructure</li> -->
                     </ul>
                 </div>
                 <div class="sidebar-section">
@@ -531,7 +531,7 @@
             const topicItems = document.querySelectorAll('.topic-list li');
 
             // API endpoint (will need to connect to your Python backend)
-            const apiUrl = '/api/chat';
+            const apiUrl = '/ask';
 
             // Sample conversation history for demo purposes
             let conversationHistory = [];
@@ -580,25 +580,14 @@
                 addMessage(userMessage, true);
                 showTypingIndicator();
                 
-                // In a real implementation, you would send the message to your Python backend
-                // For now, we'll simulate an API call
                 try {
-                    // Simulate API delay for demo
-                    setTimeout(() => {
-                        const response = mockCyberLawAssistant(userMessage);
-                        hideTypingIndicator();
-                        addMessage(response, false);
-                    }, 1000);
-                    
-                    /* This would be the actual API call in a real implementation:
                     const response = await fetch(apiUrl, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            message: userMessage,
-                            history: conversationHistory
+                            message: userMessage
                         })
                     });
                     
@@ -609,7 +598,6 @@
                     const data = await response.json();
                     hideTypingIndicator();
                     addMessage(data.response, false);
-                    */
                 } catch (error) {
                     console.error('Error:', error);
                     hideTypingIndicator();
@@ -621,30 +609,6 @@
                 // In a real implementation, this would call your Python backend to save the conversation
                 // For demo purposes, we'll just alert
                 alert('Conversation saved successfully!');
-                
-                /* This would be the actual implementation:
-                fetch('/api/save-conversation', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        history: conversationHistory
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Conversation saved successfully!');
-                    } else {
-                        alert('Failed to save conversation.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Failed to save conversation.');
-                });
-                */
             }
 
             function clearConversation() {
@@ -659,87 +623,20 @@
             }
 
             function showStatus() {
-                // In a real implementation, this would fetch status from your Python backend
-                addMessage("Current session status:\n- Session ID: session_2025040812345_1234\n- User type: Not specified\n- Current topic: None\n- Conversation length: " + conversationHistory.length + " interactions", false);
+                processUserInput("status");
             }
 
             function showHelp() {
-                addMessage("Available commands:\n- 'exit' - End the conversation\n- 'save' - Save the current conversation\n- 'help' - Show this help message\n- 'clear' - Clear the conversation history\n- 'status' - Show the current conversation status", false);
+                processUserInput("help");
             }
 
             function handleTopicClick(topic) {
-                userInput.value = `Tell me about ${topic.replace('_', ' ')}`;
-                sendBtn.click();
+                const userMessage = `Tell me about ${topic.replace('_', ' ')}`;
+                processUserInput(userMessage);
             }
 
             function handleCommandClick(command) {
-                switch(command) {
-                    case 'help':
-                        showHelp();
-                        break;
-                    case 'clear':
-                        clearConversation();
-                        break;
-                    case 'status':
-                        showStatus();
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            // Mock implementation of your Python assistant for demo purposes
-            function mockCyberLawAssistant(message) {
-                const msg = message.toLowerCase();
-                
-                if (msg === 'clear') {
-                    clearConversation();
-                    return "Conversation history cleared.";
-                }
-                
-                if (msg === 'status') {
-                    return "Current session status:\n- Session ID: session_2025040812345_1234\n- User type: Not specified\n- Current topic: None\n- Conversation length: " + conversationHistory.length + " interactions";
-                }
-                
-                if (msg === 'help') {
-                    return "Available commands:\n- 'exit' - End the conversation\n- 'save' - Save the current conversation\n- 'help' - Show this help message\n- 'clear' - Clear the conversation history\n- 'status' - Show the current conversation status";
-                }
-                
-                if (msg === 'save') {
-                    saveConversation();
-                    return "Conversation saved successfully!";
-                }
-                
-                if (msg === 'exit') {
-                    return "Thank you for using the Cyber Law Assistant. Goodbye!";
-                }
-                
-                if (msg.includes('hacking') || msg.includes('hack')) {
-                    return "Computer Hacking: Unauthorized access to computer systems.\n\nLegal framework: Section 66 of IT Act, 2000. Punishment can include up to 3 years imprisonment or fine up to 5 lakh rupees or both.\n\nYou can ask about reporting procedures, evidence collection, or prevention tips for hacking incidents.";
-                }
-                
-                if (msg.includes('phishing')) {
-                    return "Phishing: Fraudulent attempt to obtain sensitive information by disguising as a trustworthy entity.\n\nLegal framework: Section 66D of IT Act, 2000. Punishment can include up to 3 years imprisonment and fine up to 1 lakh rupees.\n\nFor individuals, you should report phishing attempts to the cyber crime portal and contact your bank if financial information was compromised.";
-                }
-                
-                if (msg.includes('child') || msg.includes('children')) {
-                    return "Child Protection in Cyberspace: Special laws and provisions for protecting minors online.\n\nSpecial provisions: POCSO Act and IT Act Section 67B provide special protection to minors. There are mandatory reporting requirements for child exploitation material to authorities.";
-                }
-                
-                if (msg.includes('identity theft')) {
-                    return "Identity Theft: The fraudulent acquisition and use of a person's private identifying information.\n\nLegal framework: Section 66C of IT Act, 2000. Punishment can include imprisonment up to 3 years and fine up to 1 lakh rupees.\n\nIndividuals should report identity theft to the cyber crime portal, place a fraud alert with credit bureaus, and notify relevant service providers.";
-                }
-                
-                if (msg.includes('i am a police') || msg.includes('i am law enforcement')) {
-                    return "I understand you're with law enforcement. How can I help you with cyber law information today? I can provide specific information about evidence collection procedures and legal frameworks for cyber crimes.";
-                }
-                
-                if (msg.includes('i am a victim') || msg.includes('i am an individual')) {
-                    return "I understand you're an individual seeking information. How can I help you with cyber law questions today? I can provide guidance on reporting procedures and steps to take if you've been affected by a cyber crime.";
-                }
-                
-                // Default response
-                return "I'm not sure which cyber law topic you're asking about. You can ask about topics like hacking, phishing, data breaches, online harassment, or identity theft. Could you provide more details?";
+                processUserInput(command);
             }
 
             // Event Listeners
