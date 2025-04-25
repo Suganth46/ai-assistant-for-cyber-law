@@ -3,53 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Cyber Law Assistant</title>
+    <title>About - Cyber Law Assistant</title>
     <style>
-        body {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #e9ecef, #007bff);
-            color: #343a40;
-            line-height: 1.6;
-            padding: 20px;
-            animation: fadeIn 1s ease-in;
         }
 
+        body {
+            background: linear-gradient(135deg, #a8ff78, #78ffd6);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: auto;
+        }
+
+        .logo-icon {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-right: 20px;
+        }
+
+        .navbar a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .navbar a.active {
+            background: rgba(76, 175, 80, 0.15);
+            border-color: rgba(76, 175, 80, 0.3);
+            font-weight: 600;
+        }
+
+        .save-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .save-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(69, 160, 73, 0.2);
+        }
+
+        /* Content styles */
         .content {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 40px;
+        }
+
+        .about-container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .about-container h2 {
+            font-size: 1.8rem;
+            margin: 30px 0 20px;
+            color: #333;
+        }
+
+        .about-container p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .features-list li {
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            animation: slideUp 0.5s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
         }
 
-        h1 {
-            text-align: center;
-            color: #007bff;
+        .features-list li:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        p {
-            margin-bottom: 15px;
-        }
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+                margin: 20px auto;
+            }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+            .about-container {
+                padding: 20px;
+            }
 
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+            .features-list {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <h1>About Us</h1>
-        <p>Welcome to the Cyber Law Assistant, your go-to resource for understanding and navigating the complex world of cyber law. Our mission is to provide clear, concise, and accurate information to help individuals and organizations protect themselves in the digital age.</p>
-        <p>Our team consists of experienced professionals in the fields of law, cybersecurity, and technology, all dedicated to making cyber law accessible to everyone. Whether you're a legal professional, a business owner, or simply someone interested in learning more about cyber law, we're here to help.</p>
-        <p>We offer a range of resources, including articles, guides, and interactive tools, to help you stay informed and prepared for the challenges of the digital world. Thank you for choosing the Cyber Law Assistant as your trusted source for cyber law information.</p>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <div class="logo-icon">CLA</div>
+                <h1>Cyber Law Assistant</h1>
+            </div>
+            <nav>
+                <a href="newindex.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html">Login</a>
+            </nav>
+            <button class="save-btn">Save Conversation</button>
+        </div>
+
+        <div class="content">
+            <div class="about-container">
+                <h1>About Cyber Law Assistant</h1>
+                <p>Welcome to the Cyber Law Assistant, your trusted companion in understanding and navigating cyber law. Our platform is designed to provide accurate, up-to-date information about various aspects of cyber law and digital rights.</p>
+                
+                <h2>Our Mission</h2>
+                <p>Our mission is to make cyber law accessible and understandable to everyone. Whether you're a legal professional, business owner, or individual seeking information, we're here to help you understand your rights and responsibilities in the digital world.</p>
+                
+                <h2>Key Features</h2>
+                <ul class="features-list">
+                    <li>
+                        <h3>Instant Access</h3>
+                        <p>Get immediate access to comprehensive cyber law information and guidance.</p>
+                    </li>
+                    <li>
+                        <h3>Expert Guidance</h3>
+                        <p>Receive expert guidance on common cyber law issues and regulations.</p>
+                    </li>
+                    <li>
+                        <h3>Up-to-date Information</h3>
+                        <p>Stay informed with the latest updates in cyber law and digital regulations.</p>
+                    </li>
+                    <li>
+                        <h3>Simple Explanations</h3>
+                        <p>Complex legal concepts explained in easy-to-understand language.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 </html> 

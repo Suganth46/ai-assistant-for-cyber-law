@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber Law Assistant</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
         /* Reset and base styles */
         * {
@@ -14,102 +15,153 @@
         }
 
         body {
-            background: linear-gradient(135deg, #e9ecef, #007bff);
-            color: #343a40;
+            background: linear-gradient(135deg, #a8ff78, #78ffd6);
+            color: #333;
             line-height: 1.6;
-            animation: fadeIn 1s ease-in;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
 
         /* Main container */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            background: linear-gradient(135deg, #a8ff78, #78ffd6);
         }
 
         /* Navbar */
         .navbar {
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            animation: slideDown 0.5s ease-out;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: auto;
+        }
+
+        .logo-icon {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-right: 20px;
         }
 
         .navbar a {
-            color: white;
+            color: #333;
             text-decoration: none;
-            margin: 0 10px;
-            transition: background-color 0.3s, color 0.3s;
-            padding: 8px 15px;
-            border-radius: 5px;
-            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .navbar a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
-        /* Header section */
-        header {
-            display: none; /* Remove duplicate header */
-        }
-
-        /* Main chat area */
-        .chat-container {
-            flex: 1;
-            display: flex;
-            overflow: hidden;
-            border: 1px solid #ddd;
-            border-top: none;
-            border-radius: 0 0 10px 10px;
-            background-color: #e1f5fe; /* Change to light blue */
+        .navbar a.active {
+            background: rgba(76, 175, 80, 0.15);
+            border-color: rgba(76, 175, 80, 0.3);
+            font-weight: 600;
         }
 
         /* Save button */
         .save-btn {
-            background-color: #1e88e5; /* Change to blue */
+            background: #4CAF50;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 10px 24px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 10px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .save-btn:hover {
-            background-color: #1565c0;
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(69, 160, 73, 0.2);
+        }
+
+        /* Chat container */
+        .chat-container {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+            background: transparent;
+            padding: 20px 40px;
         }
 
         /* Sidebar */
         .sidebar {
-            width: 280px;
-            background-color: #d0e7ff; /* Change sidebar background to light blue */
+            width: 300px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
             padding: 20px;
             overflow-y: auto;
-            border-right: 1px solid #ddd;
+            border-radius: 10px;
+            margin-right: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            height: fit-content;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
         .sidebar h2 {
             font-size: 1.2rem;
             margin-bottom: 15px;
-            color: #0056b3;
-            background-color: #b3d1ff; /* Change section header background to a darker blue */
-            padding: 10px;
-            border-radius: 5px;
+            color: #333;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar h2:hover {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
         }
 
         .sidebar-section {
             margin-bottom: 25px;
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        .sidebar-section:hover h2 {
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .topic-list {
@@ -117,21 +169,36 @@
         }
 
         .topic-list li {
-            padding: 8px 10px;
-            margin-bottom: 5px;
+            padding: 10px 15px;
+            margin-bottom: 8px;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.2s;
-            background-color: #e6f2ff; /* Change topic item background to very light blue */
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
         }
 
         .topic-list li:hover {
-            background-color: #cce5ff;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px) translateX(5px);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1),
+                       0 3px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .topic-list li:active {
+            transform: translateY(-1px) translateX(2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .topic-list li.active {
-            background-color: #b3d1ff;
-            font-weight: 500;
+            background: rgba(76, 175, 80, 0.15);
+            border-color: rgba(76, 175, 80, 0.3);
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15);
         }
 
         /* Chat main content */
@@ -139,6 +206,10 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             overflow: hidden;
         }
 
@@ -150,6 +221,8 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            min-height: 400px;
+            max-height: calc(100vh - 200px);
         }
 
         .message {
@@ -158,19 +231,26 @@
             border-radius: 18px;
             position: relative;
             line-height: 1.5;
+            animation: fadeInUp 0.5s ease both;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .message:hover {
+            transform: translateY(-2px);
         }
 
         .user-message {
             align-self: flex-end;
-            background-color: #007bff;
+            background: rgba(76, 175, 80, 0.9);
             color: white;
             border-bottom-right-radius: 4px;
         }
 
         .assistant-message {
             align-self: flex-start;
-            background-color: #f8f9fa;
-            color: #343a40;
+            background: rgba(255, 255, 255, 0.3);
+            color: #333;
             border-bottom-left-radius: 4px;
         }
 
@@ -183,29 +263,86 @@
 
         /* Input area */
         .chat-input {
-            border-top: 1px solid #ddd;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding: 15px 20px;
             display: flex;
             align-items: center;
-            background-color: #fff;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .chat-input input {
             flex: 1;
             padding: 12px 15px;
-            border: 1px solid #ddd;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 25px;
             outline: none;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            background: rgba(255, 255, 255, 0.2);
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input input:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .chat-input input:focus {
-            border-color: #007bff;
+            border-color: #4CAF50;
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
         }
 
+        .chat-input input::placeholder {
+            color: #666;
+        }
+
+        /* Topic list animations and styling */
+        .topic-list li {
+            padding: 8px 10px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid transparent;
+        }
+
+        .topic-list li:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .topic-list li.active {
+            background: rgba(76, 175, 80, 0.2);
+            border-color: rgba(76, 175, 80, 0.3);
+            font-weight: 500;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .sidebar-section {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        .message {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Send button */
         .send-btn {
-            background-color: #007bff;
+            background: #4CAF50;
             color: white;
             border: none;
             width: 45px;
@@ -216,23 +353,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
         }
 
         .send-btn:hover {
-            background-color: #0056b3;
+            background: #45a049;
         }
 
         /* Status bar */
         .status-bar {
             padding: 8px 15px;
-            background-color: #f8f9fa;
-            border-top: 1px solid #ddd;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             font-size: 0.85rem;
-            color: #666;
+            color: #333;
             display: flex;
             align-items: center;
             justify-content: space-between;
+        }
+
+        .status-text {
+            color: #333;
+            font-weight: 500;
         }
 
         .typing-indicator {
@@ -244,7 +387,7 @@
             height: 8px;
             width: 8px;
             margin: 0 2px;
-            background-color: #8c8c8c;
+            background-color: #4CAF50;
             display: block;
             border-radius: 50%;
             opacity: 0.4;
@@ -268,10 +411,45 @@
             100% { opacity: 0.4; }
         }
 
+        /* Animations */
+        .navbar, .save-btn, .topic-list li, .send-btn {
+            transition: all 0.3s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 20px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .sidebar {
                 display: none;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .chat-container {
+                flex-direction: column;
+            }
+
+            .chat-input {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .send-btn {
+                width: 100%;
+                margin-top: 10px;
             }
         }
     </style>
@@ -326,10 +504,12 @@
                 </div>
 
                 <div class="status-bar">
+                    <div class="status-text">Connected</div>
                     <div class="typing-indicator" id="typingIndicator">
-                        <span></span><span></span><span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
-                    <div class="status">Connected</div>
                 </div>
 
                 <div class="chat-input">
