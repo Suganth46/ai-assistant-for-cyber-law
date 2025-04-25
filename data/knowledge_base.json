@@ -1,0 +1,2282 @@
+{"laws": {
+                "hacking": {
+                "title": "Computer Hacking",
+                "description": "Unauthorized access to computer systems, networks, or data with malicious intent or without permission from the owner.",
+                "keywords": [
+                    "hack", "unauthorized access", "breach", "intrusion", "system compromise", "password cracking", 
+                    "cyber attack", "illegal access", "network penetration", "security breach", "data theft",
+                    "system infiltration", "computer trespass", "digital break-in", "unauthorized entry",
+                    "system cracking", "security bypass", "credential theft", "network infiltration",
+                    "cyber intrusion", "malicious access", "computer crime", "system exploitation"
+                ],
+                "legal_framework": {
+                    "primary_sections": [
+                        "Section 66 of IT Act, 2000",
+                        "Section 66B of IT Act, 2000",
+                        "Section 66F of IT Act, 2000 (if critical infrastructure)",
+                        "Section 43(a) of IT Act, 2000",
+                        "Section 70 of IT Act, 2000 (for protected systems)",
+                        "Section 72 of IT Act, 2000 (for breach of confidentiality)",
+                        "Section 72A of IT Act, 2000 (for breach of privacy)"
+                    ],
+                    "punishment": "Up to 3 years imprisonment or fine up to 5 lakh rupees or both; Up to life imprisonment for critical infrastructure",
+                    "aggravating_factors": [
+                        "Data theft",
+                        "Financial loss",
+                        "Critical infrastructure",
+                        "National security impact",
+                        "Multiple victims",
+                        "Organized crime"
+                    ]
+                },
+                "reporting_procedure": {
+                    "individual": [
+                        "Document all evidence of the breach", 
+                        "File FIR at local police station or cyber crime portal",
+                        "Report to CERT-In if significant breach",
+                        "Notify affected parties if personal data was compromised"
+                    ],
+                    "law_enforcement": [
+                        "Gather digital evidence with proper chain of custody",
+                        "Consult cyber forensics experts",
+                        "Follow jurisdictional procedures",
+                        "Consider multi-agency coordination for cross-border cases"
+                    ]
+                },
+                "evidence_collection": [
+                    "Server logs showing unauthorized access", 
+                    "Access records and timestamps", 
+                    "System files with modified timestamps",
+                    "Malware or unauthorized software",
+                    "Network traffic logs showing suspicious activity"
+                ],
+                "prevention_tips": [
+                    "Implement strong access controls and authentication",
+                    "Keep systems and software updated with security patches",
+                    "Use firewalls and intrusion detection systems",
+                    "Conduct regular security audits and penetration testing",
+                    "Train staff on security awareness and social engineering threats"
+                ],
+                "landmark_cases": [
+                    {
+                        "name": "State vs John Doe (2020)",
+                        "significance": "Established precedent for prosecuting remote hacking across jurisdictions",
+                        "key_findings": "Intent to cause damage was proven through digital forensic evidence"
+                    },
+                    {
+                        "name": "United States v. Morris (1991)",
+                        "significance": "First major prosecution under the CFAA involving a worm that caused widespread damage",
+                        "key_findings": "Unintended consequences of malicious code still constitute criminal liability"
+                    },
+                    {
+                        "name": "SolarWinds Hack Case (2021)",
+                        "significance": "Largest supply chain attack in history",
+                        "key_findings": "Established new standards for critical infrastructure protection"
+                    },
+                    {
+                        "name": "Colonial Pipeline Ransomware Case (2021)",
+                        "significance": "First major critical infrastructure cyber attack",
+                        "key_findings": "Set new precedents for ransomware attacks on critical infrastructure"
+                    }
+                ]
+            },
+            "phishing": {
+                "title": "Phishing",
+                "description": "Fraudulent attempt to obtain sensitive information by disguising as a trustworthy entity in electronic communications",
+                "keywords": [
+                    "phish", "fake email", "credential theft", "impersonation", "spoofing", "fraudulent website",
+                    "email scam", "identity theft", "fake login", "deceptive communication", "brand impersonation",
+                    "social engineering", "account takeover", "fraudulent link", "email forgery", "spoofed domain",
+                    "password harvesting", "fake notification", "malicious attachment", "credential phishing",
+                    "spear phishing", "whaling", "pharming", "clone phishing", "voice phishing", "smishing",
+                    "business email compromise", "CEO fraud", "fake security alert"
+                ],
+                "legal_framework": {
+                    "primary_sections": [
+                        "Section 66D of IT Act, 2000",
+                        "Section 66C of IT Act, 2000 (Identity Theft)",
+                        "Section 66E of IT Act, 2000 (Privacy Violation)",
+                        "Section 43A of IT Act, 2000 (Data Protection)",
+                        "Section 72A of IT Act, 2000 (Breach of Privacy)",
+                        "Section 420 of IPC (Cheating)"
+                    ],
+                    "punishment": "Up to 3 years imprisonment and fine up to 1 lakh rupees; Additional penalties for financial fraud",
+                    "aggravating_factors": [
+                        "Financial fraud",
+                        "Identity theft",
+                        "Targeting vulnerable populations",
+                        "Large scale operation",
+                        "Organized crime",
+                        "Cross-border activity"
+                    ]
+                },
+                "reporting_procedure": {
+                    "individual": [
+                        "Preserve original phishing email or message with headers",
+                        "Report to cyber crime portal or local police",
+                        "Contact your bank if financial information was compromised",
+                        "Report to email service provider or platform where phishing occurred"
+                    ],
+                    "law_enforcement": [
+                        "Track origin of phishing attempt through email headers",
+                        "Coordinate with hosting providers to take down fraudulent websites",
+                        "Work with financial institutions if financial fraud involved",
+                        "Conduct forensic analysis of phishing infrastructure"
+                    ]
+                },
+                "evidence_collection": [
+                    "Original phishing email with complete headers", 
+                    "Screenshots of fake websites",
+                    "URL links from phishing messages",
+                    "Any information submitted to fraudulent sites",
+                    "Bank statements showing unauthorized transactions if applicable"
+                ],
+                "prevention_tips": [
+                    "Verify sender email addresses carefully",
+                    "Never click on suspicious links in emails or messages",
+                    "Check for HTTPS and verify website authenticity before entering credentials",
+                    "Use multi-factor authentication wherever possible",
+                    "Keep software updated, especially browsers and email clients"
+                ],
+                "landmark_cases": [
+                    {
+                        "name": "Cyber Cell v. Anonymous Group (2019)",
+                        "significance": "Major phishing operation targeting government officials",
+                        "key_findings": "Established liability for sophisticated spear-phishing campaigns"
+                    },
+                    {
+                        "name": "FTC v. Wyndham Worldwide Corp (2015)",
+                        "significance": "Established corporate liability for inadequate phishing protection",
+                        "key_findings": "Organizations have a duty to protect customers from foreseeable phishing risks"
+                    },
+                    {
+                        "name": "Microsoft 365 Phishing Case (2023)",
+                        "significance": "Largest business email compromise case",
+                        "key_findings": "Established new standards for corporate email security"
+                    },
+                    {
+                        "name": "Twitter Bitcoin Scam Case (2020)",
+                        "significance": "High-profile social media phishing attack",
+                        "key_findings": "Set new precedents for social media platform security"
+                    }
+                ]
+            },
+            "data_breach": {
+                "title": "Data Breach",
+                "description": "Unauthorized access resulting in exposure of sensitive, protected, or confidential data",
+                "keywords": [
+                    "data leak", "information exposure", "data compromise", "data theft", "unauthorized disclosure",
+                    "data spill", "information breach", "confidentiality breach", "data exfiltration", "data loss",
+                    "sensitive information theft", "database breach", "unauthorized data access", "data security incident",
+                    "records breach", "information leak", "PII exposure", "data breach notification", "compromised records",
+                    "data protection failure", "confidential information exposure", "cloud breach", "personal data exposure",
+                    "data privacy violation", "customer data leak", "medical records breach", "financial data exposure"
+                ],
+                "legal_framework": {
+                    "primary_sections": [
+                        "Section 43A of IT Act, 2000",
+                        "Section 72A of IT Act, 2000",
+                        "Personal Data Protection Bill, 2019",
+                        "Section 66 of IT Act, 2000",
+                        "Section 72 of IT Act, 2000",
+                        "Section 43 of IT Act, 2000"
+                    ],
+                    "punishment": "Compensation to affected parties and penalties up to 5 crore rupees or 4% of global turnover, whichever is higher",
+                    "aggravating_factors": [
+                        "Negligence",
+                        "Delayed notification",
+                        "Sensitive personal data",
+                        "Large scale breach",
+                        "Repeat violations",
+                        "Intentional concealment"
+                    ]
+                },
+                "reporting_procedure": {
+                    "individual": [
+                        "File complaint with Data Protection Authority",
+                        "Notify cyber crime authorities",
+                        "Consider civil legal action for damages"
+                    ],
+                    "law_enforcement": [
+                        "Document extent and nature of breached data",
+                        "Determine notification requirements based on data type",
+                        "Investigate security controls and compliance failures"
+                    ]
+                },
+                "evidence_collection": [
+                    "System logs showing unauthorized access",
+                    "Documentation of affected records",
+                    "Security assessment reports before and after breach",
+                    "Communications regarding the breach response",
+                    "Records of notification to affected individuals"
+                ],
+                "prevention_tips": [
+                    "Implement encryption for sensitive data",
+                    "Conduct regular security assessments",
+                    "Limit data collection to necessary information only",
+                    "Implement strict access controls and authentication",
+                    "Develop and test incident response procedures"
+                ],
+                "landmark_cases": [
+                    {
+                        "name": "Facebook-Cambridge Analytica Case (2018)",
+                        "significance": "Major data privacy scandal",
+                        "key_findings": "Established new standards for data protection and user consent"
+                    },
+                    {
+                        "name": "Equifax Data Breach Case (2017)",
+                        "significance": "Largest financial data breach",
+                        "key_findings": "Set new precedents for corporate data security requirements"
+                    },
+                    {
+                        "name": "Aadhaar Data Leak Case (2018)",
+                        "significance": "Major government database breach",
+                        "key_findings": "Established new standards for government data protection"
+                    },
+                    {
+                        "name": "Marriott Data Breach Case (2020)",
+                        "significance": "Largest hotel data breach",
+                        "key_findings": "Set new standards for hospitality industry data security"
+                    }
+                ]
+            },
+            "ransomware": {
+                "title": "Ransomware Attacks",
+                "description": "Malicious software that encrypts victim's data and demands payment for decryption key",
+                "keywords": [
+                    "ransom", "encryption", "malware", "extortion", "bitcoin", "cryptocurrency",
+                    "file encryption", "digital extortion", "crypto malware", "ransom demand", "data hostage",
+                    "decryption key", "ransomware infection", "crypto virus", "file hijacking", "system lockout",
+                    "data ransom", "malicious encryption", "crypto locker", "payment demand", "data recovery ransom",
+                    "double extortion", "threatening notice", "data encryption attack", "locked files", "encrypted data",
+                    "ransomware family", "ransomware variant", "ransomware strain", "disk encryption", "system hijack"
+                ],
+                "legal_framework": {
+                    "primary_sections": [
+                        "Section 66 of IT Act, 2000",
+                        "Section 66F of IT Act, 2000",
+                        "Section 43 of IT Act, 2000",
+                        "Section 70 of IT Act, 2000 (for critical infrastructure)",
+                        "Section 72 of IT Act, 2000",
+                        "Section 72A of IT Act, 2000",
+                        "Section 420 of IPC (Cheating)",
+                        "Section 385 of IPC (Extortion)"
+                    ],
+                    "punishment": "Up to 3 years imprisonment or fine or both; Up to life imprisonment for critical infrastructure; Additional penalties for financial losses",
+                    "aggravating_factors": [
+                        "Critical infrastructure targeting",
+                        "Healthcare targeting",
+                        "Public services disruption",
+                        "Multiple victims",
+                        "Large scale impact",
+                        "Organized crime involvement",
+                        "Cross-border operations",
+                        "Repeat offenses"
+                    ],
+                    "jurisdictional_considerations": {
+                        "territorial_jurisdiction": [
+                            "Location of victim's systems",
+                            "Location of attacker's systems",
+                            "Location of payment processing",
+                            "Location of data storage"
+                        ],
+                        "international_cooperation": [
+                            "Mutual Legal Assistance Treaties (MLAT)",
+                            "Interpol Cybercrime Division",
+                            "International Cybercrime Cooperation",
+                            "Cross-border investigation protocols"
+                        ],
+                        "extradition_considerations": [
+                            "Bilateral extradition treaties",
+                            "International cybercrime conventions",
+                            "Mutual legal assistance agreements",
+                            "Cross-border evidence sharing"
+                        ]
+                    }
+                },
+                "reporting_procedure": {
+                    "individual": [
+                        "Report to cyber crime authorities immediately",
+                        "Contact IT security specialists",
+                        "Do not pay ransom without consulting authorities",
+                        "Isolate affected systems to prevent spread"
+                    ],
+                    "law_enforcement": [
+                        "Preserve ransom notes and communications",
+                        "Track cryptocurrency transactions if payment occurred",
+                        "Coordinate with international agencies if needed",
+                        "Evaluate national security implications"
+                    ]
+                },
+                "evidence_collection": [
+                    "Ransom notes and communications",
+                    "Bitcoin wallet addresses used by attackers",
+                    "Encrypted file samples",
+                    "System logs before encryption",
+                    "Malware samples if available"
+                ],
+                "prevention_tips": [
+                    "Maintain regular, offline backups of all critical data",
+                    "Keep systems and software updated with security patches",
+                    "Implement email filtering to prevent phishing-delivered ransomware",
+                    "Use application whitelisting to prevent unauthorized program execution",
+                    "Train staff on identifying suspicious emails and attachments"
+                ],
+                "landmark_cases": [
+                    {
+                        "name": "Colonial Pipeline Ransomware Case (2021)",
+                        "significance": "First major critical infrastructure ransomware attack",
+                        "key_findings": "Established new standards for critical infrastructure protection and response",
+                        "jurisdiction": "US Federal Court with international cooperation"
+                    },
+                    {
+                        "name": "JBS Foods Ransomware Case (2021)",
+                        "significance": "Largest food processing company attack",
+                        "key_findings": "Set precedents for supply chain security requirements",
+                        "jurisdiction": "Multiple jurisdictions including Brazil and US"
+                    },
+                    {
+                        "name": "AIIMS Ransomware Attack (2022)",
+                        "significance": "First major healthcare ransomware attack in India",
+                        "key_findings": "Established healthcare sector cybersecurity standards",
+                        "jurisdiction": "Indian courts with international cooperation"
+                    },
+                    {
+                        "name": "Costa Rica Government Attack (2022)",
+                        "significance": "First national government ransomware attack",
+                        "key_findings": "Set new standards for government cybersecurity",
+                        "jurisdiction": "International cooperation with multiple countries"
+                    }
+                ]
+            },
+                     "it_act_section_65": {
+                "title": "Tampering with Computer Source Code",
+                "section": "Section 65 of IT Act, 2000",
+                "description": "Knowingly or intentionally concealing, destroying, altering, or causing another to conceal, destroy or alter computer source code required to be kept or maintained by law",
+                "keywords": [
+                    "source code tampering", "code alteration", "concealing source", "computer program",
+                    "source code modification", "program code alteration", "unauthorized code changes",
+                    "source code destruction", "code integrity violation", "software source modification",
+                    "code concealment", "application source tampering", "program source destruction",
+                    "source documentation tampering", "source code manipulation", "algorithm tampering",
+                    "code obfuscation", "illegal code modification", "software tampering", "IT Act 65",
+                    "source code deletion", "program alteration", "code alteration offense", "source code offense"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 65 of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years, or with fine up to ₹2 lakh, or both",
+                    "aggravating_factors": ["Commercial intent", "Intellectual property theft", "Causing system failure"]
+                }
+            },
+            "it_act_section_66": {
+                "title": "Computer Related Offences",
+                "section": "Section 66 of IT Act, 2000",
+                "description": "Dishonestly or fraudulently accessing a computer, computer system or network, extracting data, or introducing computer contaminant",
+                "keywords": [
+                    "unauthorized access", "data theft", "computer fraud", "hacking", "system breach",
+                    "fraudulent computer use", "dishonest access", "illegal system access", "computer misuse",
+                    "system intrusion", "fraudulent data extraction", "unlawful computer access",
+                    "network breach", "unauthorized system use", "computer contaminant", "malicious code",
+                    "data extraction", "cyber trespass", "illegal computer operation", "IT Act 66",
+                    "fraudulent network access", "unauthorized data access", "computer offense",
+                    "cyber offense", "computer system breach", "network intrusion"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66 of IT Act, 2000"],
+                    "punishment": "Imprisonment for a term which may extend to 3 years or with fine which may extend to ₹5 lakh or both",
+                    "aggravating_factors": ["Commercial gain", "Critical data compromise", "Repeated offenses"]
+                }
+            },
+            "it_act_section_66a": {
+                "title": "Sending offensive messages through communication service",
+                "section": "Section 66A of IT Act, 2000",
+                "description": "Sending offensive or menacing information through communication services",
+                "keywords": [
+                    "offensive communication", "electronic message", "threat", "annoyance", "false information",
+                    "menacing message", "offensive content", "insulting messages", "grossly offensive",
+                    "threatening message", "online harassment", "digital communication offense", "cyber intimidation",
+                    "annoying messages", "false communications", "menacing content", "electronic threat",
+                    "IT Act 66A", "Shreya Singhal case", "unconstitutional section", "struck down section",
+                    "online speech", "communication offense", "digital threat", "invalid section"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66A of IT Act, 2000"],
+                    "punishment": "Note: This section was struck down by the Supreme Court in Shreya Singhal v. Union of India (2015) as unconstitutional",
+                    "current_status": "Invalid and unenforceable"
+                }
+            },
+            "it_act_section_66b": {
+                "title": "Dishonestly receiving stolen computer resource or communication device",
+                "section": "Section 66B of IT Act, 2000",
+                "description": "Dishonestly receiving or retaining stolen computer resource or communication device",
+                "keywords": [
+                    "stolen hardware", "receiving stolen property", "dishonest possession", "stolen devices",
+                    "stolen computer", "stolen laptop", "stolen phone", "receiving stolen computer",
+                    "dishonest retention", "stolen digital device", "IT equipment theft", "stolen computer parts",
+                    "computer theft proceeds", "stolen IT resources", "stolen server", "stolen network device",
+                    "IT Act 66B", "receiving stolen computer resource", "handling stolen computer",
+                    "stolen device possession", "stolen communications device", "dishonest acquisition",
+                    "stolen technology", "retaining stolen computers", "stolen storage device"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66B of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years or fine up to ₹1 lakh or both",
+                    "aggravating_factors": ["Commercial intent", "Large volume of devices", "Organized crime connection"]
+                }
+            },
+            "it_act_section_66c": {
+                "title": "Identity Theft",
+                "section": "Section 66C of IT Act, 2000",
+                "description": "Fraudulently or dishonestly making use of the electronic signature, password, or any other unique identification feature of any person",
+                "keywords": [
+                    "identity fraud", "password theft", "credential abuse", "impersonation", "electronic signature misuse",
+                    "digital identity theft", "password stealing", "credential harvesting", "online identity theft",
+                    "signature forgery", "identity misrepresentation", "authentication theft", "login credential theft",
+                    "biometric identity theft", "digital impersonation", "unique identifier theft", "OTP theft",
+                    "IT Act 66C", "electronic identity fraud", "online credential theft", "password misuse",
+                    "authentication data theft", "digital signature theft", "identity credential theft",
+                    "electronic identity misappropriation", "online authentication fraud"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66C of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years and fine up to ₹1 lakh",
+                    "aggravating_factors": ["Financial loss", "Multiple victims", "Sensitive credentials"]
+                }
+            },
+            "it_act_section_66d": {
+                "title": "Cheating by Personation by using computer resource",
+                "section": "Section 66D of IT Act, 2000",
+                "description": "Cheating by impersonation using computer resource or communication device",
+                "keywords": [
+                    "impersonation", "electronic fraud", "online cheating", "fake identity", "digital impersonation",
+                    "online identity fraud", "profile impersonation", "digital personation", "fake profile",
+                    "fraudulent representation", "identity deception", "online impersonation fraud", "fake social media account",
+                    "false persona", "identity spoofing", "pretexting", "impersonation scam", "IT Act 66D",
+                    "digital deception", "fraudulent digital identity", "cheating by impersonation", "online deception",
+                    "communication device fraud", "false identity fraud", "electronic impersonation", "online persona fraud"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66D of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years and fine up to ₹1 lakh",
+                    "aggravating_factors": ["Financial fraud", "Impersonating officials", "Mass targeting"]
+                }
+            },
+            "it_act_section_66e": {
+                "title": "Violation of Privacy",
+                "section": "Section 66E of IT Act, 2000",
+                "description": "Capturing, publishing or transmitting images of private areas of any person without consent",
+                "keywords": [
+                    "privacy violation", "unauthorized photography", "private images", "consent violation", "voyeurism",
+                    "image privacy", "non-consensual images", "intimate images", "privacy breach", "unauthorized recording",
+                    "private area images", "privacy intrusion", "unauthorized surveillance", "hidden camera",
+                    "non-consensual photography", "image capture violation", "unauthorized image sharing",
+                    "IT Act 66E", "privacy violation penalty", "digital voyeurism", "image privacy breach",
+                    "unauthorized image transmission", "image consent violation", "private recording",
+                    "intimate privacy violation", "body privacy", "digital privacy violation"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66E of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years or fine up to ₹2 lakh, or both",
+                    "aggravating_factors": ["Distribution of content", "Blackmail intent", "Repeated violations"]
+                }
+            },
+            "it_act_section_66f": {
+                "title": "Cyber Terrorism",
+                "section": "Section 66F of IT Act, 2000",
+                "description": "Acts of cybercrime with intent to threaten the unity, integrity, security or sovereignty of India",
+                "keywords": [
+                    "cyber terrorism", "national security threat", "critical infrastructure attack", "digital sabotage",
+                    "cyber attack national security", "digital terrorism", "critical information infrastructure",
+                    "cyber warfare", "nation state attack", "cyber sabotage", "strategic system attack",
+                    "cybersecurity threat", "sovereign system attack", "national digital infrastructure",
+                    "cybersecurity breach", "IT Act 66F", "anti-national cyber activity", "sovereignty threat",
+                    "cyber integrity threat", "unity threat", "national digital security", "cyber terrorism act",
+                    "critical infrastructure sabotage", "national sovereignty cyber attack", "digital insurgency"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 66F of IT Act, 2000"],
+                    "punishment": "Imprisonment which may extend to life imprisonment",
+                    "aggravating_factors": ["Loss of life", "Critical infrastructure damage", "Foreign involvement"]
+                }
+            },
+            "it_act_section_67": {
+                "title": "Publishing or transmitting obscene material in electronic form",
+                "section": "Section 67 of IT Act, 2000",
+                "description": "Publishing or transmitting material which is lascivious or appeals to prurient interest in electronic form",
+                "keywords": [
+                    "obscene content", "digital pornography", "electronic obscenity", "indecent material",
+                    "obscene publication", "digital obscenity", "prurient content", "lascivious material",
+                    "obscene electronic transmission", "online obscene content", "digital indecency",
+                    "obscene digital publication", "online obscene material", "obscene transmission",
+                    "IT Act 67", "electronic obscene content", "digital obscene material", "indecent digital content",
+                    "electronic pornography", "obscene digital communication", "obscene electronic content",
+                    "electronic indecent transmission", "online pornography", "electronic obscene material",
+                    "digital indecent content"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 67 of IT Act, 2000"],
+                    "punishment": "First conviction: Up to 3 years and fine up to ₹5 lakh; Subsequent conviction: Up to 5 years and fine up to ₹10 lakh",
+                    "aggravating_factors": ["Commercial distribution", "Minor access", "Repeat offense"]
+                }
+            },
+            "it_act_section_67a": {
+                "title": "Publishing or transmitting of material containing sexually explicit act in electronic form",
+                "section": "Section 67A of IT Act, 2000",
+                "description": "Publishing or transmitting material containing sexually explicit acts in electronic form",
+                "keywords": [
+                    "explicit content", "sexual material", "adult content", "pornographic transmission",
+                    "sexually explicit publication", "electronic sexual content", "digital sexual material",
+                    "explicit electronic content", "digital explicit material", "explicit content sharing",
+                    "sexual content transmission", "explicit electronic publication", "sexual act depiction",
+                    "IT Act 67A", "electronic sexual material", "digital pornography", "explicit content distribution",
+                    "sexual content publication", "electronic explicit material", "digital sexual content",
+                    "online sexual material", "electronic pornography", "sexually explicit digital content",
+                    "sexual electronic transmission", "explicit digital material"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 67A of IT Act, 2000"],
+                    "punishment": "First conviction: Up to 5 years and fine up to ₹10 lakh; Subsequent conviction: Up to 7 years and fine up to ₹10 lakh",
+                    "aggravating_factors": ["Commercial intent", "Wide distribution", "Non-consensual content"]
+                }
+            },
+            "it_act_section_67b": {
+                "title": "Publishing or transmitting material depicting children in sexually explicit act in electronic form",
+                "section": "Section 67B of IT Act, 2000",
+                "description": "Publishing, transmitting, collecting, seeking, browsing, or storing material depicting children in sexually explicit acts in electronic form",
+                "keywords": [
+                    "child sexual abuse material", "CSAM", "child pornography", "minor exploitation",
+                    "child sexual content", "child exploitation material", "underage sexual images",
+                    "child abuse imagery", "child explicit content", "child sexual imagery", "minor sexual content",
+                    "underage explicit material", "child sexual exploitation", "electronic child exploitation",
+                    "IT Act 67B", "child abuse material", "CSEM", "digital child exploitation", "online child abuse",
+                    "child sexual abuse online", "digital CSAM", "minor sexual material", "child sexual abuse images",
+                    "electronic child pornography", "child exploitation imagery", "underage sexual content"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 67B of IT Act, 2000"],
+                    "punishment": "First conviction: Up to 5 years and fine up to ₹10 lakh; Subsequent conviction: Up to 7 years and fine up to ₹10 lakh",
+                    "aggravating_factors": ["Direct involvement with children", "Distribution network", "Large collection"]
+                }
+            },
+            "it_act_section_67c": {
+                "title": "Preservation and retention of information by intermediaries",
+                "section": "Section 67C of IT Act, 2000",
+                "description": "Intermediary intentionally or knowingly contravening the directions about preservation and retention of information",
+                "keywords": [
+                    "data retention", "evidence preservation", "intermediary compliance", "information storage",
+                    "data preservation", "intermediary obligation", "information retention", "data storage requirements",
+                    "electronic records retention", "digital evidence preservation", "transaction data retention",
+                    "log preservation", "record keeping obligation", "data maintenance", "IT Act 67C",
+                    "data preservation failure", "information retention violation", "intermediary non-compliance",
+                    "data storage violation", "record retention failure", "information preservation breach",
+                    "digital record retention", "intermediary data obligation", "log retention requirement",
+                    "electronic record maintenance"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 67C of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years and fine",
+                    "aggravating_factors": ["Intentional destruction", "Obstruction of investigation", "Large scale non-compliance"]
+                }
+            },
+            "it_act_section_68": {
+                "title": "Failure to comply with Controller's directions",
+                "section": "Section 68 of IT Act, 2000",
+                "description": "Failure to comply with the directions given by Controller of Certifying Authorities",
+                "keywords": [
+                    "controller directions", "non-compliance", "certification authority", "regulatory failure",
+                    "controller non-compliance", "certification regulation", "authority directive failure",
+                    "compliance violation", "CCA directions", "IT Act 68", "controller order violation",
+                    "certifying authority non-compliance", "controller instruction disobedience", "CCA compliance",
+                    "digital certification compliance", "regulatory order violation", "certificate compliance",
+                    "controller direction breach", "certification directive failure", "digital certificate compliance",
+                    "certification authority violation", "electronic certification regulation", "controller mandate violation"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 68 of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years or fine up to ₹2 lakh, or both",
+                    "aggravating_factors": ["Repeat violation", "Public impact", "Willful disobedience"]
+                }
+            },
+            "it_act_section_69": {
+                "title": "Failure to assist in interception or monitoring",
+                "section": "Section 69 of IT Act, 2000",
+                "description": "Failure to assist authorized agency with interception, monitoring, or decryption of information",
+                "keywords": [
+                    "interception refusal", "monitoring non-compliance", "decryption failure", "surveillance assistance",
+                    "lawful interception", "monitoring assistance", "decryption assistance", "information access",
+                    "interception compliance", "government surveillance assistance", "IT Act 69", "decryption order",
+                    "interception order", "monitoring directive", "lawful access", "encryption assistance",
+                    "interception assistance refusal", "surveillance cooperation", "lawful monitoring",
+                    "technical assistance order", "decryption non-compliance", "interception non-cooperation",
+                    "authorized monitoring", "information interception", "legal surveillance"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 69 of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 7 years and fine",
+                    "aggravating_factors": ["Intentional obstruction", "National security implications", "Systematic non-compliance"]
+                }
+            },
+            "it_act_section_69a": {
+                "title": "Failure to comply with blocking orders",
+                "section": "Section 69A of IT Act, 2000",
+                "description": "Failure of the intermediary to comply with direction for blocking public access to information",
+                "keywords": [
+                    "blocking directive", "content removal", "access restriction", "intermediary compliance",
+                    "website blocking", "content blocking", "access blocking", "information restriction",
+                    "internet blocking", "online content removal", "IT Act 69A", "content censorship",
+                    "blocking order", "web access restriction", "content filtering", "intermediary blocking",
+                    "public access restriction", "blocking non-compliance", "content takedown", "information filtering",
+                    "internet content removal", "digital content restriction", "website takedown", "web filtering",
+                    "internet censorship"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 69A of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 7 years and fine",
+                    "aggravating_factors": ["Willful disobedience", "Public harm", "Repeat violation"]
+                }
+            },
+            "it_act_section_69b": {
+                "title": "Failure to comply with cybersecurity monitoring directions",
+                "section": "Section 69B of IT Act, 2000",
+                "description": "Intermediary contravening provisions regarding monitoring and collecting traffic data for cybersecurity",
+                "keywords": [
+                    "traffic monitoring", "cybersecurity compliance", "data collection", "network surveillance",
+                    "security monitoring", "traffic data", "cybersecurity monitoring", "network monitoring",
+                    "security data collection", "traffic analysis", "cyber intelligence", "IT Act 69B",
+                    "traffic inspection", "security surveillance", "network data collection", "security compliance",
+                    "intermediary monitoring", "traffic data retention", "cyber traffic analysis", "security intelligence",
+                    "digital surveillance", "network traffic monitoring", "cyber data collection", "security traffic data",
+                    "cybersecurity intelligence"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 69B of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 3 years and fine",
+                    "aggravating_factors": ["Critical infrastructure", "Persistent non-compliance", "Data destruction"]
+                }
+            },
+            "it_act_section_70": {
+                "title": "Unauthorized access to protected systems",
+                "section": "Section 70 of IT Act, 2000",
+                "description": "Securing or attempting to secure access to protected system declared by government",
+                "keywords": [
+                    "critical infrastructure", "protected system", "unauthorized access", "secured computer",
+                    "critical system access", "government protected computer", "notified system", "critical network",
+                    "protected infrastructure", "national system", "security breach", "IT Act 70", "critical IT system",
+                    "sensitive system access", "protected computer access", "government computer security",
+                    "critical digital infrastructure", "secured system breach", "important computer system",
+                    "notified protected system", "essential computer facility", "protected network access",
+                    "nationally important system", "critical computer resource", "government protected network"
+                ],
+                "legal_framework": {
+                    "primary_sections": ["Section 70 of IT Act, 2000"],
+                    "punishment": "Imprisonment up to 10 years and fine",
+                    "aggravating_factors": ["Data theft", "System damage", "National security impact"]
+                }
+            },
+"it_act_section_70b": {
+    "title": "Failure to provide information to CERT-In",
+    "section": "Section 70B of IT Act, 2000",
+    "description": "Failure to provide information called for or comply with direction issued by CERT-In",
+    "keywords": [
+        "CERT-In", "incident reporting", "cybersecurity compliance", "information sharing",
+        "security incident", "cyber incident notification", "mandatory reporting", "security breach reporting",
+        "CERT-In directives", "incident response", "cybersecurity coordination", "computer emergency response",
+        "security incident disclosure", "breach notification", "national cybersecurity", "IT Act 70B",
+        "cyber incident compliance", "security information sharing", "incident notification requirement",
+        "security response coordination", "cyber emergency reporting", "digital incident response",
+        "cybersecurity cooperation", "security breach notification", "incident handling procedures"
+    ],
+    "legal_framework": {
+        "primary_sections": ["Section 70B of IT Act, 2000"],
+        "punishment": "Imprisonment up to 1 year or fine up to ₹1 lakh, or both",
+        "aggravating_factors": ["Critical incident", "Delayed notification", "Concealment of breach"]
+    }
+},
+
+"it_act_section_71": {
+    "title": "Misrepresentation to Controller or Certifying Authority",
+    "section": "Section 71 of IT Act, 2000",
+    "description": "Making false statements or representation to Controller of Certifying Authorities or Certifying Authority",
+    "keywords": [
+        "false representation", "certification fraud", "digital signature misrepresentation", "authority deception",
+        "certificate falsehood", "false statements", "misrepresentation offense", "certification authority deception",
+        "controller misrepresentation", "digital certificate fraud", "certification falsehood", "authentication fraud",
+        "false certification information", "certificate authority deception", "IT Act 71", "false digital certificate", 
+        "signature authority fraud", "certification misrepresentation", "digital identity fraud", "certificate misstatement",
+        "controller deception", "certification document fraud", "digital certificate misrepresentation",
+        "signature verification fraud", "authentication authority deception"
+    ],
+    "legal_framework": {
+        "primary_sections": ["Section 71 of IT Act, 2000"],
+        "punishment": "Imprisonment up to 3 years or fine up to ₹1 lakh, or both",
+        "aggravating_factors": ["Fraudulent intent", "Public impact", "Multiple misrepresentations"]
+    }
+},
+"it_act_section_72": {
+    "title": "Breach of Confidentiality and Privacy",
+    "section": "Section 72 of IT Act, 2000",
+    "description": "Disclosure of confidential information by person with official access without consent",
+    "keywords": [
+        "confidentiality breach", "unauthorized disclosure", "privacy violation", "information leak",
+        "confidential data exposure", "official secrecy breach", "authorized access misuse", "privileged information disclosure",
+        "data confidentiality violation", "unauthorized information sharing", "official trust breach", "privacy breach",
+        "IT Act 72", "access privilege abuse", "confidentiality violation", "information security breach",
+        "secure data disclosure", "unauthorized revelation", "secret information exposure", "professional confidence breach",
+        "data privacy violation", "information protection failure", "confidential knowledge disclosure",
+        "authorized personnel breach", "secure information leak"
+    ],
+    "legal_framework": {
+        "primary_sections": ["Section 72 of IT Act, 2000"],
+        "punishment": "Imprisonment up to 2 years or fine up to ₹1 lakh, or both",
+        "aggravating_factors": ["Sensitive information", "Multiple breaches", "Commercial intent"]
+    }
+},
+"it_act_section_72a": {
+    "title": "Disclosure of information in breach of lawful contract",
+    "section": "Section 72A of IT Act, 2000",
+    "description": "Disclosure of personal information in breach of lawful contract by service provider",
+    "keywords": [
+        "contract violation", "data protection breach", "confidentiality agreement", "personal data disclosure",
+        "service provider breach", "contractual confidentiality", "data protection violation", "personal information misuse",
+        "confidentiality contract breach", "service agreement violation", "customer data exposure", "contractual obligation breach",
+        "IT Act 72A", "lawful contract violation", "client data misuse", "confidential information sharing",
+        "data handling breach", "provider trust violation", "sensitive information disclosure", "customer privacy breach",
+        "data custody violation", "terms of service breach", "personal data protection failure", "provider confidentiality violation",
+        "data stewardship breach", "contractual privacy violation"
+    ],
+    "legal_framework": {
+        "primary_sections": ["Section 72A of IT Act, 2000"],
+        "punishment": "Imprisonment up to 3 years or fine up to ₹5 lakh, or both",
+        "aggravating_factors": ["Commercial advantage", "Sensitive personal data", "Large scale disclosure"]
+    }
+},
+"it_act_section_73": {
+    "title": "Publishing false Digital Signature Certificate",
+    "section": "Section 73 of IT Act, 2000",
+    "description": "Publishing electronic Signature Certificate false in certain particulars",
+    "keywords": [
+        "false certificate", "digital signature fraud", "certificate forgery", "electronic authentication",
+        "fraudulent digital certificate", "signature certificate falsification", "PKI fraud", "certificate authenticity",
+        "digital identity forgery", "electronic certificate fraud", "signature verification fraud", "authentication certificate fraud",
+        "IT Act 73", "digital certificate misrepresentation", "certificate integrity violation", "electronic signature fraud",
+        "digital certificate forgery", "authentication credential fraud", "false verification certificate", "identity certificate fraud",
+        "electronic signature certificate", "digital authentication fraud", "certificate publication offense",
+        "electronic verification fraud", "identity verification certificate"
+    ],
+    "legal_framework": {
+        "primary_sections": ["Section 73 of IT Act, 2000"],
+        "punishment": "Imprisonment up to 2 years or fine up to ₹1 lakh, or both",
+        "aggravating_factors": ["Multiple certificates", "Commercial gain", "Identity theft"]
+    }
+},
+"it_act_section_74": {
+    "title": "Publication for fraudulent purpose",
+    "section": "Section 74 of IT Act, 2000",
+    "description": "Publication of Digital Signature Certificate for fraudulent purpose",
+    "keywords": [
+        "fraudulent certificate", "deceptive publication", "certificate misuse", "digital fraud",
+        "certificate fraud purpose", "signature certificate scam", "fraudulent digital identity", "malicious certificate publication",
+        "digital certificate misuse", "signature fraud", "deceptive digital certificate", "certificate publication fraud",
+        "IT Act 74", "fraudulent verification certificate", "deceptive authentication", "signature identity fraud",
+        "certificate scheme", "electronic identity fraud", "signature certificate deception", "fraudulent digital verification",
+        "electronic certificate scam", "authentication fraud", "digital identity misrepresentation", "fraudulent electronic certificate",
+        "digital certificate scheme"
+    ],
+    "legal_framework": {
+        "primary_sections": ["Section 74 of IT Act, 2000"],
+        "punishment": "Imprisonment up to 2 years or fine up to ₹1 lakh, or both",
+        "aggravating_factors": ["Financial fraud", "Multiple victims", "Systematic operation"]
+    }
+},
+"cyber_bullying": {
+    "title": "Cyber Bullying",
+    "description": "Use of electronic communication to bully, harass, or intimidate a person, typically by sending messages of an intimidating or threatening nature",
+    "keywords": [
+        "online harassment", "cyber harassment", "digital bullying", "online intimidation", "social media bullying",
+        "internet harassment", "online threats", "digital harassment", "cyber stalking", "online abuse",
+        "social media harassment", "internet bullying", "online defamation", "digital intimidation", "cyber abuse",
+        "online victimization", "social media threats", "internet intimidation", "digital stalking", "cyber threats",
+        "online persecution", "social media abuse", "internet abuse", "digital persecution", "cyber intimidation"
+    ],
+    "legal_framework": {
+        "primary_sections": [
+            "Section 66A of IT Act, 2000 (struck down)",
+            "Section 66E of IT Act, 2000",
+            "Section 67 of IT Act, 2000",
+            "Section 354D of IPC",
+            "Section 499 of IPC (Defamation)"
+        ],
+        "punishment": "Varies from 1-3 years imprisonment and/or fine depending on the specific offense",
+        "aggravating_factors": ["Minor victims", "Suicidal consequences", "Repeated offenses", "Group bullying"]
+    },
+    "reporting_procedure": {
+        "individual": [
+            "Document all evidence (screenshots, messages, etc.)",
+            "Report to social media platform",
+            "File complaint at cyber crime portal",
+            "Contact local police station",
+            "Seek psychological support if needed"
+        ],
+        "law_enforcement": [
+            "Verify authenticity of evidence",
+            "Track digital footprints",
+            "Coordinate with social media platforms",
+            "Preserve digital evidence",
+            "Provide victim support services"
+        ]
+    },
+    "evidence_collection": [
+        "Screenshots of abusive messages",
+        "Social media posts and comments",
+        "Email communications",
+        "Timestamps of incidents",
+        "Witness statements",
+        "Medical reports if applicable",
+        "Psychological evaluation reports"
+    ],
+    "prevention_tips": [
+        "Educate about responsible online behavior",
+        "Implement strict privacy settings",
+        "Report and block harassers immediately",
+        "Maintain digital hygiene",
+        "Promote positive online culture",
+        "Encourage bystander intervention",
+        "Provide mental health support"
+    ],
+    "landmark_cases": [
+        {
+            "name": "Shreya Singhal v. Union of India (2015)",
+            "significance": "Struck down Section 66A of IT Act",
+            "key_findings": "Established freedom of speech online"
+        },
+        {
+            "name": "State of Tamil Nadu v. Suhas Katti (2004)",
+            "significance": "First conviction under cyber stalking",
+            "key_findings": "Set precedent for online harassment cases"
+        }
+    ]
+},
+"digital_piracy": {
+    "title": "Digital Piracy",
+    "description": "Unauthorized reproduction, distribution, or use of copyrighted digital content",
+    "keywords": [
+        "copyright infringement", "illegal downloads", "pirated content", "torrenting", "unauthorized sharing",
+        "digital theft", "copyright violation", "illegal streaming", "pirated software", "copyright breach",
+        "digital counterfeiting", "illegal distribution", "pirated media", "copyright piracy", "unauthorized copying",
+        "digital bootlegging", "illegal reproduction", "pirated movies", "copyright theft", "unauthorized access",
+        "digital forgery", "illegal duplication", "pirated music", "copyright violation", "unauthorized use"
+    ],
+    "legal_framework": {
+        "primary_sections": [
+            "Section 63 of Copyright Act, 1957",
+            "Section 65 of IT Act, 2000",
+            "Section 66 of IT Act, 2000"
+        ],
+        "punishment": "Imprisonment up to 3 years and fine up to ₹2 lakh",
+        "aggravating_factors": ["Commercial scale", "Organized operation", "Financial gain", "Repeat offenses"]
+    },
+    "reporting_procedure": {
+        "individual": [
+            "Document evidence of piracy",
+            "Report to copyright holder",
+            "File complaint with cyber cell",
+            "Notify hosting platform",
+            "Preserve digital evidence"
+        ],
+        "law_enforcement": [
+            "Verify copyright ownership",
+            "Track distribution networks",
+            "Coordinate with international agencies",
+            "Preserve digital evidence",
+            "Investigate financial transactions"
+        ]
+    },
+    "evidence_collection": [
+        "URLs of pirated content",
+        "Download logs",
+        "Payment records",
+        "Server logs",
+        "IP addresses",
+        "Distribution network details",
+        "Financial transaction records"
+    ],
+    "prevention_tips": [
+        "Use legitimate content platforms",
+        "Implement digital rights management",
+        "Educate about copyright laws",
+        "Monitor online distribution",
+        "Use watermarking technology",
+        "Implement access controls",
+        "Regular content audits"
+    ],
+    "landmark_cases": [
+        {
+            "name": "Warner Bros. Entertainment Inc. v. Santosh VG (2016)",
+            "significance": "Major piracy website shutdown",
+            "key_findings": "Established liability for hosting pirated content"
+        },
+        {
+            "name": "Microsoft Corporation v. Yogesh Popat (2005)",
+            "significance": "Software piracy conviction",
+            "key_findings": "Set precedent for software copyright protection"
+        }
+    ]
+},
+"cryptocurrency_crimes": {
+    "title": "Cryptocurrency Crimes",
+    "description": "Illegal activities involving cryptocurrencies, including fraud, money laundering, and unauthorized trading",
+    "keywords": [
+        "crypto fraud", "bitcoin scam", "crypto theft", "crypto laundering", "crypto trading fraud",
+        "digital currency fraud", "blockchain fraud", "crypto exchange fraud", "crypto investment scam",
+        "crypto wallet theft", "crypto mining fraud", "crypto pyramid scheme", "crypto ponzi scheme",
+        "crypto market manipulation", "crypto hacking", "crypto phishing", "crypto identity theft",
+        "crypto ransomware", "crypto extortion", "crypto dark web", "crypto illegal trading",
+        "crypto tax evasion", "crypto regulatory violation", "crypto security breach", "crypto fraud scheme"
+    ],
+    "legal_framework": {
+        "primary_sections": [
+            "Section 66 of IT Act, 2000",
+            "Section 66F of IT Act, 2000",
+            "Prevention of Money Laundering Act, 2002",
+            "Foreign Exchange Management Act, 1999",
+            "Income Tax Act, 1961"
+        ],
+        "punishment": "Varies from 3-10 years imprisonment and/or fine depending on the specific offense",
+        "aggravating_factors": ["Large scale fraud", "Multiple victims", "International operations", "Organized crime"]
+    },
+    "reporting_procedure": {
+        "individual": [
+            "Document all transaction records",
+            "Report to cyber crime portal",
+            "File complaint with SEBI if applicable",
+            "Contact local police station",
+            "Report to Income Tax Department",
+            "Preserve all digital evidence"
+        ],
+        "law_enforcement": [
+            "Track blockchain transactions",
+            "Coordinate with international agencies",
+            "Freeze related bank accounts",
+            "Investigate crypto exchanges",
+            "Analyze digital wallets",
+            "Preserve digital evidence"
+        ]
+    },
+    "evidence_collection": [
+        "Blockchain transaction records",
+        "Crypto wallet addresses",
+        "Exchange transaction logs",
+        "Communication records",
+        "Bank transaction details",
+        "Digital wallet backups",
+        "Screenshots of transactions",
+        "Email communications"
+    ],
+    "prevention_tips": [
+        "Use only registered crypto exchanges",
+        "Enable two-factor authentication",
+        "Keep private keys secure",
+        "Verify investment opportunities",
+        "Use hardware wallets for large holdings",
+        "Regularly update security software",
+        "Be cautious of unsolicited offers",
+        "Research before investing"
+    ],
+    "landmark_cases": [
+        {
+            "name": "Gain Bitcoin Ponzi Scheme Case (2018)",
+            "significance": "First major crypto fraud case in India",
+            "key_findings": "Established jurisdiction over crypto fraud cases"
+        },
+        {
+            "name": "WazirX Money Laundering Case (2021)",
+            "significance": "First crypto exchange investigation",
+            "key_findings": "Set precedent for crypto exchange regulations"
+        }
+    ]
+},
+"deepfake_regulations": {
+    "title": "Deepfake Regulations",
+    "description": "Legal framework governing the creation, distribution, and misuse of deepfake technology and synthetic media",
+    "keywords": [
+        "deepfake", "synthetic media", "AI manipulation", "digital forgery", "face swap",
+        "voice cloning", "video manipulation", "AI generated content", "digital impersonation",
+        "synthetic identity", "AI fraud", "digital manipulation", "fake video", "AI forgery",
+        "synthetic audio", "digital deception", "AI impersonation", "fake content", "synthetic video",
+        "AI manipulation", "digital forgery", "face swap fraud", "voice cloning fraud", "video manipulation fraud"
+    ],
+    "legal_framework": {
+        "primary_sections": [
+            "Section 66E of IT Act, 2000",
+            "Section 66D of IT Act, 2000",
+            "Section 499 of IPC (Defamation)",
+            "Section 354D of IPC (Stalking)",
+            "Section 67 of IT Act, 2000",
+            "Section 67A of IT Act, 2000",
+            "Section 503 of IPC (Criminal Intimidation)",
+            "Section 504 of IPC (Intentional Insult)",
+            "Section 505 of IPC (Statements Creating Public Mischief)",
+            "Section 66C of IT Act, 2000 (Identity Theft)"
+        ],
+        "punishment": "Imprisonment up to 7 years and fine up to 10 lakh rupees; Additional penalties for commercial use or organized crime",
+        "aggravating_factors": [
+            "Non-consensual content",
+            "Defamation",
+            "Financial fraud",
+            "Political manipulation",
+            "Minor victims",
+            "Mass dissemination",
+            "Organized crime",
+            "National security impact"
+        ],
+        "jurisdictional_considerations": {
+            "territorial_jurisdiction": [
+                "Location of content creation",
+                "Location of content hosting",
+                "Location of content access",
+                "Location of victim/accused"
+            ],
+            "platform_liability": [
+                "Intermediary Guidelines Rules, 2021",
+                "Due diligence requirements",
+                "Content verification obligations",
+                "User verification requirements"
+            ],
+            "cross-border_issues": [
+                "International content takedown",
+                "Cross-border evidence collection",
+                "Platform compliance across jurisdictions",
+                "International cooperation protocols"
+            ]
+        },
+        "international_comparisons": {
+            "united_states": {
+                "laws": [
+                    "DEEPFAKES Accountability Act",
+                    "California AB 730 (Political Deepfakes)",
+                    "Texas HB 2984 (Non-consensual Deepfakes)"
+                ],
+                "punishment": "Varies by state, typically 1-5 years imprisonment"
+            },
+            "european_union": {
+                "laws": [
+                    "Digital Services Act (DSA)",
+                    "Artificial Intelligence Act",
+                    "General Data Protection Regulation (GDPR)"
+                ],
+                "punishment": "Fines up to 4% of global turnover"
+            },
+            "china": {
+                "laws": [
+                    "Deep Synthesis Provisions",
+                    "Cybersecurity Law",
+                    "Personal Information Protection Law"
+                ],
+                "punishment": "Fines and potential criminal liability"
+            }
+        }
+    },
+    "landmark_cases": [
+        {
+            "name": "Rashmika Mandanna Deepfake Case (2023)",
+            "significance": "First major deepfake case in India",
+            "key_findings": "Established legal framework for deepfake regulation",
+            "jurisdiction": "Indian courts with international cooperation",
+            "international_impact": "Influenced global deepfake legislation"
+        },
+        {
+            "name": "Deepfake Political Campaign Case (2024)",
+            "significance": "First political deepfake investigation",
+            "key_findings": "Set precedent for election-related deepfake regulations",
+            "jurisdiction": "Multiple jurisdictions including India and US",
+            "international_impact": "Led to global election security measures"
+        },
+        {
+            "name": "US Presidential Deepfake Case (2023)",
+            "significance": "First major political deepfake case in US",
+            "key_findings": "Established liability for political deepfakes",
+            "jurisdiction": "US Federal Court",
+            "international_impact": "Influenced global political deepfake regulations"
+        },
+        {
+            "name": "EU Deepfake Privacy Case (2023)",
+            "significance": "First major GDPR deepfake case",
+            "key_findings": "Established privacy rights in deepfake context",
+            "jurisdiction": "European Court of Justice",
+            "international_impact": "Set global privacy standards for deepfakes"
+        }
+    ]
+},
+"social_media_crimes": {
+    "title": "Social Media Crimes",
+    "description": "Criminal activities conducted through social media platforms, including harassment, defamation, and illegal content sharing",
+    "keywords": [
+        "social media harassment", "online defamation", "fake profiles", "social media fraud", "online impersonation",
+        "social media threats", "cyber stalking", "online bullying", "social media scams", "fake news",
+        "social media privacy", "online reputation", "social media security", "platform abuse", "content violation",
+        "social media monitoring", "online safety", "social media policy", "platform guidelines", "content moderation",
+        "social media investigation", "platform compliance", "social media evidence", "online behavior", "digital conduct"
+    ],
+    "legal_framework": {
+        "primary_sections": [
+            "Section 66D of IT Act, 2000",
+            "Section 66E of IT Act, 2000",
+            "Section 67 of IT Act, 2000",
+            "Section 67A of IT Act, 2000",
+            "Section 67B of IT Act, 2000",
+            "Section 499 of IPC (Defamation)",
+            "Section 354D of IPC (Stalking)",
+            "Section 503 of IPC (Criminal Intimidation)",
+            "Section 504 of IPC (Intentional Insult)",
+            "Section 505 of IPC (Statements Creating Public Mischief)"
+        ],
+        "punishment": "Varies from 1-7 years imprisonment and/or fine up to 10 lakh rupees depending on the specific offense",
+        "aggravating_factors": [
+            "Hate speech",
+            "Religious offense",
+            "National security",
+            "Public order",
+            "Minor victims",
+            "Mass dissemination",
+            "Organized trolling",
+            "Repeat offenses"
+        ],
+        "jurisdictional_considerations": {
+            "territorial_jurisdiction": [
+                "Location of content creation",
+                "Location of content hosting",
+                "Location of content access",
+                "Location of victim/accused"
+            ],
+            "platform_liability": [
+                "Intermediary Guidelines Rules, 2021",
+                "Due diligence requirements",
+                "Content moderation obligations",
+                "User verification requirements"
+            ],
+            "cross-border_issues": [
+                "International content takedown",
+                "Cross-border evidence collection",
+                "Platform compliance across jurisdictions",
+                "International cooperation protocols"
+            ]
+        }
+    },
+    "reporting_procedure": {
+        "individual": [
+            "Document all evidence (screenshots, messages)",
+            "Report to platform's grievance officer",
+            "File complaint at cyber crime portal",
+            "Contact local police station",
+            "Preserve digital evidence",
+            "Seek legal counsel if needed"
+        ],
+        "law_enforcement": [
+            "Verify platform policies",
+            "Coordinate with social media companies",
+            "Preserve digital evidence",
+            "Track digital footprints",
+            "Investigate user accounts",
+            "Monitor content removal"
+        ]
+    },
+    "evidence_collection": [
+        "Screenshots of content",
+        "URLs of posts",
+        "User profile information",
+        "Message logs",
+        "Timestamps",
+        "IP addresses",
+        "Device information",
+        "Platform metadata"
+    ],
+    "prevention_tips": [
+        "Review privacy settings regularly",
+        "Be cautious of friend requests",
+        "Verify information before sharing",
+        "Report suspicious activity",
+        "Use strong passwords",
+        "Enable two-factor authentication",
+        "Be mindful of shared content",
+        "Educate about online safety"
+    ],
+    "landmark_cases": [
+        {
+            "name": "Twitter Hate Speech Case (2022)",
+            "significance": "First major social media hate speech prosecution under new IT Rules",
+            "key_findings": "Established platform liability for content moderation",
+            "jurisdiction": "Indian courts with international cooperation"
+        },
+        {
+            "name": "Facebook Privacy Violation Case (2023)",
+            "significance": "Major data privacy violation by social media platform",
+            "key_findings": "Set new standards for user data protection",
+            "jurisdiction": "Multiple jurisdictions including India and EU"
+        },
+        {
+            "name": "Instagram Cyberbullying Case (2022)",
+            "significance": "First major cyberbullying case involving minors",
+            "key_findings": "Established new standards for minor protection",
+            "jurisdiction": "Indian courts with platform cooperation"
+        },
+        {
+            "name": "WhatsApp Fake News Case (2023)",
+            "significance": "Major case on fake news propagation",
+            "key_findings": "Set new standards for content verification",
+            "jurisdiction": "Indian courts with international implications"
+        }
+    ]
+},
+"cyber_espionage": {
+    "title": "Cyber Espionage",
+    "description": "Unauthorized access to confidential information through digital means, often for political or economic advantage",
+    "keywords": [
+        "state-sponsored hacking", "digital espionage", "cyber spying", "information theft", "data exfiltration",
+        "cyber intelligence", "digital surveillance", "network infiltration", "system compromise", "data breach",
+        "cyber warfare", "digital reconnaissance", "information gathering", "system penetration", "network breach",
+        "cyber surveillance", "digital infiltration", "system access", "data collection", "network monitoring",
+        "cyber reconnaissance", "digital warfare", "system monitoring", "data surveillance", "network espionage"
+    ],
+    "legal_framework": {
+        "primary_sections": [
+            "Section 66F of IT Act, 2000",
+            "Section 70 of IT Act, 2000",
+            "Official Secrets Act, 1923",
+            "National Security Act, 1980"
+        ],
+        "punishment": "Imprisonment up to life and/or fine depending on severity",
+        "aggravating_factors": ["National security", "Critical infrastructure", "Foreign involvement", "State secrets"]
+    },
+    "reporting_procedure": {
+        "individual": [
+            "Immediately report to CERT-In",
+            "Contact National Cyber Security Coordinator",
+            "Preserve all evidence",
+            "Do not attempt investigation",
+            "Follow official instructions",
+            "Maintain confidentiality"
+        ],
+        "law_enforcement": [
+            "Coordinate with intelligence agencies",
+            "Preserve digital evidence",
+            "Analyze attack patterns",
+            "Track international connections",
+            "Implement countermeasures",
+            "Maintain operational security"
+        ]
+    },
+    "evidence_collection": [
+        "Network logs",
+        "System access records",
+        "Malware samples",
+        "Command and control servers",
+        "Data exfiltration patterns",
+        "Attack vectors",
+        "Timeline of events",
+        "Technical analysis"
+    ],
+    "prevention_tips": [
+        "Implement strong access controls",
+        "Regular security audits",
+        "Network segmentation",
+        "Advanced threat detection",
+        "Employee security training",
+        "Incident response planning",
+        "Regular system updates",
+        "Multi-factor authentication"
+    ],
+    "landmark_cases": [
+        {
+            "name": "APT29 Investigation (2020)",
+            "significance": "Major state-sponsored cyber espionage case",
+            "key_findings": "Established patterns of foreign cyber operations"
+        },
+        {
+            "name": "SolarWinds Case (2021)",
+            "significance": "Global supply chain attack investigation",
+            "key_findings": "Highlighted vulnerabilities in software supply chains"
+        }
+    ]
+},
+"iot_security": {
+    "title": "IoT Security Regulations",
+    "description": "Legal framework governing the security and privacy of Internet of Things devices and networks",
+    "keywords": [
+        "IoT security", "smart devices", "connected devices", "IoT privacy", "device security",
+        "smart home security", "IoT regulations", "connected home", "device privacy", "IoT compliance",
+        "smart device security", "IoT standards", "device authentication", "IoT data protection", "smart home privacy",
+        "IoT device security", "connected device security", "device encryption", "IoT network security", "smart device privacy",
+        "IoT security standards", "device security standards", "IoT privacy standards", "smart home standards", "connected device privacy"
+    ],
+    "legal_framework": {
+        "primary_sections": [
+            "Section 43A of IT Act, 2000",
+            "Section 72A of IT Act, 2000",
+            "Section 70 of IT Act, 2000",
+            "Section 66F of IT Act, 2000",
+            "Personal Data Protection Bill, 2019",
+            "IoT Security Guidelines (MeitY)",
+            "Critical Information Infrastructure Rules",
+            "Section 420 of IPC (Cheating)",
+            "Section 425 of IPC (Mischief)"
+        ],
+        "punishment": "Varies from fines up to 5 crore rupees to imprisonment up to 10 years depending on violation severity",
+        "aggravating_factors": [
+            "Data breach",
+            "Privacy violation",
+            "Critical infrastructure",
+            "Mass surveillance",
+            "Multiple devices",
+            "Organized crime",
+            "National security impact",
+            "Repeat violations"
+        ],
+        "jurisdictional_considerations": {
+            "territorial_jurisdiction": [
+                "Location of device manufacturing",
+                "Location of device operation",
+                "Location of data processing",
+                "Location of data storage"
+            ],
+            "manufacturer_liability": [
+                "Security by design requirements",
+                "Regular updates obligation",
+                "Vulnerability disclosure",
+                "User notification requirements"
+            ],
+            "cross-border_issues": [
+                "International device standards",
+                "Cross-border data flows",
+                "Global supply chain security",
+                "International cooperation protocols"
+            ]
+        },
+        "international_comparisons": {
+            "united_states": {
+                "laws": [
+                    "IoT Cybersecurity Improvement Act",
+                    "California IoT Security Law",
+                    "NIST IoT Security Guidelines"
+                ],
+                "standards": "NIST IoT Security Framework"
+            },
+            "european_union": {
+                "laws": [
+                    "Radio Equipment Directive",
+                    "Cybersecurity Act",
+                    "General Data Protection Regulation (GDPR)"
+                ],
+                "standards": "ENISA IoT Security Guidelines"
+            },
+            "china": {
+                "laws": [
+                    "Cybersecurity Law",
+                    "Personal Information Protection Law",
+                    "IoT Security Standards"
+                ],
+                "standards": "GB/T IoT Security Standards"
+            }
+        }
+    },
+    "landmark_cases": [
+        {
+            "name": "Smart Home Data Breach Case (2022)",
+            "significance": "First major IoT security breach case",
+            "key_findings": "Established manufacturer liability for device security",
+            "jurisdiction": "Indian courts with international cooperation",
+            "international_impact": "Influenced global IoT security standards"
+        },
+        {
+            "name": "IoT Botnet Attack Case (2021)",
+            "significance": "First IoT-based DDoS attack prosecution",
+            "key_findings": "Highlighted importance of device security",
+            "jurisdiction": "Multiple jurisdictions including India and US",
+            "international_impact": "Led to global IoT security regulations"
+        },
+        {
+            "name": "Smart City Security Breach (2023)",
+            "significance": "First major smart city infrastructure breach",
+            "key_findings": "Established critical infrastructure protection standards",
+            "jurisdiction": "Indian courts with international implications",
+            "international_impact": "Set new standards for smart city security"
+        },
+        {
+            "name": "Medical IoT Device Hack (2023)",
+            "significance": "First healthcare IoT security breach case",
+            "key_findings": "Established medical device security requirements",
+            "jurisdiction": "Multiple jurisdictions including India and EU",
+            "international_impact": "Influenced healthcare IoT regulations"
+        }
+    ]
+},
+"quantum_computing_security": {
+    "title": "Quantum Computing Security",
+    "description": "Legal framework addressing the security implications of quantum computing and post-quantum cryptography",
+    "keywords": [
+        "quantum security", "post-quantum cryptography", "quantum encryption", "quantum computing", "quantum-safe",
+        "quantum-resistant", "quantum cryptography", "quantum security standards", "quantum key distribution", "quantum-safe algorithms",
+        "quantum security framework", "quantum computing security", "quantum encryption standards", "quantum security protocols", "quantum-safe encryption",
+        "quantum security measures", "quantum computing regulations", "quantum encryption protocols", "quantum security guidelines", "quantum-safe standards",
+        "quantum security requirements", "quantum computing standards", "quantum encryption requirements", "quantum security compliance", "quantum-safe protocols"
+    ],
+    "legal_framework": {
+        "primary_sections": [
+            "Section 70 of IT Act, 2000",
+            "Section 66F of IT Act, 2000",
+            "National Security Act, 1980",
+            "Cryptography Policy Guidelines"
+        ],
+        "punishment": "Varies based on security breach severity",
+        "aggravating_factors": ["National security", "Critical infrastructure", "Data compromise", "Foreign involvement"]
+    },
+    "reporting_procedure": {
+        "individual": [
+            "Report to CERT-In",
+            "Contact National Cyber Security Coordinator",
+            "Preserve evidence",
+            "Follow security protocols",
+            "Maintain confidentiality",
+            "Document incident details"
+        ],
+        "law_enforcement": [
+            "Coordinate with research institutions",
+            "Analyze quantum vulnerabilities",
+            "Preserve digital evidence",
+            "Implement countermeasures",
+            "Monitor quantum developments",
+            "Update security standards"
+        ]
+    },
+    "evidence_collection": [
+        "Quantum system logs",
+        "Encryption records",
+        "Security configurations",
+        "Access patterns",
+        "Quantum algorithm data",
+        "System performance metrics",
+        "Security audit reports",
+        "Incident documentation"
+    ],
+    "prevention_tips": [
+        "Implement quantum-resistant algorithms",
+        "Regular security assessments",
+        "Monitor quantum developments",
+        "Update encryption standards",
+        "Train security personnel",
+        "Develop quantum security plans",
+        "Implement multi-layer security",
+        "Regular system updates"
+    ],
+    "landmark_cases": [
+        {
+            "name": "Quantum Security Breach Case (2023)",
+            "significance": "First quantum computing security incident",
+            "key_findings": "Highlighted need for quantum-resistant security"
+        },
+        {
+            "name": "Post-Quantum Cryptography Case (2024)",
+            "significance": "First implementation of quantum-safe standards",
+            "key_findings": "Established framework for quantum security"
+        }
+    ]
+},
+"ai_regulations": {
+    "title": "AI Regulations",
+    "description": "Legal framework governing the development, deployment, and use of artificial intelligence systems",
+    "keywords": [
+        "AI governance", "machine learning regulations", "algorithmic accountability", "AI ethics", "automated decision making",
+        "AI transparency", "algorithm regulations", "AI compliance", "machine learning laws", "AI accountability",
+        "algorithmic bias", "AI fairness", "automated systems", "AI standards", "machine learning governance",
+        "algorithm transparency", "AI responsibility", "automated decision systems", "AI legal framework", "machine learning compliance",
+        "algorithm accountability", "AI oversight", "automated governance", "AI regulatory framework", "machine learning standards"
+    ],
+    "legal_framework": {
+        "primary_sections": [
+            "Section 43A of IT Act, 2000",
+            "Personal Data Protection Bill, 2019",
+            "AI Ethics Guidelines (MeitY)",
+            "Algorithmic Accountability Framework"
+        ],
+        "punishment": "Varies based on violation severity and impact",
+        "aggravating_factors": ["Discrimination", "Privacy violations", "Systemic bias", "Public harm"]
+    },
+    "reporting_procedure": {
+        "individual": [
+            "Document AI system behavior",
+            "Report to regulatory authority",
+            "File complaint with DPA",
+            "Preserve evidence",
+            "Seek technical assessment",
+            "Follow redressal mechanisms"
+        ],
+        "law_enforcement": [
+            "Analyze algorithm behavior",
+            "Verify system compliance",
+            "Coordinate with experts",
+            "Preserve digital evidence",
+            "Assess impact",
+            "Implement corrective measures"
+        ]
+    },
+    "evidence_collection": [
+        "Algorithm documentation",
+        "Training data samples",
+        "Decision logs",
+        "Bias assessment reports",
+        "System performance metrics",
+        "User feedback records",
+        "Technical audit reports",
+        "Impact assessment data"
+    ],
+    "prevention_tips": [
+        "Regular bias audits",
+        "Transparent documentation",
+        "Diverse training data",
+        "Human oversight",
+        "Regular system testing",
+        "Ethical guidelines",
+        "User feedback mechanisms",
+        "Continuous monitoring"
+    ],
+    "landmark_cases": [
+        {
+            "name": "AI Hiring Bias Case (2023)",
+            "significance": "First AI discrimination case",
+            "key_findings": "Established liability for algorithmic bias"
+        },
+        {
+            "name": "Automated Decision Making Case (2024)",
+            "significance": "Set precedent for AI transparency",
+            "key_findings": "Established right to explanation"
+        }
+    ]
+},
+"cloud_computing_laws": {
+    "title": "Cloud Computing Laws",
+    "description": "Legal framework governing cloud computing services, data storage, and processing",
+    "keywords": [
+        "cloud security", "cloud compliance", "cloud data protection", "cloud privacy", "cloud storage",
+        "cloud computing regulations", "cloud service provider", "cloud data security", "cloud infrastructure", "cloud governance",
+        "cloud computing standards", "cloud service regulations", "cloud data management", "cloud security standards", "cloud compliance framework",
+        "cloud computing framework", "cloud service security", "cloud data governance", "cloud security framework", "cloud compliance standards",
+        "cloud computing security", "cloud service management", "cloud data compliance", "cloud security management", "cloud compliance management"
+    ],
+    "legal_framework": {
+        "primary_sections": [
+            "Section 43A of IT Act, 2000",
+            "Section 72A of IT Act, 2000",
+            "Personal Data Protection Bill, 2019",
+            "Cloud Computing Guidelines (MeitY)"
+        ],
+        "punishment": "Varies based on data breach severity",
+        "aggravating_factors": ["Sensitive data", "Large scale breach", "Negligence", "Repeat violations"]
+    },
+    "reporting_procedure": {
+        "individual": [
+            "Document security incident",
+            "Report to cloud provider",
+            "Contact CERT-In",
+            "File complaint with DPA",
+            "Preserve evidence",
+            "Follow security protocols"
+        ],
+        "law_enforcement": [
+            "Analyze cloud logs",
+            "Verify security measures",
+            "Coordinate with providers",
+            "Preserve digital evidence",
+            "Assess compliance",
+            "Implement safeguards"
+        ]
+    },
+    "evidence_collection": [
+        "Cloud access logs",
+        "Security configurations",
+        "Data transfer records",
+        "Authentication logs",
+        "Incident reports",
+        "Compliance documentation",
+        "Security audit reports",
+        "Service level agreements"
+    ],
+    "prevention_tips": [
+        "Strong encryption",
+        "Regular security audits",
+        "Access controls",
+        "Data backup",
+        "Incident response plan",
+        "Vendor assessment",
+        "Compliance monitoring",
+        "Security training"
+    ],
+    "landmark_cases": [
+        {
+            "name": "Cloud Data Breach Case (2022)",
+            "significance": "First major cloud security breach case",
+            "key_findings": "Established provider liability"
+        },
+        {
+            "name": "Cloud Service Compliance Case (2023)",
+            "significance": "Set cloud compliance standards",
+            "key_findings": "Established regulatory framework"
+        }
+    ]
+},
+"biometric_data_protection": {
+    "title": "Biometric Data Protection",
+    "description": "Legal framework governing the collection, storage, and use of biometric data",
+    "keywords": [
+        "biometric privacy", "fingerprint data", "facial recognition", "iris scan", "biometric security",
+        "biometric authentication", "biometric identification", "biometric storage", "biometric access", "biometric verification",
+        "biometric data protection", "biometric privacy laws", "biometric security standards", "biometric data management", "biometric access control",
+        "biometric data security", "biometric privacy protection", "biometric security measures", "biometric data storage", "biometric access management",
+        "biometric data privacy", "biometric security framework", "biometric data protection laws", "biometric security protocols", "biometric data management framework"
+    ],
+    "legal_framework": {
+        "primary_sections": [
+            "Section 43A of IT Act, 2000",
+            "Personal Data Protection Bill, 2019",
+            "Aadhaar Act, 2016",
+            "Biometric Data Protection Guidelines"
+        ],
+        "punishment": "Varies based on violation severity",
+        "aggravating_factors": ["Mass collection", "Unauthorized use", "Data breach", "Identity theft"]
+    },
+    "reporting_procedure": {
+        "individual": [
+            "Document data misuse",
+            "Report to DPA",
+            "File police complaint",
+            "Preserve evidence",
+            "Seek legal counsel",
+            "Follow redressal process"
+        ],
+        "law_enforcement": [
+            "Verify data collection",
+            "Analyze security measures",
+            "Coordinate with authorities",
+            "Preserve digital evidence",
+            "Assess compliance",
+            "Implement safeguards"
+        ]
+    },
+    "evidence_collection": [
+        "Biometric data samples",
+        "Access logs",
+        "Storage records",
+        "Security configurations",
+        "User consent records",
+        "Data transfer logs",
+        "Security audit reports",
+        "Compliance documentation"
+    ],
+    "prevention_tips": [
+        "Strong encryption",
+        "Regular security audits",
+        "Access controls",
+        "Data minimization",
+        "User consent",
+        "Regular updates",
+        "Security training",
+        "Incident response plan"
+    ],
+    "landmark_cases": [
+        {
+            "name": "Aadhaar Privacy Case (2018)",
+            "significance": "Landmark biometric privacy case",
+            "key_findings": "Established privacy rights for biometric data"
+        },
+        {
+            "name": "Biometric Data Breach Case (2022)",
+            "significance": "First major biometric data breach case",
+            "key_findings": "Set security standards for biometric data"
+        }
+    ]
+},
+"cyber_physical_systems": {
+    "title": "Cyber-Physical Systems Security",
+    "description": "Legal framework governing the security of systems that integrate computing, networking, and physical processes",
+    "keywords": [
+        "CPS security", "industrial control systems", "SCADA security", "IoT security", "smart grid security",
+        "cyber-physical systems", "industrial IoT", "critical infrastructure", "smart city security", "automated systems",
+        "CPS regulations", "industrial control security", "SCADA regulations", "IoT infrastructure", "smart grid regulations",
+        "cyber-physical framework", "industrial IoT security", "critical infrastructure security", "smart city regulations", "automated system security",
+        "CPS security standards", "industrial control framework", "SCADA security standards", "IoT security framework", "smart grid security standards"
+    ],
+    "legal_framework": {
+        "primary_sections": [
+            "Section 70 of IT Act, 2000",
+            "Section 66F of IT Act, 2000",
+            "Critical Information Infrastructure Rules",
+            "Industrial Control Systems Guidelines"
+        ],
+        "punishment": "Varies based on system criticality and impact",
+        "aggravating_factors": ["Critical infrastructure", "Public safety", "Economic impact", "National security"]
+    },
+    "reporting_procedure": {
+        "individual": [
+            "Document system behavior",
+            "Report to CERT-In",
+            "Contact sector regulator",
+            "Preserve evidence",
+            "Follow security protocols",
+            "Maintain system logs"
+        ],
+        "law_enforcement": [
+            "Analyze system logs",
+            "Verify security measures",
+            "Coordinate with experts",
+            "Preserve digital evidence",
+            "Assess impact",
+            "Implement safeguards"
+        ]
+    },
+    "evidence_collection": [
+        "System logs",
+        "Control commands",
+        "Network traffic",
+        "Sensor data",
+        "Access records",
+        "Configuration files",
+        "Security audit reports",
+        "Incident documentation"
+    ],
+    "prevention_tips": [
+        "Network segmentation",
+        "Regular security audits",
+        "Access controls",
+        "System monitoring",
+        "Incident response plan",
+        "Vendor assessment",
+        "Security training",
+        "Regular updates"
+    ],
+    "landmark_cases": [
+        {
+            "name": "Industrial Control System Attack Case (2021)",
+            "significance": "First CPS security breach case",
+            "key_findings": "Established security standards for critical systems"
+        },
+        {
+            "name": "Smart Grid Security Case (2023)",
+            "significance": "Set security standards for smart grids",
+            "key_findings": "Established framework for critical infrastructure protection"
+        }
+    ]
+}
+        },
+        "intents": [
+    {
+        "tag": "greeting",
+        "patterns": [
+            "hi", "hello", "hey", "greetings", "good morning", "good evening", "good afternoon",
+            "hi there", "hello there", "howdy", "what's up", "namaste", "hola", "start", 
+            "begin conversation", "hey assistant", "hi bot", "hello cyber assistant",
+            "cyber law assistant", "let's talk", "hi cyber law expert", "help me"
+        ],
+        "responses": [
+            "Hello! How can I help you with cyber law questions today?",
+            "Hi there! What cyber law information do you need?",
+            "Greetings! I'm your cyber law assistant. What would you like to know?",
+            "Welcome! I'm here to help with your questions about Indian IT laws and cyber security.",
+            "Hello! I'm specialized in Indian cyber laws. How may I assist you today?",
+            "Hi! Ask me about IT Act sections, cyber crimes, or reporting procedures in India."
+        ]
+    },
+    {
+        "tag": "law_information",
+        "patterns": [
+            "tell me about", "what is", "explain", "describe", "details on", "information about",
+            "define", "elaborate on", "clarify", "what does mean", "information regarding",
+            "meaning of", "tell me more about", "what are", "how does work", "concept of",
+            "details about", "information on", "summarize", "brief me on", "overview of",
+            "enlighten me about", "educate me on", "what exactly is", "can you explain"
+        ],
+        "responses": [
+            "Here's what I know about {topic}...",
+            "Let me provide information about {topic}...",
+            "According to cyber laws, {topic} refers to...",
+            "In the context of Indian IT laws, {topic} is defined as...",
+            "The IT Act describes {topic} as...",
+            "Under Indian cyber legislation, {topic} encompasses...",
+            "Let me explain the concept of {topic} according to the IT Act...",
+            "Here's a comprehensive explanation of {topic} under Indian cyber laws..."
+        ]
+    },
+    {
+        "tag": "reporting_procedure",
+        "patterns": [
+            "how to report", "reporting process", "file complaint", "who to contact", "where to report",
+            "steps to report", "complaint procedure", "report cyber crime", "lodge complaint",
+            "report incident", "cybercrime reporting", "file FIR", "notify authorities",
+            "reporting channel", "official complaint", "report to police", "cybercrime portal",
+            "online reporting", "complaint mechanism", "inform authorities", "legal procedure for reporting",
+            "proper channel to report", "official reporting", "register complaint", "notify about breach"
+        ],
+        "responses": [
+            "To report {crime}, you should follow these steps...",
+            "The reporting procedure for {crime} includes...",
+            "For reporting {crime}, the recommended approach is...",
+            "To file a complaint about {crime}, here's the official process...",
+            "The standard procedure for reporting {crime} in India involves...",
+            "If you've experienced {crime}, here's how to properly report it to authorities...",
+            "For {crime} incidents, follow this reporting protocol for proper legal action...",
+            "The most effective way to report {crime} is through these official channels..."
+        ]
+    },
+    {
+        "tag": "prevention",
+        "patterns": [
+            "how to prevent", "protection against", "safeguard", "security measures", "avoid", "protect from",
+            "preventive steps", "safety measures", "mitigate risk", "defensive measures", "safeguarding against",
+            "securing against", "protective steps", "avoid being victim", "reduce vulnerability",
+            "preventive action", "risk reduction", "secure from", "safety protocols", "cybersecurity measures",
+            "best practices", "security protocols", "prevention tips", "safety guidelines", "precautions against"
+        ],
+        "responses": [
+            "To prevent {crime}, consider these measures...",
+            "Protection against {crime} includes...",
+            "Here are some prevention tips for {crime}...",
+            "Safeguarding yourself from {crime} requires...",
+            "To minimize the risk of {crime}, implement these security practices...",
+            "Effective protection against {crime} involves these key strategies...",
+            "Security experts recommend these measures to prevent {crime}...",
+            "To protect yourself or your organization from {crime}, follow these best practices..."
+        ]
+    },
+    {
+        "tag": "legal_consequences",
+        "patterns": [
+            "punishment", "penalty", "sentence", "fine", "imprisonment", "consequences",
+            "legal action", "prosecution", "criminal charges", "sanctions", "legal penalties",
+            "jail time", "criminal punishment", "legal ramifications", "court action",
+            "punitive measures", "legal repercussions", "statutory penalties", "conviction consequences",
+            "judicial punishment", "legal liability", "punitive action", "what happens if caught",
+            "punishment under law", "legal penalties for offense"
+        ],
+        "responses": [
+            "The legal consequences for {crime} include...",
+            "Under the IT Act, {crime} is punishable by...",
+            "For {crime}, the penalties can range from...",
+            "Indian law prescribes the following punishment for {crime}...",
+            "If convicted of {crime}, an individual may face...",
+            "The IT Act stipulates these specific penalties for {crime}...",
+            "Legal consequences for {crime} under Indian cyber law include...",
+            "The judiciary typically imposes these punishments for {crime} cases..."
+        ]
+    },
+    {
+        "tag": "evidence_collection",
+        "patterns": [
+            "evidence needed", "prove", "documentation", "collect evidence", "document incident",
+            "types of evidence", "digital evidence", "forensic requirements", "what evidence",
+            "documenting breach", "proof required", "evidence gathering", "forensic collection",
+            "legal evidence", "documentation procedure", "evidence preservation", "case building",
+            "admissible evidence", "court proof", "prosecutorial evidence", "evidential requirements",
+            "evidence trail", "chain of custody", "digital forensics", "incident documentation"
+        ],
+        "responses": [
+            "To document a {crime} incident, collect the following evidence...",
+            "Important evidence for {crime} cases includes...",
+            "For prosecuting {crime}, you should gather these types of evidence...",
+            "Effective documentation of {crime} requires these specific records...",
+            "Digital forensics experts recommend collecting this evidence for {crime} cases...",
+            "To build a strong legal case for {crime}, ensure you preserve...",
+            "The chain of evidence for {crime} should include these critical elements...",
+            "Courts typically require these forms of evidence when prosecuting {crime}..."
+        ]
+    },
+    {
+        "tag": "section_inquiry",
+        "patterns": [
+            "section", "IT Act section", "what does section", "explain section", "provision of", "law section",
+            "section details", "legal provision", "act section", "statutory provision", "legal section",
+            "section number", "IT legislation", "law provision", "statute section", "clause in act",
+            "legal clause", "section in IT Act", "what is section about", "provision details",
+            "law clause", "section meaning", "provision explanation", "section interpretation", "legislative provision"
+        ],
+        "responses": [
+            "Section {section} of the IT Act pertains to {description}...",
+            "As per the IT Act, Section {section} covers {description}...",
+            "The IT Act's Section {section} deals with {description}...",
+            "Section {section} specifically addresses {description} under Indian cyber law...",
+            "The legal provision in Section {section} of the IT Act states that {description}...",
+            "Under Indian cyber legislation, Section {section} is concerned with {description}...",
+            "The IT Act Section {section} establishes legal framework for {description}...",
+            "Section {section}'s primary focus is on {description} with specific provisions for..."
+        ]
+    },
+    {
+        "tag": "case_law",
+        "patterns": [
+            "landmark case", "precedent", "court ruling", "legal case", "judicial decision",
+            "famous case", "court precedent", "case study", "legal judgment", "important decision",
+            "high court ruling", "supreme court case", "judicial precedent", "significant case",
+            "case law", "legal history", "court decision", "judicial history", "case example",
+            "legal interpretation", "court judgment", "case verdict", "notable case", "legal reference case"
+        ],
+        "responses": [
+            "A landmark case regarding {topic} is {case_name}, which established...",
+            "The judicial precedent for {topic} was set in {case_name}, where the court ruled...",
+            "In the case of {case_name}, the court's interpretation of {topic} established that...",
+            "Legal understanding of {topic} was significantly shaped by {case_name}, in which...",
+            "The {case_name} case provides important guidance on {topic}, particularly regarding...",
+            "Courts typically refer to {case_name} when adjudicating matters related to {topic}...",
+            "The legal framework for {topic} was tested in {case_name}, resulting in..."
+        ]
+    },
+    {
+        "tag": "jurisdiction",
+        "patterns": [
+            "jurisdiction", "which court", "legal authority", "territorial application",
+            "which police", "jurisdictional issues", "cyber jurisdiction", "legal territory",
+            "cross-border", "international jurisdiction", "court authority", "territorial reach",
+            "applicable law", "legal boundary", "jurisdictional challenge", "enforcement jurisdiction",
+            "territorial jurisdiction", "legal reach", "jurisdiction determination", "authority limits",
+            "jurisdiction transfer", "multi-state jurisdiction", "international case", "local enforcement"
+        ],
+        "responses": [
+            "For {crime} cases, jurisdiction is typically determined by...",
+            "The jurisdictional considerations for {crime} under Indian law include...",
+            "When {crime} crosses borders, the jurisdiction is established based on...",
+            "The IT Act addresses jurisdictional challenges for {crime} by...",
+            "In cases of {crime}, the following factors determine proper jurisdiction...",
+            "Jurisdiction for online {crime} is complex and involves these key principles...",
+            "Indian courts establish jurisdiction over {crime} cases through these legal mechanisms..."
+        ]
+    },
+    {
+        "tag": "recent_updates",
+        "patterns": [
+            "recent changes", "new amendments", "latest updates", "law updates", "recent modifications",
+            "new provisions", "act amendments", "current laws", "updated regulations", "legal revisions",
+            "recent developments", "latest legislation", "new rules", "regulatory updates", "law revisions",
+            "policy changes", "new guidelines", "recent legal developments", "legislation updates",
+            "contemporary laws", "modern provisions", "updated legal framework", "current legal status"
+        ],
+        "responses": [
+            "Recent updates to laws concerning {topic} include...",
+            "The IT Act provisions related to {topic} were recently amended to...",
+            "As of our last update, the legal framework for {topic} has changed in these ways...",
+            "Current legislation around {topic} has evolved to address...",
+            "The most recent amendments affecting {topic} have introduced...",
+            "Legal approaches to {topic} have been modernized through these recent changes...",
+            "Regulatory updates for {topic} now include these important provisions..."
+        ]
+    },
+    {
+        "tag": "thank_you",
+        "patterns": [
+            "thanks", "thank you", "appreciate it", "helpful", "thank you so much", "thanks a lot",
+            "very helpful", "that helps", "appreciate your help", "great help", "thanks for info",
+            "gratitude", "much appreciated", "thank you for assistance", "thanks for explaining",
+            "that was useful", "good information", "thanks for clarification", "well explained",
+            "thanks for your time", "appreciate the guidance", "thanks for the details"
+        ],
+        "responses": [
+            "You're welcome! Feel free to ask if you have more questions about cyber law.",
+            "Happy to help! Let me know if you need more information.",
+            "You're welcome. Is there anything else you'd like to know about cyber laws?",
+            "Glad I could assist! Don't hesitate to ask about other IT law topics.",
+            "My pleasure! I'm here for any other cyber law questions you might have.",
+            "You're welcome! Understanding cyber laws is important, so feel free to ask more.",
+            "Anytime! Let me know if you need clarification on any other cyber law matters."
+        ]
+    },
+    {
+        "tag": "goodbye",
+        "patterns": [
+            "bye", "goodbye", "see you", "that's all", "end", "quit", "exit", "good night",
+            "farewell", "have a good day", "until next time", "closing", "terminate", "finish",
+            "end conversation", "that will be all", "no more questions", "signing off",
+            "done for now", "thanks bye", "leaving now", "conversation over", "that's it"
+        ],
+        "responses": [
+            "Goodbye! Feel free to return if you have more cyber law questions.",
+            "Take care! I'm here if you need cyber law assistance in the future.",
+            "Goodbye and stay cyber-safe!",
+            "Until next time! Remember to practice good cyber security.",
+            "Farewell! If you have more questions about IT laws, I'll be here.",
+            "Goodbye! Stay informed about cyber laws to protect yourself online.",
+            "Take care and be safe in your digital activities!"
+        ]
+    },
+    {
+        "tag": "data_protection",
+        "patterns": [
+            "data protection", "information security", "privacy law", "personal data", "data privacy",
+            "data security", "information protection", "private information", "confidential data",
+            "data protection law", "privacy regulation", "personal information protection", "data rights",
+            "data subject rights", "privacy compliance", "data protection framework", "privacy legislation",
+            "data security practices", "information privacy", "data handling", "privacy requirements",
+            "digital privacy", "protect personal data", "information safety", "cybersecurity compliance"
+        ],
+        "responses": [
+            "Data protection under Indian law includes these key principles...",
+            "For personal data protection, the IT Act provides these safeguards...",
+            "The legal framework for data privacy in India consists of...",
+            "Organizations handling personal data must comply with these requirements...",
+            "Under current Indian law, data protection encompasses these rights and obligations...",
+            "The data protection regime in India addresses privacy through these mechanisms...",
+            "Personal information protection is governed by these specific provisions..."
+        ]
+    },
+    {
+        "tag": "intermediary_liability",
+        "patterns": [
+            "intermediary liability", "platform responsibility", "social media liability", "website responsibility",
+            "online platform duty", "intermediary obligations", "hosting liability", "internet provider responsibility",
+            "social network liability", "online intermediary", "safe harbor provisions", "platform legal obligations",
+            "internet intermediary", "website legal responsibility", "app liability", "digital platform responsibility",
+            "e-commerce liability", "online marketplace responsibility", "content host liability", "due diligence requirements",
+            "takedown obligation", "ISP liability", "content removal duty", "intermediary guidelines"
+        ],
+        "responses": [
+            "Intermediary liability under Indian law is governed by...",
+            "Online platforms have these specific legal responsibilities in India...",
+            "The IT Act establishes these requirements for intermediaries...",
+            "Social media and other online platforms must follow these guidelines...",
+            "The legal framework for intermediary liability includes these key obligations...",
+            "Under Indian cyber law, intermediaries are protected if they comply with...",
+            "Content hosting platforms must follow these due diligence requirements..."
+        ]
+    },
+    {
+        "tag": "cyber_security",
+        "patterns": [
+            "cybersecurity", "network security", "information security", "digital security", "online safety",
+            "internet security", "data protection", "system security", "security measures", "cyber defense",
+            "security protocols", "digital protection", "network protection", "security best practices",
+            "cyber hygiene", "security awareness", "digital safety", "security guidelines", "cyber protection",
+            "security standards", "digital security measures", "network safety", "security implementation",
+            "cyber safety", "security framework"
+        ],
+        "responses": [
+            "Cybersecurity in India is governed by these key principles...",
+            "The IT Act establishes these security requirements...",
+            "For effective cybersecurity, organizations must implement...",
+            "The legal framework for cybersecurity includes...",
+            "Best practices for cybersecurity under Indian law involve...",
+            "The IT Act mandates these specific security measures...",
+            "Organizations must follow these cybersecurity guidelines..."
+        ]
+    },
+    {
+        "tag": "digital_forensics",
+        "patterns": [
+            "digital forensics", "cyber forensics", "computer forensics", "digital evidence", "forensic investigation",
+            "cyber investigation", "digital analysis", "forensic tools", "evidence collection", "digital examination",
+            "cyber evidence", "forensic procedures", "digital investigation", "forensic analysis", "cyber analysis",
+            "evidence preservation", "digital recovery", "forensic techniques", "cyber examination", "digital tracking",
+            "forensic methodology", "cyber tracking", "digital reconstruction", "forensic recovery", "cyber reconstruction"
+        ],
+        "responses": [
+            "Digital forensics procedures under Indian law include...",
+            "The IT Act specifies these forensic investigation requirements...",
+            "For proper digital evidence collection, follow these steps...",
+            "The legal framework for digital forensics establishes...",
+            "Courts require these specific forensic procedures for...",
+            "The IT Act mandates these forensic investigation standards...",
+            "Proper digital evidence handling involves these key steps..."
+        ]
+    },
+    {
+        "tag": "emerging_technologies",
+        "patterns": [
+            "emerging technologies", "new tech laws", "AI regulations", "blockchain laws", "IoT regulations",
+            "quantum computing", "metaverse laws", "5G regulations", "cloud computing laws", "edge computing",
+            "AI governance", "tech innovation laws", "digital transformation", "smart technology", "future tech",
+            "tech evolution", "digital innovation", "tech advancement", "next-gen technology", "tech development",
+            "digital future", "tech trends", "innovation laws", "tech policy", "digital governance"
+        ],
+        "responses": [
+            "The legal framework for emerging technologies in India includes...",
+            "For {technology}, the current regulations establish...",
+            "The IT Act addresses these aspects of {technology}...",
+            "Recent policy developments for {technology} include...",
+            "The regulatory approach to {technology} involves...",
+            "Legal considerations for implementing {technology} are...",
+            "The government's stance on {technology} regulation is..."
+        ]
+    },
+    {
+        "tag": "international_cooperation",
+        "patterns": [
+            "international cooperation", "cross-border cybercrime", "global cyber laws", "international treaties",
+            "cyber diplomacy", "international jurisdiction", "global cybersecurity", "international standards",
+            "cross-border investigation", "international cyber laws", "global cooperation", "international framework",
+            "cyber international law", "global cyber framework", "international cyber cooperation", "cross-border laws",
+            "international cyber standards", "global cyber regulations", "international cyber treaties", "cross-border cooperation",
+            "international cyber jurisdiction", "global cyber governance", "international cyber policy", "cross-border cyber laws"
+        ],
+        "responses": [
+            "India's international cooperation on cyber matters includes...",
+            "For cross-border {crime}, the international framework establishes...",
+            "The country participates in these international cyber initiatives...",
+            "International treaties relevant to {topic} include...",
+            "Cross-border cooperation mechanisms for {crime} involve...",
+            "The global framework for {topic} establishes...",
+            "International standards for {topic} include..."
+        ]
+    },
+    {
+        "tag": "cyber_insurance",
+        "patterns": [
+            "cyber insurance", "digital insurance", "cyber risk coverage", "data breach insurance", "cyber liability",
+            "digital risk insurance", "cyber security insurance", "data protection insurance", "cyber attack coverage",
+            "digital asset insurance", "cyber risk management", "data security insurance", "cyber incident coverage",
+            "digital liability insurance", "cyber protection insurance", "data privacy insurance", "cyber coverage",
+            "digital security insurance", "cyber risk protection", "data insurance", "cyber security coverage",
+            "digital protection insurance", "cyber risk insurance", "data coverage", "cyber security protection"
+        ],
+        "responses": [
+            "Cyber insurance in India typically covers...",
+            "The legal framework for cyber insurance includes...",
+            "For {type} of cyber risk, insurance policies provide...",
+            "The regulatory requirements for cyber insurance are...",
+            "When selecting cyber insurance, consider these factors...",
+            "The claims process for cyber insurance involves...",
+            "Cyber insurance policies must comply with..."
+        ]
+    },
+    {
+        "tag": "cyber_ethics",
+        "patterns": [
+            "cyber ethics", "digital ethics", "online ethics", "internet ethics", "digital responsibility",
+            "cyber responsibility", "online behavior", "digital conduct", "internet behavior", "cyber morality",
+            "digital morality", "online morality", "internet morality", "cyber values", "digital values",
+            "online values", "internet values", "cyber principles", "digital principles", "online principles",
+            "internet principles", "cyber standards", "digital standards", "online standards", "internet standards"
+        ],
+        "responses": [
+            "Cyber ethics in India is guided by these principles...",
+            "The ethical framework for {topic} includes...",
+            "When dealing with {situation}, ethical considerations include...",
+            "The professional standards for cyber ethics establish...",
+            "Ethical guidelines for {activity} require...",
+            "The moral framework for {topic} involves...",
+            "Ethical decision-making in cyber matters should consider..."
+        ]
+    },
+    {
+        "tag": "cyber_warfare",
+        "patterns": [
+            "cyber warfare", "digital warfare", "cyber conflict", "cyber attack", "cyber defense",
+            "cyber military", "digital conflict", "cyber operations", "cyber strategy", "cyber tactics",
+            "cyber security warfare", "digital warfare strategy", "cyber military operations", "cyber defense strategy",
+            "cyber warfare tactics", "digital conflict resolution", "cyber operations planning", "cyber military strategy",
+            "cyber warfare defense", "digital warfare operations", "cyber conflict management", "cyber attack defense",
+            "cyber warfare planning", "digital warfare tactics", "cyber operations strategy"
+        ],
+        "responses": [
+            "Cyber warfare regulations in India include...",
+            "The legal framework for {type} of cyber conflict establishes...",
+            "For cyber defense operations, the guidelines specify...",
+            "The national strategy for cyber warfare involves...",
+            "International laws regarding cyber warfare state...",
+            "The military approach to cyber operations includes...",
+            "Cyber warfare prevention measures involve..."
+        ]
+    },
+    {
+        "tag": "cyber_diplomacy",
+        "patterns": [
+            "cyber diplomacy", "digital diplomacy", "cyber foreign policy", "cyber international relations",
+            "digital foreign policy", "cyber global relations", "digital international relations", "cyber policy",
+            "digital policy", "cyber relations", "digital relations", "cyber cooperation", "digital cooperation",
+            "cyber international cooperation", "digital international cooperation", "cyber global cooperation",
+            "digital global cooperation", "cyber policy making", "digital policy making", "cyber international policy",
+            "digital international policy", "cyber global policy", "digital global policy", "cyber diplomatic relations"
+        ],
+        "responses": [
+            "India's cyber diplomacy framework includes...",
+            "The international approach to {topic} involves...",
+            "Cyber diplomatic relations are governed by...",
+            "The global framework for {issue} establishes...",
+            "International cooperation on cyber matters includes...",
+            "The diplomatic strategy for {topic} involves...",
+            "Cyber foreign policy considerations include..."
+        ]
+    },
+    {
+        "tag": "cyber_crisis_management",
+        "patterns": [
+            "cyber crisis", "digital crisis", "cyber emergency", "digital emergency", "cyber incident response",
+            "digital incident response", "cyber disaster", "digital disaster", "cyber emergency response", "digital emergency response",
+            "cyber crisis management", "digital crisis management", "cyber incident management", "digital incident management",
+            "cyber disaster management", "digital disaster management", "cyber emergency management", "digital emergency management",
+            "cyber crisis response", "digital crisis response", "cyber incident handling", "digital incident handling",
+            "cyber disaster response", "digital disaster response", "cyber emergency handling", "digital emergency handling"
+        ],
+        "responses": [
+            "Cyber crisis management procedures include...",
+            "The legal framework for {type} of cyber crisis establishes...",
+            "For cyber emergencies, the response protocol involves...",
+            "The national strategy for cyber crisis management includes...",
+            "International cooperation in cyber crisis situations involves...",
+            "The organizational approach to cyber crisis management requires...",
+            "Cyber crisis prevention and response measures include..."
+        ]
+    },
+    {
+        "tag": "cyber_education",
+        "patterns": [
+            "cyber education", "digital education", "cyber awareness", "digital awareness", "cyber literacy",
+            "digital literacy", "cyber training", "digital training", "cyber skills", "digital skills",
+            "cyber education program", "digital education program", "cyber awareness program", "digital awareness program",
+            "cyber literacy program", "digital literacy program", "cyber training program", "digital training program",
+            "cyber skills development", "digital skills development", "cyber education initiative", "digital education initiative",
+            "cyber awareness campaign", "digital awareness campaign", "cyber literacy campaign", "digital literacy campaign"
+        ],
+        "responses": [
+            "Cyber education initiatives in India include...",
+            "The framework for {type} of cyber education establishes...",
+            "For cyber awareness programs, the guidelines specify...",
+            "The national strategy for cyber education involves...",
+            "International standards for cyber education include...",
+            "The educational approach to cyber security requires...",
+            "Cyber education and awareness measures involve..."
+        ]
+    },
+    {
+        "tag": "cyber_risk_assessment",
+        "patterns": [
+            "cyber risk", "digital risk", "cyber threat", "digital threat", "cyber vulnerability",
+            "digital vulnerability", "cyber risk assessment", "digital risk assessment", "cyber threat assessment",
+            "digital threat assessment", "cyber vulnerability assessment", "digital vulnerability assessment",
+            "cyber risk analysis", "digital risk analysis", "cyber threat analysis", "digital threat analysis",
+            "cyber vulnerability analysis", "digital vulnerability analysis", "cyber risk evaluation", "digital risk evaluation",
+            "cyber threat evaluation", "digital threat evaluation", "cyber vulnerability evaluation", "digital vulnerability evaluation"
+        ],
+        "responses": [
+            "Cyber risk assessment procedures include...",
+            "The framework for {type} of cyber risk establishes...",
+            "For cyber threats, the assessment protocol involves...",
+            "The national strategy for cyber risk assessment includes...",
+            "International standards for cyber risk assessment involve...",
+            "The organizational approach to cyber risk assessment requires...",
+            "Cyber risk prevention and assessment measures include..."
+        ]
+    },
+    {
+        "tag": "cyber_compliance",
+        "patterns": [
+            "cyber compliance", "digital compliance", "cyber regulations", "digital regulations", "cyber standards",
+            "digital standards", "cyber requirements", "digital requirements", "cyber framework", "digital framework",
+            "cyber compliance program", "digital compliance program", "cyber regulatory framework", "digital regulatory framework",
+            "cyber standards framework", "digital standards framework", "cyber requirements framework", "digital requirements framework",
+            "cyber compliance framework", "digital compliance framework", "cyber regulatory program", "digital regulatory program",
+            "cyber standards program", "digital standards program", "cyber requirements program", "digital requirements program"
+        ],
+        "responses": [
+            "Cyber compliance requirements in India include...",
+            "The framework for {type} of cyber compliance establishes...",
+            "For cyber regulations, the compliance protocol involves...",
+            "The national strategy for cyber compliance includes...",
+            "International standards for cyber compliance involve...",
+            "The organizational approach to cyber compliance requires...",
+            "Cyber compliance and regulatory measures include..."
+        ]
+    }
+]
+    }
