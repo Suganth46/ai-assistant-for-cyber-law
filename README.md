@@ -78,8 +78,7 @@ The Cyber Law Assistant was developed using a Flask-based web application archit
    - Continuous improvement loop
 
 ### Implementation Details
-![Implementation Flow](images/implementation_flow.png)
-*Figure 2: Detailed implementation flow of the system*
+
 
 #### Frontend Development
 - Responsive web interface
