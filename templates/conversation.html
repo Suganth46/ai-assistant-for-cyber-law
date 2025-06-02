@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+
+{% block title %}Conversation - Cyber Law Assistant{% endblock %}
+
+{% block content %}
+<div class="conversation-view-container">
+    <div class="conversation-header">
+        <a href="{{ url_for('dashboard') }}" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+    
+    <div class="messages-container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {{ 'user-message' if message.sender == 'user' else 'bot-message' }}">
+                    <div class="message-content">
+                        {% if message.sender == 'bot' %}
+                            {% set content = message.content|from_json %}
+                            {% if content.type == 'structured' %}
+                                {% for section in content.content %}
+                                    <div class="content-section">
+                                        <h3>{{ section.title }}</h3>
+                                        <div class="section-content">
+                                            {% for item in section.content %}
+                                                {% if item.type == 'list_item' %}
+                                                    <div class="list-item">• {{ item.content }}</div>
+                                                {% elif item.type == 'paragraph' %}
+                                                    <p>{{ item.content }}</p>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                {{ content }}
+                            {% endif %}
+                        {% else %}
+                            {{ message.content }}
+                        {% endif %}
+                    </div>
+                    <div class="message-time">{{ message.timestamp }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-messages">
+                <p>No messages found in this conversation.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .conversation-view-container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .conversation-header {
+        margin-bottom: 20px;
+    }
+
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 20px;
+        background: #4CAF50;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+        background: #45a049;
+    }
+
+    .messages-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
+    }
+
+    .message {
+        max-width: 85%;
+        padding: 15px 20px;
+        border-radius: 12px;
+        position: relative;
+        line-height: 1.6;
+        animation: fadeInUp 0.5s ease both;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .user-message {
+        align-self: flex-end;
+        background: rgba(76, 175, 80, 0.8);
+        color: white;
+        border-bottom-right-radius: 4px;
+    }
+
+    .bot-message {
+        align-self: flex-start;
+        background: rgba(255, 255, 255, 0.2);
+        color: #333;
+        border-bottom-left-radius: 4px;
+    }
+
+    .message-time {
+        font-size: 0.7rem;
+        opacity: 0.8;
+        margin-top: 5px;
+        text-align: right;
+    }
+
+    .content-section {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .content-section h3 {
+        margin-bottom: 12px;
+        color: rgba(76, 175, 80, 0.9);
+        font-size: 1.2em;
+        font-weight: 600;
+        border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+        padding-bottom: 8px;
+    }
+
+    .section-content {
+        padding-left: 15px;
+    }
+
+    .list-item {
+        margin: 8px 0;
+        padding-left: 20px;
+        position: relative;
+        line-height: 1.5;
+    }
+
+    .list-item:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: #4CAF50;
+    }
+
+    .no-messages {
+        text-align: center;
+        padding: 40px;
+        color: #666;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .conversation-view-container {
+            padding: 10px;
+        }
+
+        .message {
+            max-width: 95%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Add any JavaScript functionality here if needed
+</script>
+{% endblock %} 

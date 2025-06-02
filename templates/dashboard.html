@@ -1,0 +1,321 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Cyber Law Assistant{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h1>Welcome, {{ current_user.username }}!</h1>
+    
+    <div class="dashboard-grid">
+        <div class="dashboard-card">
+            <h2>Recent Conversations</h2>
+            {% if conversations %}
+                <div class="conversation-list">
+                    {% for conv in conversations %}
+                        <div class="conversation-item">
+                            <div class="conversation-header">
+                                <h3>{{ conv.title }}</h3>
+                                <span class="message-count">{{ conv.message_count }} messages</span>
+                            </div>
+                            <div class="conversation-meta">
+                                <span class="date">{{ conv.created_at }}</span>
+                                <a href="{{ url_for('view_conversation', conversation_id=conv._id|string) }}" class="view-btn">View</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="no-data">No conversations yet. Start a new chat to begin!</p>
+            {% endif %}
+        </div>
+
+        <div class="dashboard-card">
+            <h2>Quick Actions</h2>
+            <div class="action-buttons">
+                <a href="{{ url_for('index') }}" class="action-btn">
+                    <i class="fas fa-comments"></i>
+                    New Chat
+                </a>
+                <a href="#" class="action-btn" onclick="clearHistory()">
+                    <i class="fas fa-trash"></i>
+                    Clear History
+                </a>
+                <a href="#" class="action-btn" onclick="exportData(event)">
+                    <i class="fas fa-download"></i>
+                    Export Data
+                </a>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <h2>Account Information</h2>
+            <div class="account-info">
+                <div class="info-item">
+                    <span class="label">Username:</span>
+                    <span class="value">{{ current_user.username }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Email:</span>
+                    <span class="value">{{ current_user.email }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Member Since:</span>
+                    <span class="value">{{ user_data.created_at.strftime('%Y-%m-%d %H:%M') if user_data and user_data.created_at else 'N/A' }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .dashboard-container {
+        max-width: 1200px;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .dashboard-container h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #333;
+        font-size: 2.5rem;
+    }
+
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .dashboard-card {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .dashboard-card h2 {
+        color: #4CAF50;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+    }
+
+    .conversation-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .conversation-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .conversation-item:hover {
+        transform: translateY(-2px);
+    }
+
+    .conversation-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .conversation-header h3 {
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .message-count {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .conversation-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .date {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .view-btn {
+        padding: 5px 15px;
+        background: #4CAF50;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: background 0.3s ease;
+    }
+
+    .view-btn:hover {
+        background: #45a049;
+    }
+
+    .action-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
+    .action-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        text-decoration: none;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    .action-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .action-btn i {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: #4CAF50;
+    }
+
+    .account-info {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .info-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+    }
+
+    .label {
+        font-weight: 500;
+        color: #333;
+    }
+
+    .value {
+        color: #666;
+    }
+
+    .no-data {
+        text-align: center;
+        color: #666;
+        padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .dashboard-container {
+            padding: 10px;
+        }
+
+        .dashboard-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .action-buttons {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function clearHistory() {
+        if (confirm('Are you sure you want to clear your chat history? This action cannot be undone.')) {
+            // Show loading state
+            const clearBtn = document.querySelector('[onclick="clearHistory()"]');
+            const originalText = clearBtn.innerHTML;
+            clearBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Clearing...';
+            clearBtn.disabled = true;
+
+            // Add AJAX call to clear history
+            fetch('/clear-history', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                credentials: 'same-origin'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Remove all conversation items
+                    const conversationList = document.querySelector('.conversation-list');
+                    if (conversationList) {
+                        conversationList.innerHTML = '<p class="no-data">No conversations yet. Start a new chat to begin!</p>';
+                    }
+                    // Show success message
+                    alert('History cleared successfully!');
+                } else {
+                    throw new Error(data.message || 'Failed to clear history');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error clearing history: ' + error.message);
+            })
+            .finally(() => {
+                // Reset button state
+                clearBtn.innerHTML = originalText;
+                clearBtn.disabled = false;
+            });
+        }
+    }
+
+    function exportData(event) {
+        event.preventDefault();
+        const exportBtn = event.target.closest('.action-btn');
+        const originalText = exportBtn.innerHTML;
+        exportBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Exporting...';
+        exportBtn.disabled = true;
+
+        // Make the export request
+        fetch('/export-data')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Export failed');
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                // Create download link
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `cyberlaw_assistant_data_${new Date().toISOString().slice(0,19).replace(/[:]/g, '')}.json`;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                a.remove();
+            })
+            .catch(error => {
+                console.error('Export error:', error);
+                alert('Failed to export data. Please try again.');
+            })
+            .finally(() => {
+                // Reset button state
+                exportBtn.innerHTML = originalText;
+                exportBtn.disabled = false;
+            });
+    }
+</script>
+{% endblock %} 
