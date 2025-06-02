@@ -1,13 +1,12 @@
-# Title: Development and Implementation of an AI-Powered Cyber Law Assistant: A Comprehensive Legal Support System
-
-## Author Information
-**Author Name:** [Your Name]  
-**Affiliation:** [Your Designation], Department of Computer Science, [Your College], [City], [State], [Country]  
-**Email:** [Your Email]
+# Title:AI ASSISTANT FOR CYBER LAW
 
 ## Abstract
-This paper presents the development and implementation of an AI-powered Cyber Law Assistant, a sophisticated web application designed to provide legal guidance and support in cyber law matters. The system leverages artificial intelligence and natural language processing to deliver accurate, context-aware responses to user queries about cyber laws and regulations. The implementation includes secure user authentication, conversation history management, and a feedback mechanism for continuous improvement. The system demonstrates significant potential in making legal information more accessible while maintaining accuracy and reliability in legal guidance.
-
+The AI Assistant for Cyber Laws is a tool designed to help individual people and police
+officers to understand and to adverse cyber laws. It's provides a clear answers to legal
+questions related to crime scenario, such as hacking, phishing, online harassment, identity
+theft, and data privacy. This assistant explain a complex legal terms, offers guidance on
+reporting procedures, and helps police officers quickly access the relevant legal sections
+needed for case handling.
 ## Keywords
 Cyber Law, Artificial Intelligence, Legal Assistant, Natural Language Processing, Web Application, Legal Technology, Machine Learning, Legal Informatics, User Experience, Security
 
@@ -46,9 +45,6 @@ Recent advancements in AI have revolutionized legal technology:
 ## Methods / Approach
 The Cyber Law Assistant was developed using a Flask-based web application architecture with the following key components:
 
-### System Architecture
-![System Architecture Diagram](images/system_architecture.png)
-*Figure 1: High-level system architecture of the Cyber Law Assistant*
 
 ### Key Components
 1. User Authentication System
@@ -107,8 +103,6 @@ The Cyber Law Assistant was developed using a Flask-based web application archit
 The implemented system successfully demonstrates:
 
 ### Performance Metrics
-![Performance Metrics](images/performance_metrics.png)
-*Figure 3: System performance metrics and analysis*
 
 1. Response Generation
    - Average response time: < 2 seconds
@@ -160,16 +154,7 @@ Future improvements could include:
 4. Collaborative features
 5. Advanced analytics dashboard
 
-## References
-1. Smith, J., et al. (2020). "AI in Legal Technology: Current State and Future Directions." Journal of Legal Technology, 15(2), 45-62.
-2. Johnson, M. (2021). "Digital Transformation in Legal Services." International Journal of Law and Technology, 8(3), 112-128.
-3. Brown, R., et al. (2022). "Natural Language Processing in Legal Applications." AI and Law Journal, 10(1), 78-95.
-4. Wilson, P. (2021). "Cybersecurity Law: A Comprehensive Guide." Legal Tech Review, 12(4), 156-170.
-5. Anderson, K. (2022). "The Future of Legal AI Assistants." Journal of Legal Innovation, 5(2), 89-104.
-6. Martinez, L. (2023). "Machine Learning in Legal Document Analysis." Computer Law & Security Review, 39, 105-120.
-7. Thompson, E. (2022). "User Experience in Legal Technology." International Journal of Human-Computer Interaction, 38(5), 445-460.
-8. Chen, X. (2023). "Blockchain in Legal Technology." Journal of Legal Innovation, 6(1), 23-38.
-9. Patel, R. (2022). "Natural Language Processing in Legal Document Analysis." AI and Law Journal, 11(2), 167-182.
-10. Kumar, S. (2023). "Security in Legal AI Systems." Computer Law & Security Review, 40, 78-93. 
+## Journal Paper
+https://zenodo.org/records/15572494
 
 User Query → Authentication → Processing Pipeline → Response Generation → User Feedback 
