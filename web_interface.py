@@ -10,8 +10,8 @@ app = Flask(__name__)
 # assistant = CyberLawAssistant(use_gpu=False)
 
 # Flowise API configuration
-FLOWISE_API_URL = "http://localhost:3000/api/v1/prediction/627f1db3-aad6-49cf-b594-29f365c313e8"
-API_KEY = "CscZGIeilk4Ucc2hTAbw4H4pqtJPDCIORexjwLiSxgY"
+FLOWISE_API_URL = ""
+API_KEY = ""
 session_id = None
 def call_flowise_api(user_input, session_id=None):
     """Call the Flowise API with the user input and session ID"""
